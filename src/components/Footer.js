@@ -14,7 +14,7 @@ function Copyright() {
       style={{ color: "white" }}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://nie.ac.in/" target="_blank">
+      <Link color="inherit" href="https://nie.ac.in/" target="_blank"  >
         The National Institute of Engineering
       </Link>{" "}
       {new Date().getFullYear()}
@@ -23,7 +23,30 @@ function Copyright() {
     </center>
   );
 }
-
+function Quicklinks(){
+  return (
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      style={{ color: "white" }}
+      align="right"
+    >
+      <Link align="right" color="inherit" href="" target="_blank">
+        terms of use<br/>
+       
+      </Link>
+      <Link align="right" color="inherit" href="" target="_blank">
+        
+        privacy<br/>
+      
+      </Link>
+      <Link align="right" color="inherit" href="" target="_blank">
+       
+        about us
+      </Link>
+   </Typography>
+  );
+}
 export default function StickyFooter() {
   return (
       <Box
@@ -31,7 +54,7 @@ export default function StickyFooter() {
         sx={{
           display: "flex",
         flexDirection: "column",
-          py: 4,
+          py: 1,
           px: 1,
           mt: "auto",
           backgroundColor: "black",
@@ -40,11 +63,12 @@ export default function StickyFooter() {
       >
         <CssBaseline />
         <Container maxWidth="500px">
-          <Typography variant="body2" align="left" display="inline-block">
+        <Quicklinks />
+          <Typography variant="body2" align="left" >
             NIE Men's Hostel<br/>
             Dr. B R Ambedkar Road<br/>
             Ashokapuram<br/>
-            Mysuru, 570008<br/>
+            Mysuru, 570008
           </Typography >
           {/* <Typography variant="body2" align="left" display="inline-block" marginLeft={"1050px"}>
           NIE Girls Hostel<br/>
@@ -52,8 +76,11 @@ export default function StickyFooter() {
           Vidyaranyapura<br/>
           Mysuru, 570008<br/> 
           </Typography> */}
+          
           <Copyright />
+          
         </Container>
       </Box>
   );
 }
+

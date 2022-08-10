@@ -8,8 +8,13 @@ import {
   Routes,
 } from "react-router-dom";
 import SignInUI from "./components/Auth/SignIn";
+
 import { supabase } from "./Supabase";
 import React from "react";
+
+import { SFooter } from "./components/SFooter";
+import "./App.css"
+
 
 function App() {
   React.useEffect(() => {
@@ -79,7 +84,7 @@ function App() {
           <Route path="/signin" element={<SignInUI />} />
           <Route path="/admin" element={<div>This is an Admin Page</div>} />
         </Routes>
-        <FooterUI />
+        <SFooter />
       </Router>
     </div>
   );
