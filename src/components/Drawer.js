@@ -57,6 +57,7 @@ export default function TemporaryDrawer(props) {
               e.target.style.backgroundColor = "black";
               e.target.style.color = "white";
             }}
+            onClick={props.logOut}
           >
             Sign Out
           </Button>,
