@@ -14,10 +14,15 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import logo from "../images/Logo.png";
 import { supabase } from "../../Supabase";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const theme = createTheme();
 
 export default function SignIn() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -46,7 +51,11 @@ export default function SignIn() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+      <Container
+        component="main"
+        maxWidth="xs"
+        style={{ minHeight: "403px", marginTop: "90px" }}
+      >
         <CssBaseline />
         <Box
           sx={{
@@ -56,14 +65,10 @@ export default function SignIn() {
             alignItems: "center",
           }}
         >
-          {/* <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
-           
-          </Avatar> */}
           <img
             src={logo}
-            height={70}
-            width={70}
+            height={170}
+            width={170}
             alt="NIE"
             style={{
               backgroundColor: "white",
@@ -91,7 +96,7 @@ export default function SignIn() {
             noValidate
             sx={{ mt: 1 }}
           >
-            <TextField
+            {/* <TextField
               margin="normal"
               fullWidth
               id="email"
@@ -108,7 +113,7 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
-            />
+            /> */}
             <Button
               type="submit"
               fullWidth
@@ -119,12 +124,14 @@ export default function SignIn() {
                 backgroundColor: "black",
                 color: "white",
                 borderRadius: "10px",
+                minWidth: "200px",
               }}
+              onClick={signInWithGoogle}
             >
               Sign In
             </Button>
 
-            <Grid
+            {/* <Grid
               container
               style={{ display: "flex", justifyContent: "center" }}
             >
@@ -138,7 +145,7 @@ export default function SignIn() {
                   {"Are you an Admin? Click Here"}
                 </Link>
               </Grid>
-            </Grid>
+            </Grid> */}
           </Box>
         </Box>
         <br />

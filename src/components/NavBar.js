@@ -16,11 +16,15 @@ import logo from "./images/Logo.png";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import DrawerUI from "./Drawer";
 import "./NavBar.css";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const pages = ["Account", "Announcements"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar = (props) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const matches = useMediaQuery("(min-width:600px)");
@@ -51,7 +55,9 @@ const ResponsiveAppBar = () => {
       style={{ backgroundColor: "black" }}
       elevation={0}
     >
-      {!matches && drawer ? <DrawerUI drawerHandler={drawerHandler} /> : null}
+      {!matches && drawer ? (
+        <DrawerUI drawerHandler={drawerHandler} logOut={props.logOut} />
+      ) : null}
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {matches ? (
@@ -115,16 +121,18 @@ const ResponsiveAppBar = () => {
               maxWidth: "70px",
             }}
           >
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={drawerHandler}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
+            {location.pathname != "/signin" ? (
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={drawerHandler}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+            ) : null}
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -207,25 +215,27 @@ const ResponsiveAppBar = () => {
               hostel
             </span>
           </Typography>
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", md: "flex" },
-              marginLeft: "20px",
-              marginTop: "3px",
-            }}
-          >
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
-          {matches ? (
+          {location.pathname != "/signin" ? (
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex" },
+                marginLeft: "20px",
+                marginTop: "3px",
+              }}
+            >
+              {pages.map((page) => (
+                <Button
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  {page}
+                </Button>
+              ))}
+            </Box>
+          ) : null}
+          {matches && location.pathname != "/signin" ? (
             <Button
               variant="outlined"
               style={{
@@ -242,39 +252,11 @@ const ResponsiveAppBar = () => {
                 e.target.style.backgroundColor = "black";
                 e.target.style.color = "white";
               }}
+              onClick={props.logOut}
             >
               Sign Out
             </Button>
           ) : null}
-          {/* <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box> */}
         </Toolbar>
       </Container>
     </AppBar>
