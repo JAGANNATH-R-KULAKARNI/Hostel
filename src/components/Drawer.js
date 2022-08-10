@@ -39,26 +39,48 @@ export default function TemporaryDrawer(props) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {["Account"].map((text, index) => (
+        {[
+          <Button
+            variant="outlined"
+            style={{
+              backgroundColor: "black",
+              color: "white",
+              fontWeight: 900,
+              border: "3px solid white",
+              borderRadius: "10px",
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = "white";
+              e.target.style.color = "black";
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = "black";
+              e.target.style.color = "white";
+            }}
+          >
+            Sign Out
+          </Button>,
+        ].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
+              {/* <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+              </ListItemIcon> */}
+              <ListItemText primary={text} style={{ textAlign: "center" }} />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
       <Divider />
       <List>
-        {["Announcements"].map((text, index) => (
+        {["Account", "Announcements"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
+              {/* <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+              </ListItemIcon> */}
+
+              <ListItemText primary={text} style={{ textAlign: "center" }} />
             </ListItemButton>
           </ListItem>
         ))}
