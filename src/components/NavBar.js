@@ -103,7 +103,7 @@ const ResponsiveAppBar = () => {
               }}
             >
               {" "}
-              hostel
+              HOSTEL
             </span>
           </Typography>
 
