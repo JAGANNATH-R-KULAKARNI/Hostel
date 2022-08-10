@@ -24,31 +24,25 @@ function Copyright() {
 
 export default function StickyFooter() {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <CssBaseline />
-
       <Box
         component="footer"
         sx={{
+          display: "flex",
+        flexDirection: "column",
           py: 3,
-          px: 2,
+          px: 1,
           mt: "auto",
           backgroundColor: "black",
           color: "white",
         }}
       >
+        <CssBaseline />
         <Container maxWidth="sm">
           <Typography variant="body1">
-            This is a Hotel Management Website
+            This is  NIE-Hostel Management Website
           </Typography>
           <Copyright />
         </Container>
       </Box>
-    </Box>
   );
 }
