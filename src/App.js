@@ -3,6 +3,8 @@ import FooterUI from "./components/Footer";
 import HomeUI from "./components/Home";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import SignInUI from "./components/Auth/SignIn";
+import { SFooter } from "./components/SFooter";
+import "./App.css"
 
 function App() {
   return (
@@ -13,7 +15,7 @@ function App() {
           <Route path="/" element={<HomeUI />} />
           <Route path="/signin" element={<SignInUI />} />
         </Routes>
-        <FooterUI />
+        <SFooter />
       </Router>
     </div>
   );
