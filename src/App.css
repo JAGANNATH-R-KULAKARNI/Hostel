@@ -4,8 +4,6 @@
   font-family: Open Sans;
 }
 
-
-
 .footer-distributed {
   background: black;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
@@ -33,7 +31,7 @@
 
 .footer-distributed h3 {
   color: #ffffff;
-  font: normal 36px 'Open Sans', cursive;
+  font: normal 36px "Open Sans", cursive;
   margin: 0;
 }
 
@@ -106,7 +104,6 @@
 .footer-distributed .footer-center p a {
   color: lightseagreen;
   text-decoration: none;
-  ;
 }
 
 .footer-distributed .footer-links a:before {
@@ -140,9 +137,16 @@
 .footer-distributed .footer-company-about span {
   display: block;
   color: #ffffff;
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 20px;
+  font-size: 15px;
+  /* font-weight: bold; */
+  margin-bottom: 3px;
+}
+
+.footer-distributed .footer-right a {
+  color: lightseagreen;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .footer-distributed .footer-icons {
@@ -173,7 +177,6 @@
 /* If you don't want the footer to be responsive, remove these media queries */
 
 @media (max-width: 880px) {
-
   .footer-distributed {
     font: bold 14px sans-serif;
   }
@@ -190,5 +193,4 @@
   .footer-distributed .footer-center i {
     margin-left: 0;
   }
-
 }

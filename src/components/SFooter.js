@@ -50,9 +50,13 @@ export const SFooter = () => {
                 <div class="footer-right">
 
                     <p class="footer-company-about">
-                        <span>About hostel</span>
-                        Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                        <span>NIE Girls Hostel</span>
+                        <span>Vidyaranyapuram main road</span>
+                        <span>Near Golden Jubliee Block</span>
+                        <span>Mysuru, 570008</span>
                     </p>
+                    
+                    <a href="mailto:hostels@nie.ac.in">hostels@nie.ac.in</a>
 
                     <div class="footer-icons">
 
