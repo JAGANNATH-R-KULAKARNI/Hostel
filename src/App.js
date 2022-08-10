@@ -10,6 +10,7 @@ import {
 import SignInUI from "./components/Auth/SignIn";
 import { supabase } from "./Supabase";
 import React from "react";
+import AdminUI from "./components/Admin/Home";
 
 function App() {
   React.useEffect(() => {
@@ -77,7 +78,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomeUI />} />
           <Route path="/signin" element={<SignInUI />} />
-          <Route path="/admin" element={<div>This is an Admin Page</div>} />
+          <Route path="/admin" element={<AdminUI />} />
         </Routes>
         <FooterUI />
       </Router>
