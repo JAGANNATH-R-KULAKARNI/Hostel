@@ -13,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import logo from "../images/Logo.png";
+import { supabase } from "../../Supabase";
 
 const theme = createTheme();
 
@@ -25,6 +26,23 @@ export default function SignIn() {
       password: data.get("password"),
     });
   };
+
+  async function signInWithGoogle() {
+    try {
+      const { user, session, error } = await supabase.auth.signIn({
+        provider: "google",
+      });
+      if (error) throw error;
+
+      if (user) {
+        console.log("user details");
+        console.log(user);
+        alert("here");
+      }
+    } catch (error) {
+      console.error(error.error_description || error.message);
+    }
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -75,7 +93,6 @@ export default function SignIn() {
           >
             <TextField
               margin="normal"
-              required
               fullWidth
               id="email"
               label="Email Address"
@@ -85,7 +102,6 @@ export default function SignIn() {
             />
             <TextField
               margin="normal"
-              required
               fullWidth
               name="password"
               label="Password"
@@ -113,7 +129,12 @@ export default function SignIn() {
               style={{ display: "flex", justifyContent: "center" }}
             >
               <Grid item>
-                <Link href="#" variant="body2" style={{ color: "black" }}>
+                <Link
+                  href="#"
+                  variant="body2"
+                  style={{ color: "black" }}
+                  onClick={signInWithGoogle}
+                >
                   {"Are you an Admin? Click Here"}
                 </Link>
               </Grid>
