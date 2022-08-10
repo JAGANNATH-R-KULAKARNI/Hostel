@@ -191,20 +191,20 @@ const ResponsiveAppBar = () => {
 
             <span
               style={{
-                fontSize: "11px",
+                fontSize: "15px",
                 marginTop: "10px",
                 borderRadius: "10px",
                 backgroundColor: "white",
                 color: "black",
                 paddingLeft: "6px",
-                paddingTop: "5px",
-                maxHeight: "25px",
+                paddingTop: "2px",
+                maxHeight: "30px",
                 fontWeight: 900,
                 marginLeft: "5px",
               }}
             >
               {" "}
-              hostel
+              HOSTEL
             </span>
           </Typography>
           <Box

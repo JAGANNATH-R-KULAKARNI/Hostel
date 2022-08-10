@@ -7,6 +7,7 @@ import Link from "@mui/material/Link";
 
 function Copyright() {
   return (
+    <center>
     <Typography
       variant="body2"
       color="text.secondary"
@@ -14,11 +15,12 @@ function Copyright() {
     >
       {"Copyright © "}
       <Link color="inherit" href="https://nie.ac.in/" target="_blank">
-        NIE
+        The National Institute of Engineering
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
     </Typography>
+    </center>
   );
 }
 
@@ -29,7 +31,7 @@ export default function StickyFooter() {
         sx={{
           display: "flex",
         flexDirection: "column",
-          py: 3,
+          py: 4,
           px: 1,
           mt: "auto",
           backgroundColor: "black",
@@ -37,10 +39,19 @@ export default function StickyFooter() {
         }}
       >
         <CssBaseline />
-        <Container maxWidth="sm">
-          <Typography variant="body1">
-            This is  NIE-Hostel Management Website
-          </Typography>
+        <Container maxWidth="500px">
+          <Typography variant="body2" align="left" display="inline-block">
+            NIE Men's Hostel<br/>
+            Dr. B R Ambedkar Road<br/>
+            Ashokapuram<br/>
+            Mysuru, 570008<br/>
+          </Typography >
+          {/* <Typography variant="body2" align="left" display="inline-block" marginLeft={"1050px"}>
+          NIE Girls Hostel<br/>
+          Vidyaranyapuram Main Rd<br/>
+          Vidyaranyapura<br/>
+          Mysuru, 570008<br/> 
+          </Typography> */}
           <Copyright />
         </Container>
       </Box>
