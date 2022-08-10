@@ -55,13 +55,16 @@
   color: inherit;
 }
 
-.footer-distributed .footer-company-name {
+.footer-distributed .footer-company-name a:before {
+  content: "|";
   color: #fff;
   font-size: 14px;
   font-weight: normal;
   margin: 0;
 }
-
+.footer-distributed .footer-company-name.one:before {
+  content: none;
+}
 /* Footer Center */
 
 .footer-distributed .footer-center {
@@ -80,7 +83,9 @@
   margin: 10px 15px;
   vertical-align: middle;
 }
-
+.fas.fa-map-marker:before {
+  background: url("./components/images/loc_icon.png");
+}
 .footer-distributed .footer-center i.fa-envelope {
   font-size: 17px;
   line-height: 38px;
@@ -118,6 +123,10 @@
 
 .footer-distributed .footer-links .link-1:before {
   content: none;
+}
+
+.footer-distributed .footer-links a:hover {
+  color: crimson;
 }
 
 /* Footer Right */
