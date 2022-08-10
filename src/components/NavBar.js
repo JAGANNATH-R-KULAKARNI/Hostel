@@ -15,6 +15,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import logo from "./images/Logo.png";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import DrawerUI from "./Drawer";
+import "./NavBar.css";
 
 const pages = ["Account", "Announcements"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -224,7 +225,27 @@ const ResponsiveAppBar = () => {
               </Button>
             ))}
           </Box>
-
+          {matches ? (
+            <Button
+              variant="outlined"
+              style={{
+                backgroundColor: "white",
+                color: "black",
+                fontWeight: 900,
+                border: "3px solid white",
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = "white";
+                e.target.style.color = "black";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = "black";
+                e.target.style.color = "white";
+              }}
+            >
+              Sign Out
+            </Button>
+          ) : null}
           {/* <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
