@@ -54,6 +54,7 @@ export default function HomeAdmin() {
         <br />
         <ButtonUI text="Students Queries" />
         <br />
+        <ButtonUI text="Students Details" />
         <br />
       </div>
     </div>

@@ -4,8 +4,6 @@
   font-family: Open Sans;
 }
 
-
-
 .footer-distributed {
   background: black;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
@@ -33,7 +31,7 @@
 
 .footer-distributed h3 {
   color: #ffffff;
-  font: normal 36px 'Open Sans', cursive;
+  font: normal 36px "Open Sans", cursive;
   margin: 0;
 }
 
@@ -57,13 +55,16 @@
   color: inherit;
 }
 
-.footer-distributed .footer-company-name {
+.footer-distributed .footer-company-name a:before {
+  content: "|";
   color: #fff;
   font-size: 14px;
   font-weight: normal;
   margin: 0;
 }
-
+.footer-distributed .footer-company-name.one:before {
+  content: none;
+}
 /* Footer Center */
 
 .footer-distributed .footer-center {
@@ -82,7 +83,9 @@
   margin: 10px 15px;
   vertical-align: middle;
 }
-
+.fas.fa-map-marker:before {
+  background: url("./components/images/loc_icon.png");
+}
 .footer-distributed .footer-center i.fa-envelope {
   font-size: 17px;
   line-height: 38px;
@@ -106,7 +109,6 @@
 .footer-distributed .footer-center p a {
   color: lightseagreen;
   text-decoration: none;
-  ;
 }
 
 .footer-distributed .footer-links a:before {
@@ -121,6 +123,10 @@
 
 .footer-distributed .footer-links .link-1:before {
   content: none;
+}
+
+.footer-distributed .footer-links a:hover {
+  color: crimson;
 }
 
 /* Footer Right */
@@ -140,9 +146,16 @@
 .footer-distributed .footer-company-about span {
   display: block;
   color: #ffffff;
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 20px;
+  font-size: 15px;
+  /* font-weight: bold; */
+  margin-bottom: 3px;
+}
+
+.footer-distributed .footer-right a {
+  color: lightseagreen;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .footer-distributed .footer-icons {
@@ -173,7 +186,6 @@
 /* If you don't want the footer to be responsive, remove these media queries */
 
 @media (max-width: 880px) {
-
   .footer-distributed {
     font: bold 14px sans-serif;
   }
@@ -190,5 +202,4 @@
   .footer-distributed .footer-center i {
     margin-left: 0;
   }
-
 }

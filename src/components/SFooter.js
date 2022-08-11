@@ -1,5 +1,4 @@
 import React from 'react'
-
 export const SFooter = () => {
     return (
         <>
@@ -24,14 +23,19 @@ export const SFooter = () => {
                         <a href="#">Contact</a>
                     </p>
 
-                    <p class="footer-company-name">Copyright © NIE Hostel</p>
+                    <p class="footer-links">
+                        <a href="#"class="link-1">Copyright © NIE Hostel</a>
+                        <a href="#">Terms and Condition</a>
+                        <a href="#">Policies</a>
+                    </p>
+
                 </div>
 
                 <div class="footer-center">
 
                     <div>
                         <i class="fa fa-map-marker"></i>
-                        <p><span> NIE Men's Hostel</span> Dr. B R Ambedkar Road</p>
+                        <p><span>NIE Men's Hostel</span> Dr. B R Ambedkar Road</p>
                     </div>
 
                     <div>
@@ -44,15 +48,28 @@ export const SFooter = () => {
                         <i class="fa fa-envelope"></i>
                         <p><a href="mailto:hostels@nie.ac.in">hostels@nie.ac.in</a></p>
                     </div>
+                    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+                    <div class="loca">
+                    <i class="fas fa-map-marker"></i>
+                        <p><a href="https://goo.gl/maps/79jxMXjqARCgkLh89" class="location">Location</a></p>
+                    </div>
 
                 </div>
 
                 <div class="footer-right">
 
                     <p class="footer-company-about">
-                        <span>About hostel</span>
-                        Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                        <span>NIE Girls Hostel</span>
+                        <span>Vidyaranyapuram main road</span>
+                        <span>Near Golden Jubliee Block</span>
+                        <span>Mysuru, 570008</span>
                     </p>
+                    
+                    <a href="mailto:hostels@nie.ac.in">hostels@nie.ac.in</a>
+                    <div class="loca">
+                    <i class="fas fa-map-marker"></i>
+                        <p><a href="https://goo.gl/maps/rvfLZHkQFLRws18Q6" class="location">Location</a></p>
+                    </div>
 
                     <div class="footer-icons">
 
