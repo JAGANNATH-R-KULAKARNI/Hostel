@@ -11,6 +11,7 @@ import SignInUI from "./components/Auth/SignIn";
 
 import { supabase } from "./Supabase";
 import React from "react";
+import AdminUI from "./components/Admin/Home";
 
 import { SFooter } from "./components/SFooter";
 import "./App.css"
@@ -82,7 +83,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomeUI />} />
           <Route path="/signin" element={<SignInUI />} />
-          <Route path="/admin" element={<div>This is an Admin Page</div>} />
+          <Route path="/admin" element={<AdminUI />} />
         </Routes>
         <SFooter />
       </Router>
