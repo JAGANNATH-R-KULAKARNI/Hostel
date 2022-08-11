@@ -24,7 +24,7 @@ export default function Home() {
   React.useEffect(() => {
     setInterval(() => {
       fetchTheProfile();
-    }, 100);
+    }, 1000);
   }, []);
 
   return (

@@ -19,8 +19,9 @@ import "./NavBar.css";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { supabase } from "../Supabase";
+import CloseIcon from "@mui/icons-material/Close";
 
-const pages = ["Account", "Announcements"];
+const pages = [];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ResponsiveAppBar = (props) => {
@@ -144,10 +145,10 @@ const ResponsiveAppBar = (props) => {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={drawerHandler}
+                onClick={props.handleClose}
                 color="inherit"
               >
-                <MenuIcon />
+                <CloseIcon />
               </IconButton>
             ) : null}
             <Menu
@@ -270,9 +271,9 @@ const ResponsiveAppBar = (props) => {
                 e.target.style.backgroundColor = "black";
                 e.target.style.color = "white";
               }}
-              onClick={props.logOut}
+              onClick={props.handleClose}
             >
-              Sign Out
+              Close
             </Button>
           ) : null}
         </Toolbar>

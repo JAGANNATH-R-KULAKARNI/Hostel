@@ -11,6 +11,9 @@ import SignInUI from "./components/Auth/SignIn";
 import { supabase } from "./Supabase";
 import React from "react";
 import AdminUI from "./components/Admin/Home";
+import RegisterUI from "./components/Admin/Register";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function App() {
   React.useEffect(() => {
@@ -69,6 +72,7 @@ function App() {
 
   async function logOut() {
     await supabase.auth.signOut();
+    Navigate("/signin");
   }
 
   return (
