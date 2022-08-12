@@ -14,6 +14,7 @@ import AdminUI from "./components/Admin/Home";
 import RegisterUI from "./components/Admin/Register";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import "./App.css";
 
 function App() {
   React.useEffect(() => {
@@ -49,7 +50,7 @@ function App() {
   React.useEffect(() => {
     setInterval(function () {
       fetchTheProfile();
-    }, 100);
+    }, 1000);
   }, []);
 
   async function LoginChangeHandler(event, session) {
@@ -73,18 +74,29 @@ function App() {
   async function logOut() {
     await supabase.auth.signOut();
     Navigate("/signin");
+    window.location.reload();
   }
 
   return (
     <div>
       <Router>
-        <NavBarUI logOut={logOut} />
-        <Routes>
-          <Route path="/" element={<HomeUI />} />
-          <Route path="/signin" element={<SignInUI />} />
-          <Route path="/admin" element={<AdminUI />} />
-        </Routes>
-        <FooterUI />
+        <main className="app_bro" style={{ marginTop: "-17px" }}>
+          <div className="boxes">
+            <ul style={{ opacity: 0.2 }} className="ul_bro">
+              <li className="ul_bro_one"></li>
+              <li className="ul_bro_two"></li>
+              <li className="ul_bro_three"></li>
+              <li className="ul_bro_four"></li>
+            </ul>
+          </div>
+          <NavBarUI logOut={logOut} />
+          <Routes>
+            <Route path="/" element={<HomeUI />} />
+            <Route path="/signin" element={<SignInUI />} />
+            <Route path="/admin" element={<AdminUI />} />
+          </Routes>
+          <FooterUI />
+        </main>
       </Router>
     </div>
   );

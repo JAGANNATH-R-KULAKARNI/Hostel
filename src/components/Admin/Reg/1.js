@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 
-export default function AddressForm() {
+export default function One(props) {
   return (
     <React.Fragment>
       <Grid container spacing={3}>
@@ -18,6 +18,10 @@ export default function AddressForm() {
             autoComplete="given-name"
             variant="standard"
             placeholder="Your Full Name"
+            value={props.name}
+            onChange={(e) => {
+              props.setName(e.target.value);
+            }}
           />
         </Grid>
 
@@ -30,6 +34,10 @@ export default function AddressForm() {
             autoComplete="shipping address-level2"
             variant="standard"
             placeholder="Your College USN"
+            value={props.usn}
+            onChange={(e) => {
+              props.setUSN(e.target.value);
+            }}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -40,6 +48,11 @@ export default function AddressForm() {
             fullWidth
             variant="standard"
             placeholder="Date Of Joining"
+            type="number"
+            value={props.yoj}
+            onChange={(e) => {
+              props.setYoj(e.target.value);
+            }}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -47,10 +60,15 @@ export default function AddressForm() {
             id="email"
             name="email"
             label="Email"
+            type="email"
             fullWidth
             autoComplete="shipping postal-code"
             variant="standard"
             placeholder="Your College Email ID"
+            value={props.email}
+            onChange={(e) => {
+              props.setEmail(e.target.value);
+            }}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -62,6 +80,11 @@ export default function AddressForm() {
             autoComplete="shipping country"
             variant="standard"
             placeholder="Your Phone Number"
+            type="number"
+            value={props.phnum}
+            onChange={(e) => {
+              props.setPhnum(e.target.value);
+            }}
           />
         </Grid>
       </Grid>
