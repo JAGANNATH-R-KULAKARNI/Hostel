@@ -13,7 +13,7 @@ export default function CustomizedSelects(props) {
   const [b, setB] = React.useState("A");
   const [f, setF] = React.useState(2);
   const [r, setR] = React.useState(401);
-
+  const [h, setH] = React.useState("NIEMH");
   const m1 = useMediaQuery("(min-width:600px)");
 
   return (
@@ -84,6 +84,35 @@ export default function CustomizedSelects(props) {
           </select>
         </div>
       </form> */}
+      <FormControl sx={{ m: 1, minWidth: m1 ? 90 : 81 }}>
+        <InputLabel id="demo-simple-select-autowidth-label11">Building</InputLabel>
+        <Select
+          labelId="demo-simple-select-autowidth-label11"
+          id="Building-select-bro"
+          value={h}
+          onChange={(e) => {
+            props.setBuilding(e.target.value);
+            setH(e.target.value);
+            props.roomAllocationHandler(
+              e.target.value,
+              props.floor,
+              props.room
+            );
+            console.log(props.roomAllocation);
+          }}
+          autoWidth
+          defaultValue="NIEMH"
+        >
+          {props.buildingList &&
+            props.buildingList.map((item) => {
+              return (
+                <MenuItem value={item["building"] + ""} key={item["building"] + ""}>
+                  {item["building"]}
+                </MenuItem>
+              );
+            })}
+        </Select>
+      </FormControl>
       <FormControl sx={{ m: 1, minWidth: m1 ? 90 : 81 }}>
         <InputLabel id="demo-simple-select-autowidth-label11">Block</InputLabel>
         <Select

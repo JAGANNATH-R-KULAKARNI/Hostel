@@ -46,7 +46,7 @@ export default function Checkout() {
   const [yoj, setYoj] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [phnum, setPhnum] = React.useState("");
-
+  const [building,setBuilding]=React.useState("");
   const [block, setBlock] = React.useState("A");
   const [floor, setFloor] = React.useState(2);
   const [room, setRoom] = React.useState(401);
