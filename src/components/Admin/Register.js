@@ -23,6 +23,23 @@ export default function FullScreenDialog(props) {
   const [open, setOpen] = React.useState(true);
   const m1 = useMediaQuery("(min-width:600px)");
 
+<<<<<<< HEAD
+=======
+  const [name, setName] = React.useState("");
+  const [usn, setUSN] = React.useState("");
+  const [yoj, setYoj] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [phnum, setPhnum] = React.useState("");
+  const [block, setBlock] = React.useState("");
+  const [floor, setFloor] = React.useState("");
+  const [room, setRoom] = React.useState("");
+  const [hf1, setHF1] = React.useState("");
+  const [hf2, setHF2] = React.useState("");
+  const [hf3, setHF3] = React.useState("");
+  const [hf4, setHF4] = React.useState("");
+  const [cd, setCD] = React.useState("");
+
+>>>>>>> f8743b87ac2612b89165519f075c215cd63319ee
   const handleClose = () => {
     setOpen(false);
     props.registerHandler();

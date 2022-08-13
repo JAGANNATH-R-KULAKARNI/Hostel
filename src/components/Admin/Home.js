@@ -27,6 +27,7 @@ export default function HomeAdmin() {
   React.useEffect(() => {
     fetchTheProfile();
   }, []);
+
   return (
     <div>
       <h1
