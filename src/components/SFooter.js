@@ -8,6 +8,7 @@ export const SFooter = () => {
                 <div class="footer-left">
 
                     <h3>NIE<span> HOSTEL</span></h3>
+                    <h2>Divided by<span> Branches</span> united by <span>NIE Hostel</span></h2>
 
                     <p class="footer-links">
                         <a href="#" class="link-1">Announcements</a>
