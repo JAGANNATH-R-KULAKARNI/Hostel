@@ -67,7 +67,7 @@ export const SFooter = () => {
                     <a href="mailto:hostels@nie.ac.in">hostels@nie.ac.in</a>
                     <div class="loca">
                         <i class="fas fa-map-marker"></i>
-                        <p><a target="_blank" href="https://goo.gl/maps/rvfLZHkQFLRws18Q6" class="location">Location</a></p>
+                        <p><a href="https://goo.gl/maps/rvfLZHkQFLRws18Q6" target="_blank" class="location">Location</a></p>
                     </div>
 
                     <div class="footer-icons">
