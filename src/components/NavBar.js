@@ -175,8 +175,6 @@ const ResponsiveAppBar = (props) => {
               ))}
             </Menu>
           </Box>
-<<<<<<< HEAD
-
           {!matches ? (
             <img
               src={logo}
@@ -233,7 +231,6 @@ const ResponsiveAppBar = (props) => {
               HOSTEL
             </span>
           </Typography>
-=======
           <div style={{ display: "flex" }}>
             {!matches ? (
               <img
@@ -288,11 +285,10 @@ const ResponsiveAppBar = (props) => {
                 }}
               >
                 {" "}
-                hostel
+                HOSTEL
               </span>
             </Typography>
           </div>
->>>>>>> f8743b87ac2612b89165519f075c215cd63319ee
           {location.pathname != "/signin" ? (
             <Box
               sx={{
