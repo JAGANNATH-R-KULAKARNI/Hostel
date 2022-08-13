@@ -5,11 +5,13 @@ import Divider from "@mui/material/Divider";
 import { supabase } from "../../Supabase";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import RegisterUI from "./Register";
 
 export default function HomeAdmin() {
   const m1 = useMediaQuery("(min-width:600px)");
   const navigate = useNavigate();
   const location = useLocation();
+  const [register, setRegister] = React.useState(false);
 
   async function fetchTheProfile() {
     const data = await supabase.auth.user();
@@ -23,9 +25,7 @@ export default function HomeAdmin() {
   }
 
   React.useEffect(() => {
-    setInterval(() => {
-      fetchTheProfile();
-    }, 100);
+    fetchTheProfile();
   }, []);
   return (
     <div>
@@ -40,11 +40,17 @@ export default function HomeAdmin() {
       >
         Admin Page
       </h1>
+      {register ? (
+        <RegisterUI registerHandler={() => setRegister(!register)} />
+      ) : null}
       <div style={{ marginTop: m1 ? "-40px" : "-20px" }}>
         <Divider />
       </div>
       <div style={{ marginTop: m1 ? "40px" : "20px" }}>
-        <ButtonUI text="Register a new Student" />
+        <ButtonUI
+          text="Register a new Student"
+          clicked={() => setRegister(!register)}
+        />
         <br />
         <ButtonUI text="Make An Announcement" />
         <br />
