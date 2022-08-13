@@ -13,7 +13,7 @@ export default function CustomizedSelects(props) {
   const [b, setB] = React.useState("A");
   const [f, setF] = React.useState(2);
   const [r, setR] = React.useState(401);
-
+  const [h, setH] = React.useState("NIEMH");
   const m1 = useMediaQuery("(min-width:600px)");
 
   return (
@@ -85,6 +85,36 @@ export default function CustomizedSelects(props) {
         </div>
       </form> */}
       <FormControl sx={{ m: 1, minWidth: m1 ? 90 : 81 }}>
+        <InputLabel id="demo-simple-select-autowidth-label11">Building</InputLabel>
+        <Select
+          labelId="demo-simple-select-autowidth-label11"
+          id="Building-select-bro"
+          value={h}
+          onChange={(e) => {
+            props.setBuilding(e.target.value);
+            setH(e.target.value);
+            props.roomAllocationHandler(
+              e.target.value,
+              props.block,
+              props.floor,
+              props.room
+            );
+            console.log(props.roomAllocation);
+          }}
+          autoWidth
+          defaultValue="NIEMH"
+        >
+          {props.buildingList &&
+            props.buildingList.map((item) => {
+              return (
+                <MenuItem value={item["building"] + ""} key={item["building"] + ""}>
+                  {item["building"]}
+                </MenuItem>
+              );
+            })}
+        </Select>
+      </FormControl>
+      <FormControl sx={{ m: 1, minWidth: m1 ? 90 : 81 }}>
         <InputLabel id="demo-simple-select-autowidth-label11">Block</InputLabel>
         <Select
           labelId="demo-simple-select-autowidth-label11"
@@ -94,6 +124,7 @@ export default function CustomizedSelects(props) {
             props.setBlock(e.target.value);
             setB(e.target.value);
             props.roomAllocationHandler(
+              props.building,
               e.target.value,
               props.floor,
               props.room
@@ -125,6 +156,7 @@ export default function CustomizedSelects(props) {
             console.log(typeof e.target.value);
 
             props.roomAllocationHandler(
+              props.building,
               props.block,
               e.target.value,
               props.room
@@ -153,6 +185,7 @@ export default function CustomizedSelects(props) {
             setR(e.target.value);
             props.setRoom(e.target.value);
             props.roomAllocationHandler(
+              props.building,
               props.block,
               props.floor,
               e.target.value

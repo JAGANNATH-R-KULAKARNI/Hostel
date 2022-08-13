@@ -55,7 +55,11 @@ const ResponsiveAppBar = (props) => {
     const data = await supabase.auth.user();
 
     if (data) {
+
+      console.log(data);
+
       // console.log(data);
+
       setEmail(data.email);
     }
   }
