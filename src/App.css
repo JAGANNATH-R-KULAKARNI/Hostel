@@ -62,9 +62,11 @@
   font-weight: normal;
   margin: 0;
 }
+
 .footer-distributed .footer-company-name.one:before {
   content: none;
 }
+
 /* Footer Center */
 
 .footer-distributed .footer-center {
@@ -83,9 +85,11 @@
   margin: 10px 15px;
   vertical-align: middle;
 }
+
 .fas.fa-map-marker:before {
   background: url("./components/images/loc_icon.png");
 }
+
 .footer-distributed .footer-center i.fa-envelope {
   font-size: 17px;
   line-height: 38px;
@@ -141,6 +145,7 @@
   font-size: 13px;
   font-weight: normal;
   margin: 0;
+  margin-bottom: 22px;
 }
 
 .footer-distributed .footer-company-about span {
@@ -148,7 +153,7 @@
   color: #ffffff;
   font-size: 15px;
   /* font-weight: bold; */
-  margin-bottom: 3px;
+  /* margin-bottom: 3px; */
 }
 
 .footer-distributed .footer-right a {
