@@ -51,7 +51,7 @@ export default function Review() {
         <Grid item xs={12} sm={12}>
           <TextField
             id="input-with-icon-textfield"
-            label="HF1"
+            label="Hostel Fees Year &#8544;"
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -68,7 +68,7 @@ export default function Review() {
         <Grid item xs={12} sm={12}>
           <TextField
             id="input-with-icon-textfield"
-            label="HF2"
+            label="Hostel Fees Year &#8545;"
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -84,7 +84,7 @@ export default function Review() {
         <Grid item xs={12} sm={12}>
           <TextField
             id="input-with-icon-textfield"
-            label="HF3"
+            label="Hostel Fees Year &#8546;"
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -100,7 +100,7 @@ export default function Review() {
         <Grid item xs={12} sm={12}>
           <TextField
             id="input-with-icon-textfield"
-            label="HF4"
+            label="Hostel Fees Year &#8547;"
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -116,7 +116,7 @@ export default function Review() {
         <Grid item xs={12} sm={12}>
           <TextField
             id="input-with-icon-textfield"
-            label="CD"
+            label="Caution Deposit"
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">

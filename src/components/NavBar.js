@@ -179,6 +179,62 @@ const ResponsiveAppBar = (props) => {
               ))}
             </Menu>
           </Box>
+          {!matches ? (
+            <img
+              src={logo}
+              height={35}
+              width={35}
+              alt="NIE"
+              style={{
+                backgroundColor: "white",
+                padding: "2px",
+                borderBottomLeftRadius: "30px",
+                borderBottomRightRadius: "30px",
+                borderTopRightRadius: "7px",
+                borderTopLeftRadius: "7px",
+                paddingLeft: "2px",
+                marginLeft: "30px",
+              }}
+            />
+          ) : null}
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: "flex", md: "none" },
+              fontFamily: "monospace",
+              fontWeight: 700,
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
+              marginLeft: "15px",
+              fontSize: "20px",
+              paddingRight: "50px",
+            }}
+          >
+            <span style={{ marginTop: "6px" }}> NIE </span>
+
+            <span
+              style={{
+                fontSize: "15px",
+                marginTop: "10px",
+                borderRadius: "10px",
+                backgroundColor: "white",
+                color: "black",
+                paddingLeft: "6px",
+                paddingTop: "2px",
+                maxHeight: "30px",
+                fontWeight: 900,
+                marginLeft: "5px",
+              }}
+            >
+              {" "}
+              HOSTEL
+            </span>
+          </Typography>
           <div style={{ display: "flex" }}>
             {!matches ? (
               <img
@@ -233,7 +289,7 @@ const ResponsiveAppBar = (props) => {
                 }}
               >
                 {" "}
-                hostel
+                HOSTEL
               </span>
             </Typography>
           </div>

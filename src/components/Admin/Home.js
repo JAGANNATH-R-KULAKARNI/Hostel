@@ -63,6 +63,7 @@ export default function HomeAdmin() {
         <br />
         <ButtonUI text="Students Details" />
         <br />
+        <br />
       </div>
     </div>
   );
