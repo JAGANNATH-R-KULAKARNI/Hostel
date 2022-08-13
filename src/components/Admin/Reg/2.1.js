@@ -95,6 +95,7 @@ export default function CustomizedSelects(props) {
             setH(e.target.value);
             props.roomAllocationHandler(
               e.target.value,
+              props.block,
               props.floor,
               props.room
             );
@@ -123,6 +124,7 @@ export default function CustomizedSelects(props) {
             props.setBlock(e.target.value);
             setB(e.target.value);
             props.roomAllocationHandler(
+              props.building,
               e.target.value,
               props.floor,
               props.room
@@ -154,6 +156,7 @@ export default function CustomizedSelects(props) {
             console.log(typeof e.target.value);
 
             props.roomAllocationHandler(
+              props.building,
               props.block,
               e.target.value,
               props.room
@@ -182,6 +185,7 @@ export default function CustomizedSelects(props) {
             setR(e.target.value);
             props.setRoom(e.target.value);
             props.roomAllocationHandler(
+              props.building,
               props.block,
               props.floor,
               e.target.value
