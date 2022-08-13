@@ -179,7 +179,7 @@ const ResponsiveAppBar = (props) => {
               ))}
             </Menu>
           </Box>
-          {!matches ? (
+          {matches ? (
             <img
               src={logo}
               height={35}

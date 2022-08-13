@@ -1,5 +1,5 @@
 import React from 'react'
-export const SFooter = () => {
+export default function SFooter  ()  {
     return (
         <>
             <footer class="footer-distributed">
