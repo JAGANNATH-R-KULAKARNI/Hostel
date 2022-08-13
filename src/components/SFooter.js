@@ -2,12 +2,12 @@ import React from 'react'
 export const SFooter = () => {
     return (
         <>
-
             <footer class="footer-distributed">
 
                 <div class="footer-left">
 
                     <h3>NIE<span> HOSTEL</span></h3>
+                    <h2>Divided by<span> Branches</span> united by <span>NIE Hostel</span></h2>
 
                     <p class="footer-links">
                         <a href="#" class="link-1">Announcements</a>
@@ -24,7 +24,7 @@ export const SFooter = () => {
                     </p>
 
                     <p class="footer-links">
-                        <a href="#"class="link-1">Copyright © NIE Hostel</a>
+                        <a href="#" class="link-1">Copyright © NIE Hostel</a>
                         <a href="#">Terms and Condition</a>
                         <a href="#">Policies</a>
                     </p>
@@ -50,8 +50,8 @@ export const SFooter = () => {
                     </div>
                     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
                     <div class="loca">
-                    <i class="fas fa-map-marker"></i>
-                        <p><a href="https://goo.gl/maps/79jxMXjqARCgkLh89" class="location">Location</a></p>
+                        <i class="fas fa-map-marker"></i>
+                        <p><a href="https://goo.gl/maps/79jxMXjqARCgkLh89" target="_blank" class="location">Location</a></p>
                     </div>
 
                 </div>
@@ -64,11 +64,11 @@ export const SFooter = () => {
                         <span>Near Golden Jubliee Block</span>
                         <span>Mysuru, 570008</span>
                     </p>
-                    
+
                     <a href="mailto:hostels@nie.ac.in">hostels@nie.ac.in</a>
                     <div class="loca">
-                    <i class="fas fa-map-marker"></i>
-                        <p><a href="https://goo.gl/maps/rvfLZHkQFLRws18Q6" class="location">Location</a></p>
+                        <i class="fas fa-map-marker"></i>
+                        <p><a href="https://goo.gl/maps/rvfLZHkQFLRws18Q6" target="_blank" class="location">Location</a></p>
                     </div>
 
                     <div class="footer-icons">
