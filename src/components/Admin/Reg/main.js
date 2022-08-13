@@ -12,18 +12,11 @@ import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-<<<<<<< HEAD
-import AddressForm from "./1";
-import PaymentForm from "./2";
-import Review from "./3";
-import "./tick.css";
-=======
 import One from "./1";
 import Two from "./2";
 import Three from "./3";
 import "./tick.css";
 import { supabase } from "../../../Supabase";
->>>>>>> f8743b87ac2612b89165519f075c215cd63319ee
 
 function Copyright() {
   return (
@@ -40,30 +33,11 @@ function Copyright() {
 
 const steps = ["Student", "Room", "Fees"];
 
-<<<<<<< HEAD
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <AddressForm />;
-    case 1:
-      return <PaymentForm />;
-    case 2:
-      return <Review />;
-    default:
-      throw new Error("Unknown step");
-  }
-}
-
-=======
->>>>>>> f8743b87ac2612b89165519f075c215cd63319ee
 const theme = createTheme();
 
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
 
-<<<<<<< HEAD
-  const handleNext = () => {
-=======
   const [roomsData, setRoomsData] = React.useState(null);
   const [roomAllocation, setRoomAllocation] = React.useState(null);
 
@@ -265,7 +239,6 @@ export default function Checkout() {
       }
     }
 
->>>>>>> f8743b87ac2612b89165519f075c215cd63319ee
     setActiveStep(activeStep + 1);
   };
 
