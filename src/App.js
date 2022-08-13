@@ -1,4 +1,4 @@
-import NavBarUI from "./components/NavBar";
+import NavBarUI from "./components/NavBar2";
 import FooterUI from "./components/Footer";
 import HomeUI from "./components/Home";
 import {
