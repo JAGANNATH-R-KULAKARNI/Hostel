@@ -10,82 +10,19 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import "./2.1.css";
 
 export default function CustomizedSelects(props) {
+  const [h, setH] = React.useState("mh");
   const [b, setB] = React.useState("A");
   const [f, setF] = React.useState(2);
   const [r, setR] = React.useState(401);
-  const [h, setH] = React.useState("NIEMH");
+
   const m1 = useMediaQuery("(min-width:600px)");
 
   return (
     <div>
-      {/* <form>
-        <div className="select-wrapper">
-          <h4 style={{ textAlign: "center" }}>Block</h4>
-          <select
-            className="select"
-            style={{ border: "3px solid black", marginTop: "-20px" }}
-            value={b}
-            onChange={(e) => {
-              setB(e.target.value);
-              props.setBlock(e.target.value);
-              props.roomAllocationHandler(
-                e.target.value,
-                props.floor,
-                props.room
-              );
-            }}
-            id="blockSelect"
-          >
-            {props.blockList &&
-              props.blockList.map((item) => {
-                return (
-                  <option
-                    value={item["block"] + ""}
-                    key={item["block"] + ""}
-                    style={{ textAlign: "center", maxWidth: "80%" }}
-                  >
-                    {item["block"]}
-                  </option>
-                );
-              })}
-          </select>
-        </div>
-      </form>
-      <form>
-        <div className="select-wrapper">
-          <h4 style={{ textAlign: "center" }}>Floor</h4>
-          <select
-            className="select"
-            style={{ border: "3px solid black", marginTop: "-20px" }}
-            value={f}
-            onChange={(e) => {
-              setF(e.target.value);
-              props.setFloor(e.target.value);
-              props.roomAllocationHandler(
-                props.block,
-                e.target.value,
-                props.room
-              );
-            }}
-            id="FloorSelect"
-          >
-            {props.floorList &&
-              props.floorList.map((item) => {
-                return (
-                  <option
-                    value={item["floor"]}
-                    key={item["floor"]}
-                    style={{ textAlign: "center", maxWidth: "80%" }}
-                  >
-                    {item["floor"]}
-                  </option>
-                );
-              })}
-          </select>
-        </div>
-      </form> */}
       <FormControl sx={{ m: 1, minWidth: m1 ? 90 : 81 }}>
-        <InputLabel id="demo-simple-select-autowidth-label11">Building</InputLabel>
+        <InputLabel id="demo-simple-select-autowidth-label11">
+          Building
+        </InputLabel>
         <Select
           labelId="demo-simple-select-autowidth-label11"
           id="Building-select-bro"
@@ -107,7 +44,10 @@ export default function CustomizedSelects(props) {
           {props.buildingList &&
             props.buildingList.map((item) => {
               return (
-                <MenuItem value={item["building"] + ""} key={item["building"] + ""}>
+                <MenuItem
+                  value={item["building"] + ""}
+                  key={item["building"] + ""}
+                >
                   {item["building"]}
                 </MenuItem>
               );
@@ -124,7 +64,6 @@ export default function CustomizedSelects(props) {
             props.setBlock(e.target.value);
             setB(e.target.value);
             props.roomAllocationHandler(
-              props.building,
               e.target.value,
               props.floor,
               props.room
@@ -156,7 +95,6 @@ export default function CustomizedSelects(props) {
             console.log(typeof e.target.value);
 
             props.roomAllocationHandler(
-              props.building,
               props.block,
               e.target.value,
               props.room
@@ -185,7 +123,6 @@ export default function CustomizedSelects(props) {
             setR(e.target.value);
             props.setRoom(e.target.value);
             props.roomAllocationHandler(
-              props.building,
               props.block,
               props.floor,
               e.target.value
