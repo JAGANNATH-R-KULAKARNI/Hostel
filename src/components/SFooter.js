@@ -50,7 +50,7 @@ export const SFooter = () => {
                     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
                     <div class="loca">
                         <i class="fas fa-map-marker"></i>
-                        <p><a href="https://goo.gl/maps/79jxMXjqARCgkLh89" class="location">Location</a></p>
+                        <p><a href="https://goo.gl/maps/79jxMXjqARCgkLh89" target="_blank" class="location">Location</a></p>
                     </div>
 
                 </div>
