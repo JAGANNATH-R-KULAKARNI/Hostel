@@ -30,7 +30,7 @@ export default function Two(props) {
             floorList={props.floorList}
           />
         </Grid>
-        {/* <Grid item xs={12} sm={12}>
+        <Grid item xs={12} sm={12}>
           <h2 style={{ textAlign: "center" }}>
             Capacity : {props.roomInfo[0]}
           </h2>
@@ -39,7 +39,7 @@ export default function Two(props) {
           <h2 style={{ textAlign: "center" }}>
             Available : {props.roomInfo[1]}
           </h2>
-        </Grid> */}
+        </Grid>
       </Grid>
     </React.Fragment>
   );
