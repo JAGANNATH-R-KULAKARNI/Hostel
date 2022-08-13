@@ -19,8 +19,9 @@ import "./NavBar.css";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { supabase } from "../Supabase";
+import CloseIcon from "@mui/icons-material/Close";
 
-const pages = ["Account", "Announcements"];
+const pages = [];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ResponsiveAppBar = (props) => {
@@ -144,10 +145,10 @@ const ResponsiveAppBar = (props) => {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={drawerHandler}
+                onClick={props.handleClose}
                 color="inherit"
               >
-                <MenuIcon />
+                <CloseIcon />
               </IconButton>
             ) : null}
             <Menu
@@ -175,65 +176,6 @@ const ResponsiveAppBar = (props) => {
               ))}
             </Menu>
           </Box>
-<<<<<<< HEAD
-
-          {!matches ? (
-            <img
-              src={logo}
-              height={35}
-              width={35}
-              alt="NIE"
-              style={{
-                backgroundColor: "white",
-                padding: "2px",
-                borderBottomLeftRadius: "30px",
-                borderBottomRightRadius: "30px",
-                borderTopRightRadius: "7px",
-                borderTopLeftRadius: "7px",
-                paddingLeft: "2px",
-                marginLeft: "30px",
-              }}
-            />
-          ) : null}
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-              marginLeft: "15px",
-              fontSize: "20px",
-              paddingRight: "50px",
-            }}
-          >
-            <span style={{ marginTop: "6px" }}> NIE </span>
-
-            <span
-              style={{
-                fontSize: "15px",
-                marginTop: "10px",
-                borderRadius: "10px",
-                backgroundColor: "white",
-                color: "black",
-                paddingLeft: "6px",
-                paddingTop: "2px",
-                maxHeight: "30px",
-                fontWeight: 900,
-                marginLeft: "5px",
-              }}
-            >
-              {" "}
-              HOSTEL
-            </span>
-          </Typography>
-=======
           <div style={{ display: "flex" }}>
             {!matches ? (
               <img
@@ -292,7 +234,6 @@ const ResponsiveAppBar = (props) => {
               </span>
             </Typography>
           </div>
->>>>>>> f8743b87ac2612b89165519f075c215cd63319ee
           {location.pathname != "/signin" ? (
             <Box
               sx={{
@@ -330,9 +271,9 @@ const ResponsiveAppBar = (props) => {
                 e.target.style.backgroundColor = "black";
                 e.target.style.color = "white";
               }}
-              onClick={props.logOut}
+              onClick={props.handleClose}
             >
-              Sign Out
+              Close
             </Button>
           ) : null}
         </Toolbar>
