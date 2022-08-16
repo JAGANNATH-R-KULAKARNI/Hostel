@@ -1,5 +1,5 @@
 import React from 'react'
-export const SFooter = () => {
+export default function SFooter  ()  {
     return (
         <>
             <footer class="footer-distributed">
@@ -59,7 +59,7 @@ export const SFooter = () => {
                 <div class="footer-right">
 
                     <p class="footer-company-about">
-                        <span>NIE Girls Hostel</span>
+                        <span class="first-one">NIE Girls Hostel</span>
                         <span>Vidyaranyapuram main road</span>
                         <span>Near Golden Jubliee Block</span>
                         <span>Mysuru, 570008</span>
