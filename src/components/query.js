@@ -48,9 +48,6 @@ function getStyles(name, personName, theme) {
     };
 }
 
-
-
-
 export default function MultipleSelect() {
     const theme = useTheme();
     const [age, setAge] = React.useState(10);
