@@ -12,7 +12,7 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { Button } from '@mui/material';
-
+import { supabase } from "../Supabase";
 
 
 const ITEM_HEIGHT = 48;
@@ -50,21 +50,43 @@ function getStyles(name, personName, theme) {
 
 export default function MultipleSelect() {
     const theme = useTheme();
-    const [age, setAge] = React.useState(10);
-    const [announce, setAnnounce] = React.useState(false);
+    const [reason, setReason] = React.useState("Wi-Fi Problem");
+    const [brief, setBrief] = React.useState("");
+    const [name,setName] = React.useState("");
+    const [room,setRoom] = React.useState("");
+    const [usn,setUsn] = React.useState("");
 
-    const handleChange = (event) => {
-        setAge(event.target.value);
-    };
 
-    // {
-    //     announce ? (
-    //         <AnnounceUI registerHandler={() => setAnnounce(!announce)} />
-    //     ) : null
-    // }
+    async function queryPush() {
 
-    const announcementPush = () => {
-        setAnnounce(announce);
+        if(usn.length==0 || name.length==0 || reason.length==0 || brief.length==0 || room.length==0){
+            alert("Please fill all fields");
+            return;
+        }
+
+        const { data, error } = await supabase.from("query").insert([
+            {
+                s_usn:usn,
+                name:name,
+                reason:reason,
+                room:room,
+                brief:brief 
+            },
+        ]);
+        if(data){
+            alert("Your Query received Successfully");
+            setUsn("");
+            setName("");
+            setRoom("");
+            setReason("");
+            setBrief("");
+        }
+        if (error) { 
+                  console.log(error); 
+                  alert("some error has occured"); 
+                } 
+
+        
     }
     return (
         <center>
@@ -75,7 +97,12 @@ export default function MultipleSelect() {
                         id="demo-helper-text-misaligned"
                         // placeholder="Enter your name"
                         label="Name"
+                        value={name}
+                        onChange={(e) => {
+                            setName(e.target.value);
+                        }}
                         sx={{ mb: 3 }}
+
                     />
 
                     <TextField
@@ -83,6 +110,10 @@ export default function MultipleSelect() {
                         id="demo-helper-text-misaligned"
                         // placeholder="Enter your name"
                         label="USN"
+                        value={usn}
+                        onChange={(e) => {
+                            setUsn(e.target.value);
+                        }}
                         sx={{ mb: 3 }}
                     />
 
@@ -91,6 +122,10 @@ export default function MultipleSelect() {
                         id="demo-helper-text-misaligned"
                         // placeholder="Enter your name"
                         label="Room number"
+                        value={room}
+                        onChange={(e) => {
+                            setRoom(e.target.value);
+                        }}
                         sx={{ mb: 3 }}
                     />
 
@@ -98,19 +133,28 @@ export default function MultipleSelect() {
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
-                        value={age}
-                        onChange={handleChange}
+                        value={reason}
+                        onChange={(e) => {
+                            setReason(e.target.value);
+                        }}
                         sx={{ mb: 3 }}
                     >
-                        <MenuItem value={10}>Ten</MenuItem>
-                        <MenuItem value={20}>Twenty</MenuItem>
-                        <MenuItem value={30}>Thirty</MenuItem>
+                        <MenuItem value={"Out of Station"}>Out of Station</MenuItem>
+                        <MenuItem value={"Electricty related Problem"}>Electricty related Problem</MenuItem>
+                        <MenuItem value={"Furniture Problem"}>Furniture Problem</MenuItem>
+                        <MenuItem value={"Wi-Fi Problem"}>Wi-Fi Problem</MenuItem>
+                        <MenuItem value={"Washing Machine Problem"}>Washing Machine Problem</MenuItem>
+
                     </Select>
                     <TextField
                         id="outlined-multiline-static"
                         label="Query"
+                        value={brief}
+                        onChange={(e) => {
+                            setBrief(e.target.value);
+                        }}
                         multiline
-                        rows={4}
+                        rows={6}
                     // defaultValue="Default Value"
                     />
 
@@ -126,7 +170,7 @@ export default function MultipleSelect() {
                             minWidth: "200px",
                             minHeight: "50px",
                         }}
-                        onClick={announcementPush}
+                        onClick={queryPush}
                     >
                         Submit
                     </Button>

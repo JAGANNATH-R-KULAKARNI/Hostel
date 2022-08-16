@@ -1,6 +1,7 @@
 import NavBarUI from "./components/NavBar";
 import FooterUI from "./components/Footer";
 import HomeUI from "./components/Home";
+import QueryUI from "./components/Query";
 import {
   BrowserRouter as Router,
   Navigate,
@@ -89,7 +90,7 @@ function App() {
           <Route path="/" element={<HomeUI />} />
           <Route path="/signin" element={<SignInUI />} />
           <Route path="/admin" element={<AdminUI />} />
-          <Route path="/query" element={<Query />} />
+          <Route path="/query" element={<QueryUI />} />
         </Routes>
         <SFooter />
         {/* <main className="app_bro" style={{ marginTop: "-17px" }}>
