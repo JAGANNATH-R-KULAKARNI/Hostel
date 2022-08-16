@@ -53,6 +53,8 @@ export default function HomeAdmin() {
           clicked={() => setRegister(!register)}
         />
         <br />
+        <ButtonUI text="Take The Attendence" />
+        <br />
         <ButtonUI text="Make An Announcement" />
         <br />
         <ButtonUI text="Download Attendence Info" />
