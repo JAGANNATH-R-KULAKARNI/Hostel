@@ -19,6 +19,7 @@ import RegisterUI from "./components/Admin/Register";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import "./App.css";
+import Query from "./components/Query";
 
 function App() {
   React.useEffect(() => {
@@ -89,8 +90,6 @@ function App() {
           <Route path="/" element={<HomeUI />} />
           <Route path="/signin" element={<SignInUI />} />
           <Route path="/admin" element={<AdminUI />} />
-          <Route path="/query" element={<QueryUI />} />
-
         </Routes>
         <SFooter />
         {/* <main className="app_bro" style={{ marginTop: "-17px" }}>
