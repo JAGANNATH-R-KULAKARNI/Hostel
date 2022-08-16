@@ -18,7 +18,6 @@ export default function Two(props) {
         >
           <SelectUI
             block={props.block}
-            building={props.building}
             setBlock={props.setBlock}
             floor={props.floor}
             setFloor={props.setFloor}
