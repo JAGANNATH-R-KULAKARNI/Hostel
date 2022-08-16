@@ -25,63 +25,56 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 function Copyright() {
-    return (
-      <Typography variant="body2" color="text.secondary" align="center">
-        {"Copyright © "}
-        <Link color="inherit" href="https://nie.ac.in/">
-          NIE
-        </Link>{" "}
-        {new Date().getFullYear()}
-        {"."}
-      </Typography>
-    );
-  }
-
+  return (
+    <Typography variant="body2" color="text.secondary" align="center">
+      {"Copyright © "}
+      <Link color="inherit" href="https://nie.ac.in/">
+        NIE
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
 
 export default function FullScreenDialog(props) {
   const [open, setOpen] = React.useState(true);
   const m1 = useMediaQuery("(min-width:600px)");
 
- 
-  const [heading,setHeading] = React.useState("");
-  const [description,setDescription]=React.useState("");
-
-  
+  const [heading, setHeading] = React.useState("");
+  const [description, setDescription] = React.useState("");
 
   const handleClose = () => {
     setOpen(false);
-    props.announceHandler();
+    props.registerHandler();
   };
 
   const handleSubmit = () => {
     alert("submitted");
   };
-  async function announcementPush(){
-        if(heading.length==0 || description.length==0){
-         alert("Please fill all fields");
-        return;
-        }
-        const { data, error } = await supabase.from("announcements").insert([
-         { 
-                  heading:heading,
-                  description:description
-                }, 
-              ]); 
-           
-              if (data) { 
-                alert("Successfully announced"); 
-                
-                setHeading("");
-                setDescription("");
-              } 
-           
-              if (error) { 
-                console.log(error); 
-                alert("some error has occured"); 
-              } 
-        }
-  
-  
+  async function announcementPush() {
+    if (heading.length == 0 || description.length == 0) {
+      alert("Please fill all fields");
+      return;
+    }
+    const { data, error } = await supabase.from("announcements").insert([
+      {
+        heading: heading,
+        description: description,
+      },
+    ]);
+
+    if (data) {
+      alert("Successfully announced");
+      setHeading("");
+      setDescription("");
+    }
+
+    if (error) {
+      console.log(error);
+      alert("some error has occured");
+    }
+  }
 
   return (
     <div>
@@ -108,73 +101,73 @@ export default function FullScreenDialog(props) {
             <Divider />
           </div>
           <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
-        <Paper
-          variant="outlined"
-          sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
-        >
-          <React.Fragment>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={12}>
-          <TextField
-            id="heading"
-            name="heading"
-            label="Heading"
-            fullWidth
-            autoComplete="given-name"
-            variant="standard"
-            placeholder="Subject..."
-            value={heading}
-            onChange={(e) => {
-              setHeading(e.target.value);
-            }}
-          />
-        </Grid>
-
-        <Grid item xs={12} sm={12}>
-        
-        <TextField
-          id="description"
-          name="description"
-          label="Announcement"
-          fullWidth
-          multiline
-          rows={8}
-          placeholder="Announce"
-          value={description}
-            onChange={(e) => {
-              setDescription(e.target.value);
-            }}
-        />
-        
-        </Grid>
-        </Grid>
-        </React.Fragment>
-        <div style={{width:"100%",display:"flex",justifyContent:"center"}} >
-        <Button
-              type="submit"
-              
-              variant="contained"
-              sx={{
-                mt: 3,
-                mb: 2,
-                backgroundColor: "black",
-                color: "white",
-                borderRadius: "10px",
-                minWidth: "200px",
-              }}
-              onClick={announcementPush}
+            <Paper
+              variant="outlined"
+              sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
             >
-              Submit
-            </Button>
-            </div>   
-        </Paper>
-        <Copyright />
-      </Container>
+              <React.Fragment>
+                <Grid container spacing={3}>
+                  <Grid item xs={12} sm={12}>
+                    <TextField
+                      id="heading"
+                      name="heading"
+                      label="Heading"
+                      fullWidth
+                      autoComplete="given-name"
+                      variant="standard"
+                      placeholder="Subject..."
+                      value={heading}
+                      onChange={(e) => {
+                        setHeading(e.target.value);
+                      }}
+                    />
+                  </Grid>
+
+                  <Grid item xs={12} sm={12}>
+                    <TextField
+                      id="description"
+                      name="description"
+                      label="Announcement"
+                      fullWidth
+                      multiline
+                      rows={8}
+                      placeholder="Announce"
+                      value={description}
+                      onChange={(e) => {
+                        setDescription(e.target.value);
+                      }}
+                    />
+                  </Grid>
+                </Grid>
+              </React.Fragment>
+              <div
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <Button
+                  type="submit"
+                  variant="contained"
+                  sx={{
+                    mt: 3,
+                    mb: 2,
+                    backgroundColor: "black",
+                    color: "white",
+                    borderRadius: "10px",
+                    minWidth: "200px",
+                  }}
+                  onClick={announcementPush}
+                >
+                  Submit
+                </Button>
+              </div>
+            </Paper>
+            <Copyright />
+          </Container>
         </div>
-        
       </Dialog>
-      
     </div>
-    
   );
 }
