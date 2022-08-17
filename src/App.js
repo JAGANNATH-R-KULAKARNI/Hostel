@@ -8,9 +8,8 @@ import {
   Routes,
 } from "react-router-dom";
 import SignInUI from "./components/Auth/SignIn";
-
-import  SFooter  from "./components/SFooter";
-import "./App.css"
+import SFooter from "./components/SFooter";
+import "./App.css";
 
 import { supabase } from "./Supabase";
 import React from "react";
@@ -19,7 +18,6 @@ import RegisterUI from "./components/Admin/Register";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import "./App.css";
-
 
 function App() {
   React.useEffect(() => {

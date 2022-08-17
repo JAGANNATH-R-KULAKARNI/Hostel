@@ -50,7 +50,7 @@ export default function FullScreenDialog(props) {
 
   const handleClose = () => {
     setOpen(false);
-    props.announceHandler();
+    props.registerHandler();
   };
 
   const handleSubmit = () => {
@@ -116,10 +116,12 @@ export default function FullScreenDialog(props) {
       <Grid container spacing={3}>
         <Grid item xs={12} sm={12}>
           <TextField
-            id="heading"
+            id="outlined-heading"
             name="heading"
             label="Heading"
             fullWidth
+            
+            
             autoComplete="given-name"
             variant="standard"
             placeholder="Subject..."
@@ -128,12 +130,13 @@ export default function FullScreenDialog(props) {
               setHeading(e.target.value);
             }}
           />
+          
         </Grid>
 
         <Grid item xs={12} sm={12}>
         
         <TextField
-          id="description"
+          id="outline-description-static"
           name="description"
           label="Announcement"
           fullWidth
