@@ -4,7 +4,7 @@ import { supabase } from "../Supabase";
 
 
 async function menuFetch() {
-    const { data, error } = await supabase.from('menu').select();
+    const { data, error } = await supabase.from('menu').select().order('id', { ascending: true });
     return data;
     // console.log(data);
 }
