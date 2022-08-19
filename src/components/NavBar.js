@@ -16,11 +16,11 @@ import logo from "./images/Logo.png";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import DrawerUI from "./Drawer";
 import "./NavBar.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { supabase } from "../Supabase";
 
-const pages = ["Account", "Announcements"];
+const pages = ["query", "menu", "Announcements", "Account"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ResponsiveAppBar = (props) => {
@@ -244,12 +244,15 @@ const ResponsiveAppBar = (props) => {
             >
               {pages.map((page) => (
                 <Button
+                  href={`/${page}`}
                   key={page}
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: "white", display: "block" }}
                 >
                   {page}
                 </Button>
+
+                // <Link to="/query">{page}</Link>
               ))}
             </Box>
           ) : null}
