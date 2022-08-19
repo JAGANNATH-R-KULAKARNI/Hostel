@@ -52,28 +52,28 @@ export default function MultipleSelect() {
     const theme = useTheme();
     const [reason, setReason] = React.useState("Wi-Fi Problem");
     const [brief, setBrief] = React.useState("");
-    const [name,setName] = React.useState("");
-    const [room,setRoom] = React.useState("");
-    const [usn,setUsn] = React.useState("");
+    const [name, setName] = React.useState("");
+    const [room, setRoom] = React.useState("");
+    const [usn, setUsn] = React.useState("");
 
 
     async function queryPush() {
 
-        if(usn.length==0 || name.length==0 || reason.length==0 || brief.length==0 || room.length==0){
+        if (usn.length == 0 || name.length == 0 || reason.length == 0 || brief.length == 0 || room.length == 0) {
             alert("Please fill all fields");
             return;
         }
 
-        const { data, error } = await supabase.from("query").insert([
+        const { data, error } = await supabase.from("query").insert([
             {
-                s_usn:usn,
-                name:name,
-                reason:reason,
-                room:room,
-                brief:brief 
+                s_usn: usn,
+                name: name,
+                reason: reason,
+                room: room,
+                brief: brief
             },
         ]);
-        if(data){
+        if (data) {
             alert("Your Query received Successfully");
             setUsn("");
             setName("");
@@ -81,12 +81,12 @@ export default function MultipleSelect() {
             setReason("");
             setBrief("");
         }
-        if (error) { 
-                  console.log(error); 
-                  alert("some error has occured"); 
-                } 
+        if (error) {
+            console.log(error);
+            alert("some error has occured");
+        }
 
-        
+
     }
     return (
         <center>
@@ -176,7 +176,7 @@ export default function MultipleSelect() {
                     </Button>
 
                 </FormControl>
-            </Grid>
+            </Grid >
 
 
         </center >
