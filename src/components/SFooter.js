@@ -18,7 +18,7 @@ export default function SFooter  ()  {
 
                         <a href="#">Attendance</a>
 
-                        <a href="#">Faq</a>
+                        <a href="#">Menu</a>
 
                         <a href="#">Contact</a>
                     </p>
