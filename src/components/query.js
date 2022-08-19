@@ -90,95 +90,106 @@ export default function MultipleSelect() {
     }
     return (
         <center>
-            <Grid direction={"column"}>
-                <FormControl sx={{ m: 10, width: 700 }}>
-                    <TextField
+            <Grid>
+                <FormControl sx={{ m: 10, flexGrow: 1 }}>
+                    <Grid container spacing={3}>
+                        <Grid item xs={12} md={12} >
+                            <TextField
 
-                        id="demo-helper-text-misaligned"
-                        // placeholder="Enter your name"
-                        label="Name"
-                        value={name}
-                        onChange={(e) => {
-                            setName(e.target.value);
-                        }}
-                        sx={{ mb: 3 }}
+                                id="demo-helper-text-misaligned"
+                                // placeholder="Enter your name"
+                                label="Name"
+                                value={name}
+                                onChange={(e) => {
+                                    setName(e.target.value);
+                                }}
+                                sx={{ mb: 3, minWidth: "200px", width: "50%" }}
 
-                    />
+                            />
+                        </Grid>
+                        <Grid item xs={12} md={12} >
+                            <TextField
 
-                    <TextField
+                                id="demo-helper-text-misaligned"
+                                // placeholder="Enter your name"
+                                label="USN"
+                                value={usn}
+                                onChange={(e) => {
+                                    setUsn(e.target.value);
+                                }}
+                                sx={{ mb: 3, minWidth: "200px", width: "50%" }}
+                            />
+                        </Grid>
+                        <Grid item xs={12} md={12}  >
+                            <TextField
 
-                        id="demo-helper-text-misaligned"
-                        // placeholder="Enter your name"
-                        label="USN"
-                        value={usn}
-                        onChange={(e) => {
-                            setUsn(e.target.value);
-                        }}
-                        sx={{ mb: 3 }}
-                    />
+                                id="demo-helper-text-misaligned"
+                                // placeholder="Enter your name"
+                                label="Room number"
+                                value={room}
+                                onChange={(e) => {
+                                    setRoom(e.target.value);
+                                }}
+                                sx={{ mb: 3, minWidth: "200px", width: "50%" }}
+                            />
+                        </Grid>
+                        <Grid item xs={12} md={12} >
+                            {/* <InputLabel id="demo-simple-select-label">Reason</InputLabel> */}
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={reason}
+                                onChange={(e) => {
+                                    setReason(e.target.value);
+                                }}
+                                sx={{ mb: 3, minWidth: "200px", width: "50%" }}
+                            >
+                                <MenuItem value={"Out of Station"}>Out of Station</MenuItem>
+                                <MenuItem value={"Electricty related Problem"}>Electricty related Problem</MenuItem>
+                                <MenuItem value={"Furniture Problem"}>Furniture Problem</MenuItem>
+                                <MenuItem value={"Wi-Fi Problem"}>Wi-Fi Problem</MenuItem>
+                                <MenuItem value={"Washing Machine Problem"}>Washing Machine Problem</MenuItem>
 
-                    <TextField
+                            </Select>
+                        </Grid>
+                        <Grid item xs={12} md={12} >
+                            <TextField
+                                id="outlined-multiline-static"
+                                label="Query"
+                                value={brief}
+                                onChange={(e) => {
+                                    setBrief(e.target.value);
+                                }}
+                                multiline
+                                rows={6}
+                                sx={{ mb: 3, minWidth: "200px", width: "50%" }}
+                            // defaultValue="Default Value"
+                            />
+                        </Grid>
+                        <Grid item xs={12} md={12} >
+                            <Button
+                                type="submit"
+                                variant="contained"
+                                sx={{
+                                    mt: 3,
+                                    mb: 2,
+                                    backgroundColor: "black",
+                                    color: "white",
+                                    borderRadius: "10px",
+                                    minWidth: "200px",
+                                    minHeight: "50px",
+                                    width: "50%"
 
-                        id="demo-helper-text-misaligned"
-                        // placeholder="Enter your name"
-                        label="Room number"
-                        value={room}
-                        onChange={(e) => {
-                            setRoom(e.target.value);
-                        }}
-                        sx={{ mb: 3 }}
-                    />
-
-                    {/* <InputLabel id="demo-simple-select-label">Reason</InputLabel> */}
-                    <Select
-                        labelId="demo-simple-select-label"
-                        id="demo-simple-select"
-                        value={reason}
-                        onChange={(e) => {
-                            setReason(e.target.value);
-                        }}
-                        sx={{ mb: 3 }}
-                    >
-                        <MenuItem value={"Out of Station"}>Out of Station</MenuItem>
-                        <MenuItem value={"Electricty related Problem"}>Electricty related Problem</MenuItem>
-                        <MenuItem value={"Furniture Problem"}>Furniture Problem</MenuItem>
-                        <MenuItem value={"Wi-Fi Problem"}>Wi-Fi Problem</MenuItem>
-                        <MenuItem value={"Washing Machine Problem"}>Washing Machine Problem</MenuItem>
-
-                    </Select>
-                    <TextField
-                        id="outlined-multiline-static"
-                        label="Query"
-                        value={brief}
-                        onChange={(e) => {
-                            setBrief(e.target.value);
-                        }}
-                        multiline
-                        rows={6}
-                    // defaultValue="Default Value"
-                    />
-
-                    <Button
-                        type="submit"
-                        variant="contained"
-                        sx={{
-                            mt: 3,
-                            mb: 2,
-                            backgroundColor: "black",
-                            color: "white",
-                            borderRadius: "10px",
-                            minWidth: "200px",
-                            minHeight: "50px",
-                        }}
-                        onClick={queryPush}
-                    >
-                        Submit
-                    </Button>
-
-                </FormControl>
-            </Grid >
-
-
+                                }}
+                                // sx={{ mb: 3, minWidth: "200px", width: "50%" }}
+                                onClick={queryPush}
+                            >
+                                Submit
+                            </Button>
+                        </Grid >
+                    </Grid>
+                </FormControl >
+            </Grid>
         </center >
     );
 }
