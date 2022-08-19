@@ -16,6 +16,10 @@ export default function CustomizedSelects(props) {
   const [r, setR] = React.useState(401);
   const [control, setControl] = React.useState(true);
 
+
+  const [control, setControl] = React.useState(true);
+
+
   const m1 = useMediaQuery("(min-width:600px)");
 
   React.useEffect(() => {
@@ -31,6 +35,7 @@ export default function CustomizedSelects(props) {
 
   return (
     <div>
+
       <FormControl sx={{ m: 1, minWidth: m1 ? 90 : 81 }}>
         <InputLabel id="demo-simple-select-autowidth-label11">
           Building
@@ -66,6 +71,57 @@ export default function CustomizedSelects(props) {
             })}
         </Select>
       </FormControl>
+
+      <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+        <FormControl sx={{ m: 1, minWidth: m1 ? 90 : 81 }}>
+          <InputLabel id="demo-simple-select-autowidth-label44">
+            Building
+          </InputLabel>
+          <Select
+            labelId="demo-simple-select-autowidth-label44"
+            id="Building-select-bro"
+            value={h}
+            onChange={(e) => {
+              props.setBuilding(e.target.value);
+              setH(e.target.value);
+              props.roomAllocationHandler(
+                e.target.value,
+                props.block,
+                props.floor,
+                props.room
+              );
+              console.log(props.roomAllocation);
+              props.findAvailability(
+                e.target.value,
+                props.block,
+                props.floor,
+                props.room
+              );
+              props.findAvailability(
+                e.target.value,
+                props.block,
+                props.floor,
+                props.room
+              );
+            }}
+            autoWidth
+          >
+            {props.buildingList &&
+              props.buildingList.map((item) => {
+                return (
+                  <MenuItem
+                    value={item["hostel_name"] + ""}
+                    key={item["hostel_name"] + ""}
+                  >
+                    {item["hostel_name"]}
+                  </MenuItem>
+                );
+              })}
+          </Select>
+        </FormControl>
+      </div>
+      <br />
+
       <FormControl sx={{ m: 1, minWidth: m1 ? 90 : 81 }}>
         <InputLabel id="demo-simple-select-autowidth-label11">Block</InputLabel>
         <Select
