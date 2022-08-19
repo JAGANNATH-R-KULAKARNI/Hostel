@@ -14,7 +14,7 @@ export default function SFooter  ()  {
 
                         <a href="#">Account</a>
 
-                        <a href="#">Queries</a>
+                        <a href="/Query">Queries</a>
 
                         <a href="#">Attendance</a>
 

@@ -19,8 +19,9 @@ import "./NavBar.css";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { supabase } from "../Supabase";
+import { NavLink } from "react-router-dom";
 
-const pages = ["Account", "Announcements"];
+const pages = ["Account", "Announcements","Query"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ResponsiveAppBar = (props) => {
@@ -170,7 +171,9 @@ const ResponsiveAppBar = (props) => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center">
+                  <NavLink to="/query" activeClassName="active">{page}</NavLink>
+      </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -243,13 +246,16 @@ const ResponsiveAppBar = (props) => {
               }}
             >
               {pages.map((page) => (
+                <NavLink to={`/${page}`} activeClassName="active">
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: "white", display: "block" }}
                 >
+                  
                   {page}
                 </Button>
+                </NavLink>
               ))}
             </Box>
           ) : null}
