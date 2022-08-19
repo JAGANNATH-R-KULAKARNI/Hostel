@@ -2,6 +2,7 @@ import NavBarUI from "./components/NavBar";
 import FooterUI from "./components/Footer";
 import HomeUI from "./components/Home";
 import QueryUI from "./components/Query";
+import MenuUI from "./components/Menu";
 import {
   BrowserRouter as Router,
   Navigate,

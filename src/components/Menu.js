@@ -1,7 +1,20 @@
 import React from 'react'
 import "./Menu.css"
+import { supabase } from "../Supabase";
 
-const Menu = () => {
+
+async function menuFetch() {
+    const { data, error } = await supabase.from('menu').select();
+    return data;
+    // console.log(data);
+}
+
+
+const Menu = async () => {
+    let a=10;
+    let data=[];
+    data = await menuFetch();
+    
     return (
         <center>
             <table id="customers">
@@ -12,14 +25,24 @@ const Menu = () => {
                     <th>Evening snacks</th>
                     <th>Dinner</th>
                 </tr>
-                <tr>
+                {
+                    data.map((day,id)=>{
+                        console.log(day.breakfast);
+                    return(
+                    <tr>
                     <th>Monday</th>
+                    <td>{day.breakfast}</td>
                     <td>chicken</td>
                     <td>chicken</td>
                     <td>chicken</td>
-                    <td>chicken</td>
-                </tr>
-                <tr>
+                </tr>)
+
+                    })
+
+                };
+
+                
+                {/* <tr>
                     <th>Tuesday</th>
                     <td>chicken</td>
                     <td>chicken</td>
@@ -60,7 +83,7 @@ const Menu = () => {
                     <td>chicken</td>
                     <td>chicken</td>
                     <td>chicken</td>
-                </tr>
+                </tr> */}
             </table>
         </center>
     )
