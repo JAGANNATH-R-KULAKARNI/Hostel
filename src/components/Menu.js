@@ -1,10 +1,15 @@
 import React from 'react'
 import "./Menu.css"
+import { supabase } from "../Supabase";
+
 
 const Menu = () => {
+
     return (
+
         <center>
             <table id="customers">
+
                 <tr>
                     <th class="empty">Day of Week</th>
                     <th>Breakfast</th>
