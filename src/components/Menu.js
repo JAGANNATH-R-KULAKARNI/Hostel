@@ -29,7 +29,7 @@ const Menu = () => {
                 {
                     menus.map((day, id) => {
                         return (
-                            <tr>
+                            <tr key={id}>
                                 <th>{day.day}</th>
                                 <td>{day.breakfast}</td>
                                 <td>{day.lunch}</td>
@@ -40,50 +40,6 @@ const Menu = () => {
                     })
 
                 };
-
-
-                {/* <tr>
-                    <th>Tuesday</th>
-                    <td>chicken</td>
-                    <td>chicken</td>
-                    <td>chicken</td>
-                    <td>chicken</td>
-                </tr>
-                <tr>
-                    <th>Wednesday</th>
-                    <td>chicken</td>
-                    <td>chicken</td>
-                    <td>chicken</td>
-                    <td>chicken</td>
-                </tr>
-                <tr>
-                    <th>Thursday</th>
-                    <td>chicken</td>
-                    <td>chicken</td>
-                    <td>chicken</td>
-                    <td>chicken</td>
-                </tr>
-                <tr>
-                    <th>Friday</th>
-                    <td>chicken</td>
-                    <td>chicken</td>
-                    <td>chicken</td>
-                    <td>chicken</td>
-                </tr>
-                <tr>
-                    <th>Saturday</th>
-                    <td>chicken</td>
-                    <td>chicken</td>
-                    <td>chicken</td>
-                    <td>chicken</td>
-                </tr>
-                <tr>
-                    <th>Sunday</th>
-                    <td>chicken</td>
-                    <td>chicken</td>
-                    <td>chicken</td>
-                    <td>chicken</td>
-                </tr> */}
             </table>
         </center>
     )
