@@ -1,20 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./Menu.css"
 import { supabase } from "../Supabase";
 
 
-async function menuFetch() {
-    const { data, error } = await supabase.from('menu').select().order('id', { ascending: true });
-    return data;
-    // console.log(data);
-}
+const Menu = () => {
 
+    const [menus, setMenus] = React.useState([]);
 
-const Menu = async () => {
-    let a=10;
-    let data=[];
-    data = await menuFetch();
-    
+    const menuFetch = async () => {
+        const { data, error } = await supabase.from('menu').select().order('id', { ascending: true });
+        setMenus(data);
+    }
+
+    useEffect(() => {
+        menuFetch();
+    }, []);
+
     return (
         <center>
             <table id="customers">
@@ -26,22 +27,21 @@ const Menu = async () => {
                     <th>Dinner</th>
                 </tr>
                 {
-                    data.map((day,id)=>{
-                        console.log(day.breakfast);
-                    return(
-                    <tr>
-                    <th>Monday</th>
-                    <td>{day.breakfast}</td>
-                    <td>chicken</td>
-                    <td>chicken</td>
-                    <td>chicken</td>
-                </tr>)
+                    menus.map((day, id) => {
+                        return (
+                            <tr>
+                                <th>{day.day}</th>
+                                <td>{day.breakfast}</td>
+                                <td>{day.lunch}</td>
+                                <td>{day.snacks}</td>
+                                <td>{day.dinner}</td>
+                            </tr>)
 
                     })
 
                 };
 
-                
+
                 {/* <tr>
                     <th>Tuesday</th>
                     <td>chicken</td>
