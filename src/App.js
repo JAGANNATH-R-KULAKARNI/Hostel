@@ -19,7 +19,6 @@ import RegisterUI from "./components/Admin/Register";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import "./App.css";
-import Query from "./components/Query";
 
 function App() {
   React.useEffect(() => {

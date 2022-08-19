@@ -16,10 +16,6 @@ export default function CustomizedSelects(props) {
   const [r, setR] = React.useState(401);
   const [control, setControl] = React.useState(true);
 
-
-  const [control, setControl] = React.useState(true);
-
-
   const m1 = useMediaQuery("(min-width:600px)");
 
   React.useEffect(() => {
