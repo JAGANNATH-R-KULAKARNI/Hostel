@@ -1,6 +1,8 @@
 import NavBarUI from "./components/NavBar";
 import FooterUI from "./components/Footer";
 import HomeUI from "./components/Home";
+import QueryUI from "./components/query";
+import MenuUI from "./components/Menu";
 import {
   BrowserRouter as Router,
   Navigate,
@@ -10,7 +12,6 @@ import {
 import SignInUI from "./components/Auth/SignIn";
 import SFooter from "./components/SFooter";
 import "./App.css";
-
 import { supabase } from "./Supabase";
 import React from "react";
 import AdminUI from "./components/Admin/Home";
@@ -88,6 +89,8 @@ function App() {
           <Route path="/" element={<HomeUI />} />
           <Route path="/signin" element={<SignInUI />} />
           <Route path="/admin" element={<AdminUI />} />
+          <Route path="/query" element={<QueryUI />} />
+          <Route path="/menu" element={<MenuUI />} />
         </Routes>
         <SFooter />
         {/* <main className="app_bro" style={{ marginTop: "-17px" }}>

@@ -68,6 +68,9 @@ export default function FullScreenDialog(props) {
           </div>
 
           {/* <BodyUI /> */}
+
+          <BodyUI />
+
         </div>
       </Dialog>
     </div>

@@ -52,6 +52,7 @@ export default function FullScreenDialog(props) {
   const handleSubmit = () => {
     alert("submitted");
   };
+
   async function announcementPush() {
     if (heading.length == 0 || description.length == 0) {
       alert("Please fill all fields");
@@ -75,6 +76,34 @@ export default function FullScreenDialog(props) {
       alert("some error has occured");
     }
   }
+
+  async function announcementPush(){
+        if(heading.length==0 || description.length==0){
+         alert("Please fill all fields");
+        return;
+        }
+        const { data, error } = await supabase.from("announcements").insert([
+         { 
+                  heading:heading,
+                  description:description
+                }, 
+              ]); 
+           
+              if (data) { 
+                alert("Successfully announced"); 
+                
+                setHeading("");
+                setDescription("");
+              } 
+           
+              if (error) { 
+                console.log(error); 
+                alert("some error has occured"); 
+              } 
+        }
+  
+  
+
 
   return (
     <div>

@@ -121,7 +121,7 @@
   display: block;
   font-weight: normal;
   font-size: 16px;
-  line-height: 2;
+  line-height: 1;
 }
 
 .footer-distributed .footer-center p a {
@@ -160,13 +160,14 @@
   font-size: 16px;
   font-weight: normal;
   margin: 0;
-  margin-bottom: 22px;
+  margin-bottom: 9px;
 }
 
 .footer-distributed .footer-company-about span {
   display: block;
   color: #ffffff;
   font-size: 16px;
+  line-height: 1.35;
   /* font-weight: bold; */
   /* margin-bottom: 3px; */
 }
@@ -199,8 +200,6 @@
   margin-right: 3px;
   margin-bottom: 5px;
 }
-
-
 
 /* If you don't want the footer to be responsive, remove these media queries */
 

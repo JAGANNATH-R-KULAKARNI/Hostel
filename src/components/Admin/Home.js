@@ -15,7 +15,9 @@ export default function HomeAdmin() {
   const location = useLocation();
   const [register, setRegister] = React.useState(false);
   const [announce, setAnnounce] = React.useState(false);
+
   const [menu, setMenu] = React.useState(false);
+
 
   async function fetchTheProfile() {
     const data = await supabase.auth.user();
