@@ -7,7 +7,7 @@ import Select from "@mui/material/Select";
 import NativeSelect from "@mui/material/NativeSelect";
 import InputBase from "@mui/material/InputBase";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import "./2.1.css";
+import "./studentssubc.css";
 
 export default function CustomizedSelects(props) {
   const [h, setH] = React.useState("mh");
