@@ -7,13 +7,15 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import RegisterUI from "./Register";
 import AnnounceUI from "./Announce";
+import MenuUI from "./Menu";
 
 export default function HomeAdmin() {
   const m1 = useMediaQuery("(min-width:600px)");
   const navigate = useNavigate();
   const location = useLocation();
   const [register, setRegister] = React.useState(false);
-  const [announce, setAnnounce]=React.useState(false);
+  const [announce, setAnnounce] = React.useState(false);
+  const [menu, setMenu] = React.useState(false);
 
   async function fetchTheProfile() {
     const data = await supabase.auth.user();
@@ -49,6 +51,10 @@ export default function HomeAdmin() {
       {announce ? (
         <AnnounceUI registerHandler={() => setAnnounce(!announce)} />
       ) : null}
+      {menu ? (
+        <MenuUI registerHandler={() => setMenu(!menu)} />
+      ) : null}
+
       <div style={{ marginTop: m1 ? "-40px" : "-20px" }}>
         <Divider />
       </div>
@@ -58,13 +64,17 @@ export default function HomeAdmin() {
           clicked={() => setRegister(!register)}
         />
         <br />
-        <ButtonUI text="Make An Announcement" 
-                  clicked={() => setAnnounce(!announce)}
-                  />
+        <ButtonUI text="Take The Attendence" />
+        <br />
+        <ButtonUI
+          text="Make An Announcement"
+          clicked={() => setAnnounce(!announce)}
+        />
         <br />
         <ButtonUI text="Download Attendence Info" />
         <br />
-        <ButtonUI text="Edit the Hotels Menu" />
+        <ButtonUI text="Edit the Hotels Menu" 
+             clicked={() => setMenu(!menu)}/>
         <br />
         <ButtonUI text="Students Queries" />
         <br />
