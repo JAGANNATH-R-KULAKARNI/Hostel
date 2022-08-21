@@ -24,12 +24,7 @@ const Menu = () => {
     const menuFetch = async () => {
         const { data, error } = await supabase.from('menu').select().order('id', { ascending: true });
 
-        // for (let i = 0; i < data.length; i++) {
-        //     setbreakfast(data[i].breakfast);
-        //     setlunch(data[i].lunch);
-        //     setsnacks(data[i].snacks);
-        //     setdinner(data[i].dinner);
-        // }
+
         setMenus(data);
 
         console.log(data);
