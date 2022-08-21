@@ -12,10 +12,7 @@ import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import One from "./1";
-import Two from "./2";
-import Three from "./3";
-import "./tick.css";
+import Two from "./students";
 import { supabase } from "../../../Supabase";
 
 function Copyright() {
@@ -31,11 +28,9 @@ function Copyright() {
   );
 }
 
-const steps = ["Student", "Room", "Fees"];
-
 const theme = createTheme();
 
-export default function Checkout() {
+export default function Attendence() {
   const [activeStep, setActiveStep] = React.useState(0);
 
   const [roomsData, setRoomsData] = React.useState(null);
@@ -56,7 +51,6 @@ export default function Checkout() {
   const [floorList, setFloorList] = React.useState([]);
   const [roomList, setRoomList] = React.useState([]);
   const [roomInfo, setRoomInfo] = React.useState([0, 0]);
-  const [roomId, setRoomId] = React.useState(-1);
 
   const [hf1, setHF1] = React.useState("");
   const [hf2, setHF2] = React.useState("");
@@ -90,47 +84,9 @@ export default function Checkout() {
     }
   }
 
-  async function RegisterStudent() {
-    if (
-      hf1.length == 0 ||
-      hf2.length == 0 ||
-      hf3.length == 0 ||
-      hf4.length == 0 ||
-      cd.length == 0
-    ) {
-      alert("All the field should be filled");
-      return;
-    }
-
-    const { data, error } = await supabase.from("students").insert([
-      {
-        name: name,
-        usn: usn,
-        year_joined: yoj,
-        email: email,
-        phno: phnum,
-        room_id: roomId,
-        hf1: hf1,
-        hf2: hf2,
-        hf3: hf3,
-        hf4: hf4,
-        cd: cd,
-      },
-    ]);
-
-    if (data) {
-      alert("Successfully Registered");
-      setActiveStep(activeStep + 1);
-    }
-
-    if (error) {
-      console.log(error);
-      alert("Some Error occured");
-    }
-  }
-
   async function roomAllocationHandler(building1, block1, floor1, room1) {
     if (!roomsData) return;
+
     console.log("Rooms Allocation");
     console.log(roomsData);
     const tbu = {};
@@ -241,21 +197,6 @@ export default function Checkout() {
   function getStepContent(step) {
     switch (step) {
       case 0:
-        return (
-          <One
-            name={name}
-            usn={usn}
-            yoj={yoj}
-            email={email}
-            phnum={phnum}
-            setName={setName}
-            setUSN={setUSN}
-            setYoj={setYoj}
-            setEmail={setEmail}
-            setPhnum={setPhnum}
-          />
-        );
-      case 1:
         return control ? (
           <Two
             block={block}
@@ -271,12 +212,10 @@ export default function Checkout() {
             roomList={roomList}
             blockList={blockList}
             floorList={floorList}
-            roomInfo={roomInfo}
-            setRoomInfo={setRoomInfo}
             buildingList={buildingList}
             setBuildingList={setBuildingList}
-            roomId={roomId}
-            setRoomId={setRoomId}
+            roomInfo={roomInfo}
+            setRoomInfo={setRoomInfo}
           />
         ) : (
           <Two
@@ -293,69 +232,17 @@ export default function Checkout() {
             roomList={roomList}
             blockList={blockList}
             floorList={floorList}
-            roomInfo={roomInfo}
-            setRoomInfo={setRoomInfo}
             buildingList={buildingList}
             setBuildingList={setBuildingList}
-            roomId={roomId}
-            setRoomId={setRoomId}
+            roomInfo={roomInfo}
+            setRoomInfo={setRoomInfo}
           />
         );
-      case 2:
-        return (
-          <Three
-            hf1={hf1}
-            hf2={hf2}
-            hf3={hf3}
-            hf4={hf4}
-            cd={cd}
-            setHF1={setHF1}
-            setHF2={setHF2}
-            setHF3={setHF3}
-            setHF4={setHF4}
-            setCD={setCD}
-          />
-        );
+
       default:
         throw new Error("Unknown step");
     }
   }
-  const handleNext = () => {
-    if (activeStep == 0) {
-      if (
-        name.length == 0 ||
-        email.length == 0 ||
-        usn.length == 0 ||
-        yoj.length == 0 ||
-        phnum.length == 0
-      ) {
-        alert("All fields should be filled");
-        return;
-      }
-    } else if (activeStep == 1) {
-      if (roomInfo[0] == 0 || roomInfo[1] == 0) {
-        alert("Choose a room");
-        return;
-      }
-    } else if (activeStep == 2) {
-      if (
-        hf1.length == 0 ||
-        hf2.length == 0 ||
-        hf3.length == 0 ||
-        hf4.length == 0 ||
-        cd.length == 0
-      ) {
-        alert("All the field should be filled");
-        return;
-      }
-    }
-
-    setActiveStep(activeStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep(activeStep - 1);
-  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -365,75 +252,8 @@ export default function Checkout() {
           variant="outlined"
           sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
         >
-          <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
-            {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
-            ))}
-          </Stepper>
           <React.Fragment>
-            {activeStep === steps.length ? (
-              <React.Fragment>
-                <Typography
-                  variant="h5"
-                  gutterBottom
-                  style={{ textAlign: "center" }}
-                >
-                  Successfully Registered
-                </Typography>
-                <svg
-                  className="checkmark"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 52 52"
-                >
-                  <circle
-                    className="checkmark__circle"
-                    cx="26"
-                    cy="26"
-                    r="25"
-                    fill="none"
-                  />
-                  <path
-                    className="checkmark__check"
-                    fill="none"
-                    d="M14.1 27.2l7.1 7.2 16.7-16.8"
-                  />
-                </svg>
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                {getStepContent(activeStep)}
-                <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-                  {activeStep !== 0 && (
-                    <Button
-                      onClick={handleBack}
-                      sx={{
-                        mt: 3,
-                        ml: 1,
-                        backgroundColor: "white",
-                        color: "black",
-                      }}
-                    >
-                      Back
-                    </Button>
-                  )}
-
-                  <Button
-                    variant="contained"
-                    onClick={
-                      activeStep === steps.length - 1
-                        ? RegisterStudent
-                        : handleNext
-                    }
-                    sx={{ mt: 3, ml: 1 }}
-                    style={{ backgroundColor: "black" }}
-                  >
-                    {activeStep === steps.length - 1 ? "Register" : "Next"}
-                  </Button>
-                </Box>
-              </React.Fragment>
-            )}
+            <React.Fragment>{getStepContent(activeStep)}</React.Fragment>
           </React.Fragment>
         </Paper>
         <Copyright />
