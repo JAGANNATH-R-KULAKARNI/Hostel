@@ -14,19 +14,33 @@ const Menu = () => {
     const [menus, setMenus] = React.useState([]);
     const [email, setEmail] = React.useState([]);
     const [breakfast, setbreakfast] = React.useState([]);
-    const [lunch, setlunch] = React.useState("");
-    const [snacks, setsnacks] = React.useState("");
-    const [dinner, setdinner] = React.useState("");
+    const [lunch, setlunch] = React.useState([]);
+    const [snacks, setsnacks] = React.useState([]);
+    const [dinner, setdinner] = React.useState([]);
 
 
     const menuFetch = async () => {
         const { data, error } = await supabase.from('menu').select().order('id', { ascending: true });
+        console.log("Inside MenuFetch");
+        console.log(data);
         setMenus(data);
         console.log(menus);
-        for(i=0;i<7;i++)
+        const temp =[];
+        const temp2=[];
+        const temp3=[];
+        const temp4=[];
+        for(var i=0; i<data.length;i++)
         {
-            breakfast.push(data[i+1].breakfast);
+            temp.push(data[i].breakfast);
+            temp2.push(data[i].lunch);
+            temp3.push(data[i].snacks);
+            temp4.push(data[i].dinner);
         }
+        setbreakfast(temp);
+        setlunch(temp2);
+        setsnacks(temp3);
+        setdinner(temp4);
+
         // console.log(breakfast[0]+"array");
         // console.log(data[1].breakfast+"database");
         // console.log(data);
@@ -39,6 +53,21 @@ const Menu = () => {
             // console.log(data);
             setEmail(data.email);
         }
+    }
+
+    async function updateIt()
+    {
+        for(var i=0;i<data.length;i++)
+        {
+            const {data,error} = await supabase.from("menu").upsert({ id: i+1, breakfast: breakfast[i+1], lunch: lunch[i+1], snacks:snacks[i+1], dinner:dinner[i+1] });
+            if(data){
+                alert("Successfull Updated");
+            }
+            if(error){
+                alert("It's Wrong");
+            }
+        }
+        
     }
 
     useEffect(() => {
@@ -56,6 +85,7 @@ const Menu = () => {
 
             {
                 process.env.REACT_APP_ADMIN2 == email ? (
+                    <div>
                     <table id="customers">
                         <tr>
                             <th class="empty">Day of Week</th>
@@ -63,7 +93,7 @@ const Menu = () => {
                             <th>Lunch</th>
                             <th>Evening snacks</th>
                             <th>Dinner</th>
-                            <th>Operation</th>
+                            
                         </tr>
                         {
                             menus.map((day, id) => {
@@ -77,10 +107,26 @@ const Menu = () => {
                                                     id="outlined-multiline-static"
                                                     // label="Breakfast"
                                                     
-                                                    value={breakfast[day.id]}
+                                                    value={breakfast[day.id-1]}
                                                     
                                                     onChange={(e) => {
-                                                        setbreakfast(breakfast[{id}]=e.target.value);
+                                                        // alert(e.target.value);
+                                                        // alert(day.id);
+                                                        // console.log(breakfast);
+                                                        const temp=[];
+                                                        for(var i=0;i<breakfast.length;i++)
+                                                        {
+                                                            if (day.id==i+1)
+                                                            {
+                                                                   temp.push(e.target.value);
+
+                                                            }
+                                                            else{
+                                                                temp.push(breakfast[i]);
+                                                            }
+                                                        }
+                                                        setbreakfast(temp);
+                                                        
                                                     }}
                                                     multiline
                                                     rows={6}
@@ -96,9 +142,21 @@ const Menu = () => {
                                                 <TextField
                                                     id="outlined-multiline-static"
                                                     // label="Breakfast"
-                                                    value={day.lunch}
+                                                    value={lunch[day.id-1]}
                                                     onChange={(e) => {
-                                                        setlunch(e.target.value);
+                                                        const temp2=[];
+                                                        for(var i=0;i<lunch.length;i++)
+                                                        {
+                                                            if (day.id==i+1)
+                                                            {
+                                                                   temp2.push(e.target.value);
+
+                                                            }
+                                                            else{
+                                                                temp2.push(lunch[i]);
+                                                            }
+                                                        }
+                                                        setlunch(temp2);
                                                     }}
                                                     multiline
                                                     rows={6}
@@ -112,9 +170,21 @@ const Menu = () => {
                                                 <TextField
                                                     id="outlined-multiline-static"
                                                     // label="Breakfast"
-                                                    value={day.snacks}
+                                                    value={snacks[day.id-1]}
                                                     onChange={(e) => {
-                                                        setsnacks(e.target.value);
+                                                        const temp3=[];
+                                                        for(var i=0;i<snacks.length;i++)
+                                                        {
+                                                            if (day.id==i+1)
+                                                            {
+                                                                   temp3.push(e.target.value);
+
+                                                            }
+                                                            else{
+                                                                temp3.push(snacks[i]);
+                                                            }
+                                                        }
+                                                        setsnacks(temp3);
                                                     }}
                                                     multiline
                                                     rows={6}
@@ -128,9 +198,21 @@ const Menu = () => {
                                                 <TextField
                                                     id="outlined-multiline-static"
                                                     // label="Breakfast"
-                                                    value={day.dinner}
+                                                    value={dinner[day.id-1]}
                                                     onChange={(e) => {
-                                                        setdinner(e.target.value);
+                                                        const temp4=[];
+                                                        for(var i=0;i<dinner.length;i++)
+                                                        {
+                                                            if (day.id==i+1)
+                                                            {
+                                                                   temp4.push(e.target.value);
+
+                                                            }
+                                                            else{
+                                                                temp4.push(dinner[i]);
+                                                            }
+                                                        }
+                                                        setdinner(temp4);
                                                     }}
                                                     multiline
                                                     rows={6}
@@ -139,32 +221,7 @@ const Menu = () => {
                                                 />
                                             </Grid>
                                         </td>
-                                        <td>
-                                            {/* < Update break={day.breakfast} /> */}
-                                            <Button
-                                                type="submit"
-                                                variant="contained"
-                                                sx={{
-                                                    mt: 3,
-                                                    mb: 2,
-                                                    backgroundColor: "black",
-                                                    color: "white",
-                                                    borderRadius: "10px",
-                                                    minWidth: "100px",
-                                                    minHeight: "40px",
-                                                    width: "5%"
-
-                                                }}
-                                                onClick={() => { < Update break="shreyas" /> }
-                                                }
-
-                                                href="/updatemenu"
-
-
-                                            >
-                                                update
-                                            </Button>
-                                        </td>
+                                        
                                     </tr>
 
                                 )
@@ -177,6 +234,30 @@ const Menu = () => {
 
 
                     </table>
+                    <Button
+                                                type="submit"
+                                                variant="contained"
+                                                sx={{
+                                                    mt: 3,
+                                                    mb: 5,
+                                                    backgroundColor: "black",
+                                                    color: "white",
+                                                    borderRadius: "10px",
+                                                    minWidth: "100px",
+                                                    minHeight: "55px",
+                                                    
+                                                    width: "50%"
+
+                                                }}
+                                                clicked={updateIt}
+
+
+
+                                            >
+                                                update
+                                            </Button>
+                    </div>
+                    
 
                 ) : (
                     <table id="customers">
