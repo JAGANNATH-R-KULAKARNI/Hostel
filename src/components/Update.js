@@ -48,7 +48,9 @@ function getStyles(name, personName, theme) {
     };
 }
 
-export default function Update() {
+export default function Update(props) {
+
+    console.log(props);
     const theme = useTheme();
     const [reason, setReason] = React.useState("Wi-Fi Problem");
     const [brief, setBrief] = React.useState("");
