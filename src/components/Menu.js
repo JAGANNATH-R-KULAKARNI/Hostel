@@ -35,7 +35,8 @@ const Menu = () => {
                                 <td>{day.lunch}</td>
                                 <td>{day.snacks}</td>
                                 <td>{day.dinner}</td>
-                            </tr>)
+                            </tr>
+                        )
 
                     })
 
