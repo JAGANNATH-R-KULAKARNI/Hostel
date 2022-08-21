@@ -13,7 +13,7 @@ const Menu = () => {
 
     const [menus, setMenus] = React.useState([]);
     const [email, setEmail] = React.useState([]);
-    const [breakfast, setbreakfast] = React.useState("Poori, Saagu, Chutney with Tea, Milk and Coffee");
+    const [breakfast, setbreakfast] = React.useState([]);
     const [lunch, setlunch] = React.useState("");
     const [snacks, setsnacks] = React.useState("");
     const [dinner, setdinner] = React.useState("");
@@ -22,6 +22,14 @@ const Menu = () => {
     const menuFetch = async () => {
         const { data, error } = await supabase.from('menu').select().order('id', { ascending: true });
         setMenus(data);
+        console.log(menus);
+        for(i=0;i<7;i++)
+        {
+            breakfast.push(data[i+1].breakfast);
+        }
+        // console.log(breakfast[0]+"array");
+        // console.log(data[1].breakfast+"database");
+        // console.log(data);
     }
 
     async function fetchTheProfile() {
@@ -60,7 +68,6 @@ const Menu = () => {
                         {
                             menus.map((day, id) => {
 
-
                                 return (
                                     <tr key={id}>
                                         <th>{day.day}</th>
@@ -69,9 +76,11 @@ const Menu = () => {
                                                 <TextField
                                                     id="outlined-multiline-static"
                                                     // label="Breakfast"
-                                                    value={breakfast}
+                                                    
+                                                    value={breakfast[day.id]}
+                                                    
                                                     onChange={(e) => {
-                                                        setbreakfast(e.target.value);
+                                                        setbreakfast(breakfast[{id}]=e.target.value);
                                                     }}
                                                     multiline
                                                     rows={6}
