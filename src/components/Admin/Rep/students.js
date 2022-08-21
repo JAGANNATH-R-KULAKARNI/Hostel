@@ -368,12 +368,16 @@ export default function Attendence(props) {
             </div>
           </div>
         </Grid>
-        <Grid item xs={12} sm={12}>
+        <Grid item xs={12} sm={12} style={{ width: "100%" }}>
           <div
-            style={{ display: "flex", justifyContent: "center" }}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              width: "100%",
+            }}
             ref={componenetRef}
           >
-            <ReportUI />
+            <ReportUI building={building} block={block} report={finalReport} />
           </div>
         </Grid>
       </Grid>
