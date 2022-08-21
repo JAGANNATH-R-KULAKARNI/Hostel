@@ -13,7 +13,9 @@ const Menu = () => {
 
     const [menus, setMenus] = React.useState([]);
     const [email, setEmail] = React.useState([]);
+
     const [breakfast, setbreakfast] = React.useState("");
+
     const [lunch, setlunch] = React.useState("");
     const [snacks, setsnacks] = React.useState("");
     const [dinner, setdinner] = React.useState("");
@@ -29,7 +31,17 @@ const Menu = () => {
         //     setdinner(data[i].dinner);
         // }
         setMenus(data);
+
         console.log(data);
+
+        console.log(menus);
+        for (i = 0; i < 7; i++) {
+            breakfast.push(data[i + 1].breakfast);
+        }
+        // console.log(breakfast[0]+"array");
+        // console.log(data[1].breakfast+"database");
+        // console.log(data);
+
     }
 
     async function fetchTheProfile() {
@@ -78,7 +90,6 @@ const Menu = () => {
 
                                 // breakfast = day.breakfast;
 
-
                                 return (
                                     <tr key={day.id}>
                                         <th>{day.id}</th>
@@ -88,12 +99,20 @@ const Menu = () => {
                                                 <TextField
                                                     id="outlined-multiline-static"
                                                     // label="Breakfast"
+
                                                     value={breakfast}
                                                     name={day.id}
                                                     // onChange={(e) => {
                                                     //     setbreakfast(e.target.value)
                                                     // }}
                                                     onChange={updatebreakfast}
+
+
+                                                    value={breakfast[day.id]}
+
+                                                    onChange={(e) => {
+                                                        setbreakfast(breakfast[{ id }] = e.target.value);
+                                                    }}
                                                     multiline
                                                     rows={6}
 
