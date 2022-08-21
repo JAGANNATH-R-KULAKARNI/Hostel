@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import "./Menu.css"
 import { supabase } from "../Supabase";
+import { Button } from '@mui/material';
 
 
 const Menu = () => {
@@ -25,6 +26,7 @@ const Menu = () => {
                     <th>Lunch</th>
                     <th>Evening snacks</th>
                     <th>Dinner</th>
+                    <th>Operation</th>
                 </tr>
                 {
                     menus.map((day, id) => {
@@ -35,6 +37,29 @@ const Menu = () => {
                                 <td>{day.lunch}</td>
                                 <td>{day.snacks}</td>
                                 <td>{day.dinner}</td>
+                                <td>
+                                    <Button
+                                        type="submit"
+                                        variant="contained"
+                                        sx={{
+                                            mt: 3,
+                                            mb: 2,
+                                            backgroundColor: "black",
+                                            color: "white",
+                                            borderRadius: "10px",
+                                            minWidth: "100px",
+                                            minHeight: "40px",
+                                            width: "5%"
+
+                                        }}
+
+                                        href="/updatemenu"
+                                    // sx={{ mb: 3, minWidth: "200px", width: "50%" }}
+
+                                    >
+                                        update
+                                    </Button>
+                                </td>
                             </tr>
                         )
 
