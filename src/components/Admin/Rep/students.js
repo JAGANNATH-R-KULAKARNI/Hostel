@@ -8,6 +8,8 @@ import SelectUI from "./studentssub";
 import { supabase } from "../../../Supabase";
 import CardUI from "./Card";
 import ButtonUI from "../../Button2";
+import { useReactToPrint } from "react-to-print";
+import ReportUI from "./Report";
 
 export default function Attendence(props) {
   const [control, setControl] = React.useState(true);
@@ -30,6 +32,11 @@ export default function Attendence(props) {
   const [roomInfo, setRoomInfo] = React.useState([0, 0]);
 
   const [finalReport, setFinalReport] = React.useState([]);
+
+  const componenetRef = React.useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componenetRef.current,
+  });
 
   React.useEffect(() => {
     if (control) {
@@ -184,6 +191,8 @@ export default function Attendence(props) {
           attInfo2.push({
             data: attInfo[i],
             floor: temp_r[j]["floor"],
+            room: temp_r[j]["room"],
+            room_id: temp_r[j]["id"],
           });
           break;
         }
@@ -212,16 +221,91 @@ export default function Attendence(props) {
 
     for (var i = 0; i < floors_i.length; i++) {
       const temp8 = [];
+      const rooms_temp = {};
+
       for (var j = 0; j < attInfo2.length; j++) {
         if (floors_i[i] == attInfo2[j]["floor"]) {
           temp8.push({
             floor: floors_i[i],
-            data: attInfo[j],
+            data: attInfo2[j],
+            room: attInfo2[j]["room"],
+            room_id: attInfo2[j]["room_id"],
           });
+
+          rooms_temp[attInfo2[j]["room"]] = true;
         }
       }
+      const rooms_temp2 = [];
+      for (const key in rooms_temp) {
+        rooms_temp2.push(key);
+      }
+      rooms_temp2.sort();
 
-      temp7.push(temp8);
+      const temp9 = [];
+
+      for (var k = 0; k < rooms_temp2.length; k++) {
+        const temp10 = [];
+        const stu_temp_id = {};
+
+        for (var l = 0; l < temp8.length; l++) {
+          if (temp8[l]["room"] == rooms_temp2[k]) {
+            temp10.push(temp8[l]);
+            stu_temp_id[temp8[l]["data"]["data"]["date_a"]] = true;
+          }
+        }
+
+        const studs = [];
+
+        for (const key in stu_temp_id) {
+          studs.push(key);
+        }
+        studs.sort();
+
+        const temp11 = [];
+
+        for (var m = 0; m < studs.length; m++) {
+          const temp12 = [];
+
+          const date_temp_t = {};
+          for (var n = 0; n < temp10.length; n++) {
+            if (temp10[n]["data"]["data"]["date_a"] == studs[m]) {
+              temp12.push(temp10[n]);
+              date_temp_t[temp10[n]["data"]["data"]["student_id"]] = true;
+            }
+          }
+
+          const times = [];
+          for (const key in date_temp_t) {
+            times.push(key);
+          }
+          times.sort();
+
+          const temp13 = [];
+
+          for (var o = 0; o < times.length; o++) {
+            const temp14 = [];
+
+            for (var p = 0; p < temp12.length; p++) {
+              if (temp12[p]["data"]["data"]["student_id"] == times[o]) {
+                temp14.push(temp12[p]["data"]);
+              }
+            }
+            temp13.push({
+              student_id: times[o],
+              data: temp14[0],
+            });
+          }
+
+          temp11.push({
+            time: studs[m],
+            data: temp13,
+          });
+        }
+
+        temp9.push({ data: temp11, room: rooms_temp2[k] });
+      }
+
+      temp7.push({ data: temp9, floor: floors_i[i] });
     }
 
     setFinalReport(temp7);
@@ -279,7 +363,17 @@ export default function Attendence(props) {
         </Grid>
         <Grid item xs={12} sm={12}>
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <div></div>
+            <div>
+              <button onClick={handlePrint}> Download</button>
+            </div>
+          </div>
+        </Grid>
+        <Grid item xs={12} sm={12}>
+          <div
+            style={{ display: "flex", justifyContent: "center" }}
+            ref={componenetRef}
+          >
+            <ReportUI />
           </div>
         </Grid>
       </Grid>
