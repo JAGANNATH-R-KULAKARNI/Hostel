@@ -17,7 +17,7 @@ const Menu = () => {
     const [lunch, setlunch] = React.useState([]);
     const [snacks, setsnacks] = React.useState([]);
     const [dinner, setdinner] = React.useState([]);
-    const [final,setfinal] = React.useState([]);
+    const [finalm,setfinal] = React.useState([]);
 
 
     const menuFetch = async () => {
@@ -59,8 +59,8 @@ const Menu = () => {
     async function sendmenu()
     {
         console.log("Inside send");
-        console.log(final);
-        const {data,error} = await supabase.from("menu").upsert(final);
+        console.log(finalm);
+        const {data,error} = await supabase.from("menu").upsert(finalm);
 
         if(data)
         {
@@ -89,11 +89,11 @@ const Menu = () => {
                 dinner:dinner[i]
             });
         }
-        
+
         console.log(tempf);
         setfinal(tempf);
         console.log("Now final");
-        console.log(final);
+        console.log(finalm);
         sendmenu();
         
     }
