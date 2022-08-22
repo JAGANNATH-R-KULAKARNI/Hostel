@@ -13,7 +13,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
 import NavBarUI from "../NavBar2";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import BodyUI from "./Reg/main";
+import BodyUI from "./Att/main";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -61,20 +61,13 @@ export default function FullScreenDialog(props) {
             }}
           >
             {" "}
-            Menu
+            Attendence
           </h1>
           <div style={{ marginTop: m1 ? "-15px" : "-10px" }}>
             <Divider />
           </div>
 
-
-          {/* <BodyUI /> */}
-
           <BodyUI />
-
-
-          <BodyUI />
-
         </div>
       </Dialog>
     </div>

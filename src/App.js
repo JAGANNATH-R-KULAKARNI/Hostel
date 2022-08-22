@@ -12,6 +12,7 @@ import {
 import SignInUI from "./components/Auth/SignIn";
 import SFooter from "./components/SFooter";
 import "./App.css";
+
 import { supabase } from "./Supabase";
 import React from "react";
 import AdminUI from "./components/Admin/Home";

@@ -7,7 +7,12 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import RegisterUI from "./Register";
 import AnnounceUI from "./Announce";
+import DetailsUI from "./Details1";
+
 import MenuUI from "./Menu";
+
+import AttendenceUI from "./Attendence";
+
 
 export default function HomeAdmin() {
   const m1 = useMediaQuery("(min-width:600px)");
@@ -15,8 +20,9 @@ export default function HomeAdmin() {
   const location = useLocation();
   const [register, setRegister] = React.useState(false);
   const [announce, setAnnounce] = React.useState(false);
-
   const [menu, setMenu] = React.useState(false);
+  const [attendence, setAttendence] = React.useState(false);
+  const [details, setDetails] = React.useState(false);
 
 
   async function fetchTheProfile() {
@@ -53,8 +59,19 @@ export default function HomeAdmin() {
       {announce ? (
         <AnnounceUI registerHandler={() => setAnnounce(!announce)} />
       ) : null}
+
       {menu ? (
         <MenuUI registerHandler={() => setMenu(!menu)} />
+        ) : null}
+
+      {attendence ? (
+        <AttendenceUI registerHandler={() => setAttendence(!attendence)} />
+
+      ) : null}
+
+       {details ? (
+        <DetailsUI registerHandler={() => setDetails(!details)} />
+
       ) : null}
 
       <div style={{ marginTop: m1 ? "-40px" : "-20px" }}>
@@ -66,7 +83,14 @@ export default function HomeAdmin() {
           clicked={() => setRegister(!register)}
         />
         <br />
-        <ButtonUI text="Take The Attendence" />
+
+        
+
+        <ButtonUI
+          text="Take The Attendence"
+          clicked={() => setAttendence(!attendence)}
+        />
+
         <br />
         <ButtonUI
           text="Make An Announcement"
@@ -80,7 +104,8 @@ export default function HomeAdmin() {
         <br />
         <ButtonUI text="Students Queries" />
         <br />
-        <ButtonUI text="Students Details" />
+        <ButtonUI text="Students Details" 
+            clicked={() => setDetails(!details)}/>
         <br />
         <br />
       </div>
