@@ -64,10 +64,10 @@ const Menu = () => {
         {
             temp.push({
                 id:data[i].id,
-                breakfast:data[i].breakfast,
-                lunch:data[i].lunch,
-                snacks:data[i].snacks,
-                dinner:data[i].dinner
+                breakfast:breakfast[i],
+                lunch:lunch[i],
+                snacks:snacks[i],
+                dinner:dinner[i]
             });
         }
 
