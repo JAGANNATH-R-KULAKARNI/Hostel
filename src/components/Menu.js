@@ -17,6 +17,7 @@ const Menu = () => {
     const [lunch, setlunch] = React.useState([]);
     const [snacks, setsnacks] = React.useState([]);
     const [dinner, setdinner] = React.useState([]);
+    const [final,setfinal] = React.useState([]);
 
 
     const menuFetch = async () => {
@@ -57,17 +58,31 @@ const Menu = () => {
 
     async function updateIt()
     {
+        const temp=[];
+
         for(var i=0;i<data.length;i++)
         {
-            const {data,error} = await supabase.from("menu").upsert({ id: i+1, breakfast: breakfast[i+1], lunch: lunch[i+1], snacks:snacks[i+1], dinner:dinner[i+1] });
-            if(data){
-                alert("Successfull Updated");
-            }
-            if(error){
-                alert("It's Wrong");
-            }
+            temp.push({
+                id:data[i].id,
+                breakfast:data[i].breakfast,
+                lunch:data[i].lunch,
+                snacks:data[i].snacks,
+                dinner:data[i].dinner
+            });
         }
-        
+
+        setfinal(temp);
+
+        const {data,error} = await supabase.from("menu").upsert(final);
+
+        if(data)
+        {
+            alert("Successfully Updated");
+        }
+        if(error)
+        {
+            alert("Something went wrong")
+        }
     }
 
     useEffect(() => {
