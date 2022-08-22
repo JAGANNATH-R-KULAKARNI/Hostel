@@ -5,8 +5,8 @@ import { Button } from '@mui/material';
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
+import ButtonUI from "./Button2";
 
-import Update from './Update';
 
 
 const Menu = () => {
@@ -56,33 +56,46 @@ const Menu = () => {
         }
     }
 
-    async function updateIt()
+    async function sendmenu()
     {
-        const temp=[];
-
-        for(var i=0;i<data.length;i++)
-        {
-            temp.push({
-                id:data[i].id,
-                breakfast:breakfast[i],
-                lunch:lunch[i],
-                snacks:snacks[i],
-                dinner:dinner[i]
-            });
-        }
-
-        setfinal(temp);
-
+        console.log("Inside send");
+        console.log(final);
         const {data,error} = await supabase.from("menu").upsert(final);
 
         if(data)
         {
             alert("Successfully Updated");
         }
+
         if(error)
         {
             alert("Something went wrong");
         }
+
+    }
+
+    const updateIt=() =>
+    {
+        // console.log("Came inside Update");
+        const tempf=[];
+
+        for(var i=0;i<breakfast.length;i++)
+        {
+            tempf.push({
+                id:i+1,
+                breakfast:breakfast[i],
+                lunch:lunch[i],
+                snacks:snacks[i],
+                dinner:dinner[i]
+            });
+        }
+        
+        console.log(tempf);
+        setfinal(tempf);
+        console.log("Now final");
+        console.log(final);
+        sendmenu();
+        
     }
 
     useEffect(() => {
@@ -249,28 +262,7 @@ const Menu = () => {
 
 
                     </table>
-                    <Button
-                                                type="submit"
-                                                variant="contained"
-                                                sx={{
-                                                    mt: 3,
-                                                    mb: 5,
-                                                    backgroundColor: "black",
-                                                    color: "white",
-                                                    borderRadius: "10px",
-                                                    minWidth: "100px",
-                                                    minHeight: "55px",
-                                                    
-                                                    width: "50%"
-
-                                                }}
-                                                clicked={updateIt}
-
-
-
-                                            >
-                                                update
-                                            </Button>
+                    <ButtonUI text="Update" sx={{mb:5}} clicked={updateIt} />
                     </div>
                     
 
