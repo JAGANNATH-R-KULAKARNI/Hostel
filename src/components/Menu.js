@@ -5,15 +5,14 @@ import { Button } from '@mui/material';
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
+import ButtonUI from "./Button2";
 
-import Update from './Update';
 
 
 const Menu = () => {
 
     const [menus, setMenus] = React.useState([]);
     const [email, setEmail] = React.useState([]);
-
     const [breakfast, setbreakfast] = React.useState([]);
     const [lunch, setlunch] = React.useState([]);
     const [snacks, setsnacks] = React.useState([]);
@@ -21,23 +20,8 @@ const Menu = () => {
     const [final, setfinal] = React.useState([]);
 
 
-
     const menuFetch = async () => {
         const { data, error } = await supabase.from('menu').select().order('id', { ascending: true });
-
-        setMenus(data);
-
-        console.log(data);
-
-        console.log(menus);
-        for (i = 0; i < 7; i++) {
-            breakfast.push(data[i + 1].breakfast);
-        }
-        // console.log(breakfast[0]+"array");
-        // console.log(data[1].breakfast+"database");
-        // console.log(data);
-
-
         console.log("Inside MenuFetch");
         console.log(data);
         setMenus(data);
@@ -57,6 +41,9 @@ const Menu = () => {
         setsnacks(temp3);
         setdinner(temp4);
 
+        // console.log(breakfast[0]+"array");
+        // console.log(data[1].breakfast+"database");
+        // console.log(data);
     }
 
     async function fetchTheProfile() {
@@ -68,12 +55,28 @@ const Menu = () => {
         }
     }
 
-    async function updateIt() {
-        const temp = [];
+    async function sendmenu() {
+        console.log("Inside send");
+        console.log(final);
+        const { data, error } = await supabase.from("menu").upsert(final);
 
-        for (var i = 0; i < data.length; i++) {
-            temp.push({
-                id: data[i].id,
+        if (data) {
+            alert("Successfully Updated");
+        }
+
+        if (error) {
+            alert("Something went wrong");
+        }
+
+    }
+
+    const updateIt = () => {
+        // console.log("Came inside Update");
+        const tempf = [];
+
+        for (var i = 0; i < breakfast.length; i++) {
+            tempf.push({
+                id: i + 1,
                 breakfast: breakfast[i],
                 lunch: lunch[i],
                 snacks: snacks[i],
@@ -81,16 +84,12 @@ const Menu = () => {
             });
         }
 
-        setfinal(temp);
+        console.log(tempf);
+        setfinal(tempf);
+        console.log("Now final");
+        console.log(final);
+        sendmenu();
 
-        const { data, error } = await supabase.from("menu").upsert(final);
-
-        if (data) {
-            alert("Successfully Updated");
-        }
-        if (error) {
-            alert("Something went wrong");
-        }
     }
 
     useEffect(() => {
@@ -100,14 +99,6 @@ const Menu = () => {
         }, 1000);
     }, []);
 
-    const updatebreakfast = (e) => {
-        console.log("name " + e.target.name);
-        console.log("value " + e.target.value);
-        if (e.target.name == 1) {
-
-            setbreakfast(e.target.value);
-        }
-    }
 
 
     return (
@@ -127,12 +118,11 @@ const Menu = () => {
 
                             </tr>
                             {
-                                menus.map((day) => {
+                                menus.map((day, id) => {
 
                                     return (
-                                        <tr key={day.id}>
-                                            <th>{day.id}</th>
-
+                                        <tr key={id}>
+                                            <th>{day.day}</th>
                                             <td>
                                                 <Grid item xs={12} md={12} >
                                                     <TextField
@@ -160,7 +150,6 @@ const Menu = () => {
                                                         }}
                                                         multiline
                                                         rows={6}
-
                                                         sx={{ mb: 3, minWidth: "150px", width: "50%" }}
                                                     // defaultValue="Default Value"
                                                     />
@@ -259,28 +248,7 @@ const Menu = () => {
 
 
                         </table>
-                        <Button
-                            type="submit"
-                            variant="contained"
-                            sx={{
-                                mt: 3,
-                                mb: 5,
-                                backgroundColor: "black",
-                                color: "white",
-                                borderRadius: "10px",
-                                minWidth: "100px",
-                                minHeight: "55px",
-
-                                width: "50%"
-
-                            }}
-                            clicked={updateIt}
-
-
-
-                        >
-                            update
-                        </Button>
+                        <ButtonUI text="Update" sx={{ mb: 5 }} clicked={updateIt} />
                     </div>
 
 
