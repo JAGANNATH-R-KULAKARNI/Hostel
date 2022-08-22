@@ -93,7 +93,6 @@ const Menu = () => {
         console.log(tem);
         setfinal(tem);
         console.log("Now final");
-        console.log(finalm);
         sendmenu();
 
     }
