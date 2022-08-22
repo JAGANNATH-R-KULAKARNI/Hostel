@@ -151,7 +151,7 @@ const Menu = () => {
                                                         }}
                                                         multiline
                                                         rows={6}
-                                                        sx={{ mb: 3, minWidth: "150px", width: "50%" }}
+                                                        sx={{ mb: 3, minWidth: "220px", width: "50%" }}
                                                     // defaultValue="Default Value"
                                                     />
                                                 </Grid>
@@ -179,7 +179,7 @@ const Menu = () => {
                                                         }}
                                                         multiline
                                                         rows={6}
-                                                        sx={{ mb: 3, minWidth: "150px", width: "50%" }}
+                                                        sx={{ mb: 3, minWidth: "220px", width: "50%" }}
                                                     // defaultValue="Default Value"
                                                     />
                                                 </Grid>
@@ -205,7 +205,7 @@ const Menu = () => {
                                                         }}
                                                         multiline
                                                         rows={6}
-                                                        sx={{ mb: 3, minWidth: "150px", width: "50%" }}
+                                                        sx={{ mb: 3, minWidth: "220px", width: "50%" }}
                                                     // defaultValue="Default Value"
                                                     />
                                                 </Grid>
@@ -231,7 +231,7 @@ const Menu = () => {
                                                         }}
                                                         multiline
                                                         rows={6}
-                                                        sx={{ mb: 3, minWidth: "150px", width: "50%" }}
+                                                        sx={{ mb: 3, minWidth: "220px", width: "50%" }}
                                                     // defaultValue="Default Value"
                                                     />
                                                 </Grid>
