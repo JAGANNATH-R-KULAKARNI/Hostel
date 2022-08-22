@@ -55,10 +55,10 @@ const Menu = () => {
         }
     }
 
-    async function sendmenu() {
-        console.log("Inside send");
-        console.log(final);
-        const { data, error } = await supabase.from("menu").upsert(final);
+    async function sendmenu(temf) {
+        console.log("Inside send menu");
+        console.log(temf);
+        const { data, error } = await supabase.from("menu").update(temf);
 
         if (data) {
             alert("Successfully Updated");
@@ -71,10 +71,11 @@ const Menu = () => {
     }
 
     const updateIt = () => {
-        // console.log("Came inside Update");
-        const tempf = [];
+
+        let tempf = [];
 
         for (var i = 0; i < breakfast.length; i++) {
+
             tempf.push({
                 id: i + 1,
                 breakfast: breakfast[i],
@@ -84,16 +85,11 @@ const Menu = () => {
             });
         }
 
-        console.log(tempf);
-        const tem =[];
-        for(var i=0;i<tempf.length;i++)
-        {
-            tem.push(tem[i]);
-        }
-        console.log(tem);
-        setfinal(tem);
-        console.log("Now final");
-        sendmenu();
+        // console.log(tempf);
+        setfinal(tempf);
+        console.log("final array");
+        // console.log(final);
+        sendmenu(tempf);
 
     }
 
@@ -253,7 +249,25 @@ const Menu = () => {
 
 
                         </table>
-                        <ButtonUI text="Update" sx={{ mb: 5 }} clicked={updateIt} />
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            sx={{
+                                mt: 3,
+                                mb: 5,
+                                backgroundColor: "black",
+                                color: "white",
+                                borderRadius: "10px",
+                                minWidth: "200px",
+                                minHeight: "50px",
+                                width: "60%"
+
+                            }}
+                            // sx={{ mb: 3, minWidth: "200px", width: "50%" }}
+                            checked={updateIt}
+                        >
+                            Update
+                        </Button>
                     </div>
 
 
