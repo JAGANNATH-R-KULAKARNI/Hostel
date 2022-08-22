@@ -81,7 +81,7 @@ const Menu = () => {
         }
         if(error)
         {
-            alert("Something went wrong")
+            alert("Something went wrong");
         }
     }
 
