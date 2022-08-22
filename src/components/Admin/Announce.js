@@ -52,7 +52,6 @@ export default function FullScreenDialog(props) {
   const handleSubmit = () => {
     alert("submitted");
   };
-
   async function announcementPush() {
     if (heading.length == 0 || description.length == 0) {
       alert("Please fill all fields");
@@ -76,6 +75,7 @@ export default function FullScreenDialog(props) {
       alert("some error has occured");
     }
   }
+
 
 
   async function announcementPush(){

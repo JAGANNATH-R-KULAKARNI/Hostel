@@ -87,6 +87,7 @@ export default function Checkout() {
       console.log(temp1);
 
       setBuildingList(temp1);
+<<<<<<< HEAD
     }
   }
 
@@ -129,6 +130,50 @@ export default function Checkout() {
     }
   }
 
+=======
+    }
+  }
+
+  async function RegisterStudent() {
+    if (
+      hf1.length == 0 ||
+      hf2.length == 0 ||
+      hf3.length == 0 ||
+      hf4.length == 0 ||
+      cd.length == 0
+    ) {
+      alert("All the field should be filled");
+      return;
+    }
+
+    const { data, error } = await supabase.from("students").insert([
+      {
+        name: name,
+        usn: usn,
+        year_joined: yoj,
+        email: email,
+        phno: phnum,
+        room_id: roomId,
+        hf1: hf1,
+        hf2: hf2,
+        hf3: hf3,
+        hf4: hf4,
+        cd: cd,
+      },
+    ]);
+
+    if (data) {
+      alert("Successfully Registered");
+      setActiveStep(activeStep + 1);
+    }
+
+    if (error) {
+      console.log(error);
+      alert("Some Error occured");
+    }
+  }
+
+>>>>>>> 44b689fb16fc41fc1bd75121eaaa404a9af551f1
   async function roomAllocationHandler(building1, block1, floor1, room1) {
     if (!roomsData) return;
     console.log("Rooms Allocation");
@@ -294,9 +339,13 @@ export default function Checkout() {
             blockList={blockList}
             floorList={floorList}
             roomInfo={roomInfo}
+<<<<<<< HEAD
 
             setRoomInfo={setRoomInfo}
 
+=======
+            setRoomInfo={setRoomInfo}
+>>>>>>> 44b689fb16fc41fc1bd75121eaaa404a9af551f1
             buildingList={buildingList}
             setBuildingList={setBuildingList}
             roomId={roomId}

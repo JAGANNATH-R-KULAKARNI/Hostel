@@ -7,11 +7,16 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import RegisterUI from "./Register";
 import AnnounceUI from "./Announce";
+
 import DetailsUI from "./Details1";
 
 import MenuUI from "./Menu";
 
 import AttendenceUI from "./Attendence";
+
+
+import AttendenceUI from "./Attendence";
+import ReportUI from "./Report";
 
 
 export default function HomeAdmin() {
@@ -20,9 +25,13 @@ export default function HomeAdmin() {
   const location = useLocation();
   const [register, setRegister] = React.useState(false);
   const [announce, setAnnounce] = React.useState(false);
+
   const [menu, setMenu] = React.useState(false);
   const [attendence, setAttendence] = React.useState(false);
   const [details, setDetails] = React.useState(false);
+
+
+  const [report, setReport] = React.useState(false);
 
 
   async function fetchTheProfile() {
@@ -60,6 +69,7 @@ export default function HomeAdmin() {
         <AnnounceUI registerHandler={() => setAnnounce(!announce)} />
       ) : null}
 
+
       {menu ? (
         <MenuUI registerHandler={() => setMenu(!menu)} />
         ) : null}
@@ -74,6 +84,12 @@ export default function HomeAdmin() {
 
       ) : null}
 
+      {attendence ? (
+        <AttendenceUI registerHandler={() => setAttendence(!attendence)} />
+      ) : null}
+      {report ? <ReportUI registerHandler={() => setReport(!report)} /> : null}
+
+
       <div style={{ marginTop: m1 ? "-40px" : "-20px" }}>
         <Divider />
       </div>
@@ -84,12 +100,15 @@ export default function HomeAdmin() {
         />
         <br />
 
+
         
+
 
         <ButtonUI
           text="Take The Attendence"
           clicked={() => setAttendence(!attendence)}
         />
+
 
         <br />
         <ButtonUI
@@ -97,7 +116,7 @@ export default function HomeAdmin() {
           clicked={() => setAnnounce(!announce)}
         />
         <br />
-        <ButtonUI text="Download Attendence Info" />
+        <ButtonUI text="Attendence Report" clicked={() => setReport(!report)} />
         <br />
         <ButtonUI text="Edit the Hotels Menu" 
              clicked={() => setMenu(!menu)}/>
