@@ -17,7 +17,7 @@ const Menu = () => {
     const [lunch, setlunch] = React.useState([]);
     const [snacks, setsnacks] = React.useState([]);
     const [dinner, setdinner] = React.useState([]);
-    const [finalm,setfinal] = React.useState([]);
+    const [final, setfinal] = React.useState([]);
 
 
     const menuFetch = async () => {
@@ -26,12 +26,11 @@ const Menu = () => {
         console.log(data);
         setMenus(data);
         console.log(menus);
-        const temp =[];
-        const temp2=[];
-        const temp3=[];
-        const temp4=[];
-        for(var i=0; i<data.length;i++)
-        {
+        const temp = [];
+        const temp2 = [];
+        const temp3 = [];
+        const temp4 = [];
+        for (var i = 0; i < data.length; i++) {
             temp.push(data[i].breakfast);
             temp2.push(data[i].lunch);
             temp3.push(data[i].snacks);
@@ -56,37 +55,32 @@ const Menu = () => {
         }
     }
 
-    async function sendmenu()
-    {
+    async function sendmenu() {
         console.log("Inside send");
-        console.log(finalm);
-        const {data,error} = await supabase.from("menu").upsert(finalm);
+        console.log(final);
+        const { data, error } = await supabase.from("menu").upsert(final);
 
-        if(data)
-        {
+        if (data) {
             alert("Successfully Updated");
         }
 
-        if(error)
-        {
+        if (error) {
             alert("Something went wrong");
         }
 
     }
 
-    const updateIt=() =>
-    {
+    const updateIt = () => {
         // console.log("Came inside Update");
-        const tempf=[];
+        const tempf = [];
 
-        for(var i=0;i<breakfast.length;i++)
-        {
+        for (var i = 0; i < breakfast.length; i++) {
             tempf.push({
-                id:i+1,
-                breakfast:breakfast[i],
-                lunch:lunch[i],
-                snacks:snacks[i],
-                dinner:dinner[i]
+                id: i + 1,
+                breakfast: breakfast[i],
+                lunch: lunch[i],
+                snacks: snacks[i],
+                dinner: dinner[i]
             });
         }
 
@@ -101,7 +95,7 @@ const Menu = () => {
         console.log("Now final");
         console.log(finalm);
         sendmenu();
-        
+
     }
 
     useEffect(() => {
@@ -120,157 +114,149 @@ const Menu = () => {
             {
                 process.env.REACT_APP_ADMIN2 == email ? (
                     <div>
-                    <table id="customers">
-                        <tr>
-                            <th class="empty">Day of Week</th>
-                            <th>Breakfast</th>
-                            <th>Lunch</th>
-                            <th>Evening snacks</th>
-                            <th>Dinner</th>
-                            
-                        </tr>
-                        {
-                            menus.map((day, id) => {
+                        <table id="customers">
+                            <tr>
+                                <th class="empty">Day of Week</th>
+                                <th>Breakfast</th>
+                                <th>Lunch</th>
+                                <th>Evening snacks</th>
+                                <th>Dinner</th>
 
-                                return (
-                                    <tr key={id}>
-                                        <th>{day.day}</th>
-                                        <td>
-                                            <Grid item xs={12} md={12} >
-                                                <TextField
-                                                    id="outlined-multiline-static"
-                                                    // label="Breakfast"
-                                                    
-                                                    value={breakfast[day.id-1]}
-                                                    
-                                                    onChange={(e) => {
-                                                        // alert(e.target.value);
-                                                        // alert(day.id);
-                                                        // console.log(breakfast);
-                                                        const temp=[];
-                                                        for(var i=0;i<breakfast.length;i++)
-                                                        {
-                                                            if (day.id==i+1)
-                                                            {
-                                                                   temp.push(e.target.value);
+                            </tr>
+                            {
+                                menus.map((day, id) => {
 
+                                    return (
+                                        <tr key={id}>
+                                            <th>{day.day}</th>
+                                            <td>
+                                                <Grid item xs={12} md={12} >
+                                                    <TextField
+                                                        id="outlined-multiline-static"
+                                                        // label="Breakfast"
+
+                                                        value={breakfast[day.id - 1]}
+
+                                                        onChange={(e) => {
+                                                            // alert(e.target.value);
+                                                            // alert(day.id);
+                                                            // console.log(breakfast);
+                                                            const temp = [];
+                                                            for (var i = 0; i < breakfast.length; i++) {
+                                                                if (day.id == i + 1) {
+                                                                    temp.push(e.target.value);
+
+                                                                }
+                                                                else {
+                                                                    temp.push(breakfast[i]);
+                                                                }
                                                             }
-                                                            else{
-                                                                temp.push(breakfast[i]);
+                                                            setbreakfast(temp);
+
+                                                        }}
+                                                        multiline
+                                                        rows={6}
+                                                        sx={{ mb: 3, minWidth: "150px", width: "50%" }}
+                                                    // defaultValue="Default Value"
+                                                    />
+                                                </Grid>
+                                            </td>
+
+                                            {/* <td>{day.breakfast}</td> */}
+                                            <td>
+                                                <Grid item xs={12} md={12} >
+                                                    <TextField
+                                                        id="outlined-multiline-static"
+                                                        // label="Breakfast"
+                                                        value={lunch[day.id - 1]}
+                                                        onChange={(e) => {
+                                                            const temp2 = [];
+                                                            for (var i = 0; i < lunch.length; i++) {
+                                                                if (day.id == i + 1) {
+                                                                    temp2.push(e.target.value);
+
+                                                                }
+                                                                else {
+                                                                    temp2.push(lunch[i]);
+                                                                }
                                                             }
-                                                        }
-                                                        setbreakfast(temp);
-                                                        
-                                                    }}
-                                                    multiline
-                                                    rows={6}
-                                                    sx={{ mb: 3, minWidth: "150px", width: "50%" }}
-                                                // defaultValue="Default Value"
-                                                />
-                                            </Grid>
-                                        </td>
+                                                            setlunch(temp2);
+                                                        }}
+                                                        multiline
+                                                        rows={6}
+                                                        sx={{ mb: 3, minWidth: "150px", width: "50%" }}
+                                                    // defaultValue="Default Value"
+                                                    />
+                                                </Grid>
+                                            </td>
+                                            <td>
+                                                <Grid item xs={12} md={12} >
+                                                    <TextField
+                                                        id="outlined-multiline-static"
+                                                        // label="Breakfast"
+                                                        value={snacks[day.id - 1]}
+                                                        onChange={(e) => {
+                                                            const temp3 = [];
+                                                            for (var i = 0; i < snacks.length; i++) {
+                                                                if (day.id == i + 1) {
+                                                                    temp3.push(e.target.value);
 
-                                        {/* <td>{day.breakfast}</td> */}
-                                        <td>
-                                            <Grid item xs={12} md={12} >
-                                                <TextField
-                                                    id="outlined-multiline-static"
-                                                    // label="Breakfast"
-                                                    value={lunch[day.id-1]}
-                                                    onChange={(e) => {
-                                                        const temp2=[];
-                                                        for(var i=0;i<lunch.length;i++)
-                                                        {
-                                                            if (day.id==i+1)
-                                                            {
-                                                                   temp2.push(e.target.value);
-
+                                                                }
+                                                                else {
+                                                                    temp3.push(snacks[i]);
+                                                                }
                                                             }
-                                                            else{
-                                                                temp2.push(lunch[i]);
+                                                            setsnacks(temp3);
+                                                        }}
+                                                        multiline
+                                                        rows={6}
+                                                        sx={{ mb: 3, minWidth: "150px", width: "50%" }}
+                                                    // defaultValue="Default Value"
+                                                    />
+                                                </Grid>
+                                            </td>
+                                            <td>
+                                                <Grid item xs={12} md={12} >
+                                                    <TextField
+                                                        id="outlined-multiline-static"
+                                                        // label="Breakfast"
+                                                        value={dinner[day.id - 1]}
+                                                        onChange={(e) => {
+                                                            const temp4 = [];
+                                                            for (var i = 0; i < dinner.length; i++) {
+                                                                if (day.id == i + 1) {
+                                                                    temp4.push(e.target.value);
+
+                                                                }
+                                                                else {
+                                                                    temp4.push(dinner[i]);
+                                                                }
                                                             }
-                                                        }
-                                                        setlunch(temp2);
-                                                    }}
-                                                    multiline
-                                                    rows={6}
-                                                    sx={{ mb: 3, minWidth: "150px", width: "50%" }}
-                                                // defaultValue="Default Value"
-                                                />
-                                            </Grid>
-                                        </td>
-                                        <td>
-                                            <Grid item xs={12} md={12} >
-                                                <TextField
-                                                    id="outlined-multiline-static"
-                                                    // label="Breakfast"
-                                                    value={snacks[day.id-1]}
-                                                    onChange={(e) => {
-                                                        const temp3=[];
-                                                        for(var i=0;i<snacks.length;i++)
-                                                        {
-                                                            if (day.id==i+1)
-                                                            {
-                                                                   temp3.push(e.target.value);
+                                                            setdinner(temp4);
+                                                        }}
+                                                        multiline
+                                                        rows={6}
+                                                        sx={{ mb: 3, minWidth: "150px", width: "50%" }}
+                                                    // defaultValue="Default Value"
+                                                    />
+                                                </Grid>
+                                            </td>
 
-                                                            }
-                                                            else{
-                                                                temp3.push(snacks[i]);
-                                                            }
-                                                        }
-                                                        setsnacks(temp3);
-                                                    }}
-                                                    multiline
-                                                    rows={6}
-                                                    sx={{ mb: 3, minWidth: "150px", width: "50%" }}
-                                                // defaultValue="Default Value"
-                                                />
-                                            </Grid>
-                                        </td>
-                                        <td>
-                                            <Grid item xs={12} md={12} >
-                                                <TextField
-                                                    id="outlined-multiline-static"
-                                                    // label="Breakfast"
-                                                    value={dinner[day.id-1]}
-                                                    onChange={(e) => {
-                                                        const temp4=[];
-                                                        for(var i=0;i<dinner.length;i++)
-                                                        {
-                                                            if (day.id==i+1)
-                                                            {
-                                                                   temp4.push(e.target.value);
+                                        </tr>
 
-                                                            }
-                                                            else{
-                                                                temp4.push(dinner[i]);
-                                                            }
-                                                        }
-                                                        setdinner(temp4);
-                                                    }}
-                                                    multiline
-                                                    rows={6}
-                                                    sx={{ mb: 3, minWidth: "150px", width: "50%" }}
-                                                // defaultValue="Default Value"
-                                                />
-                                            </Grid>
-                                        </td>
-                                        
-                                    </tr>
-
-                                )
+                                    )
 
 
 
-                            })
+                                })
 
-                        };
+                            };
 
 
-                    </table>
-                    <ButtonUI text="Update" sx={{mb:5}} clicked={updateIt} />
+                        </table>
+                        <ButtonUI text="Update" sx={{ mb: 5 }} clicked={updateIt} />
                     </div>
-                    
+
 
                 ) : (
                     <table id="customers">
