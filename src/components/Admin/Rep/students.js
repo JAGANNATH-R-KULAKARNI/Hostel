@@ -364,7 +364,8 @@ export default function Attendence(props) {
         <Grid item xs={12} sm={12}>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <div>
-              <button onClick={handlePrint}> Download</button>
+              {/* <button onClick={handlePrint}> Download</button> */}
+              <ButtonUI text="Download" clicked={handlePrint} />
             </div>
           </div>
         </Grid>
