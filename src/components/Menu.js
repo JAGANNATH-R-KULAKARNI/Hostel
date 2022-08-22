@@ -91,7 +91,13 @@ const Menu = () => {
         }
 
         console.log(tempf);
-        setfinal(tempf);
+        const tem =[];
+        for(var i=0;i<tempf.length;i++)
+        {
+            tem.push(tem[i]);
+        }
+        console.log(tem);
+        setfinal(tem);
         console.log("Now final");
         console.log(finalm);
         sendmenu();
