@@ -77,7 +77,7 @@ export default function HomeAdmin() {
         <br />
         <ButtonUI text="Download Attendence Info" />
         <br />
-        <ButtonUI text="Edit the Hotels Menu" />
+        <ButtonUI text="Edit the Hostels Menu" />
         <br />
         <ButtonUI text="Students Queries" />
         <br />
