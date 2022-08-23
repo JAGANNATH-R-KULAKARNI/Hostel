@@ -12,7 +12,7 @@ const StyledTableCell = styled(TableCell,{
     shouldForwardProp: (props) => props !== 'theme',
 })(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: "black",
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
@@ -46,54 +46,58 @@ export default function CustomizedTables(props) {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 550 }} aria-label="customized table">
+     
         <TableHead>
           <TableRow>
-            <StyledTableCell>Detail properties</StyledTableCell>
-            <StyledTableCell align="right">Details</StyledTableCell>
             
+            <StyledTableCell>Detail properties</StyledTableCell>
+          
+            <StyledTableCell align="right">Details</StyledTableCell>
+           
           </TableRow>
         </TableHead>
+      
         <TableBody>
-          
+        <StyledTableRow >
               <StyledTableCell>EMAIL</StyledTableCell>
               <StyledTableCell align="right">{props.mail}</StyledTableCell>
-                
+        </StyledTableRow> 
         </TableBody>
         <TableBody>
-          
+        <StyledTableRow >
           <StyledTableCell>Phone number</StyledTableCell>
           <StyledTableCell align="right">+91 {props.phno}</StyledTableCell>
-            
+          </StyledTableRow >
     </TableBody>
     <TableBody>
-          
+    <StyledTableRow >
           <StyledTableCell>Hostel fees 1st year</StyledTableCell>
           <StyledTableCell align="right">₹{props.hf1}</StyledTableCell>
-            
+          </StyledTableRow > 
     </TableBody>
     <TableBody>
-          
+    <StyledTableRow >
           <StyledTableCell>Hostel fees 2nd year</StyledTableCell>
           <StyledTableCell align="right">₹{props.hf2}</StyledTableCell>
-            
+          </StyledTableRow >  
     </TableBody>
     <TableBody>
-          
+    <StyledTableRow >
           <StyledTableCell>Hostel fees 3rd year</StyledTableCell>
           <StyledTableCell align="right">₹{props.hf3}</StyledTableCell>
-            
+          </StyledTableRow >  
     </TableBody>
     <TableBody>
-          
+    <StyledTableRow >
           <StyledTableCell>Hostel fees 4th year</StyledTableCell>
           <StyledTableCell align="right">₹{props.hf4}</StyledTableCell>
-            
+          </StyledTableRow >  
     </TableBody>
     <TableBody>
-          
+    <StyledTableRow >
           <StyledTableCell>Constant Depsoit</StyledTableCell>
           <StyledTableCell align="right">₹{props.cd}</StyledTableCell>
-            
+          </StyledTableRow >   
     </TableBody>
       </Table>
     </TableContainer>

@@ -15,7 +15,6 @@ import MenuUI from "./Menu";
 import AttendenceUI from "./Attendence";
 
 
-import AttendenceUI from "./Attendence";
 import ReportUI from "./Report";
 
 
