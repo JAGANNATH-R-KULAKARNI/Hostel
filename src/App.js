@@ -3,7 +3,7 @@ import FooterUI from "./components/Footer";
 import HomeUI from "./components/Home";
 import QueryUI from "./components/Query";
 import MenuUI from "./components/Menu";
-import DisplayQueryUI from "./components/DisplayQuery";
+
 import {
   BrowserRouter as Router,
   Navigate,
@@ -87,12 +87,12 @@ function App() {
       <Router>
         <NavBarUI logOut={logOut} />
         <Routes>
-          {/* <Route path="/" element={<HomeUI />} />
+          <Route path="/" element={<HomeUI />} />
           <Route path="/signin" element={<SignInUI />} />
           <Route path="/admin" element={<AdminUI />} />
           <Route path="/query" element={<QueryUI />} />
-          <Route path="/menu" element={<MenuUI />} /> */}
-          <Route path="/display-query" element={<DisplayQueryUI />} />
+          <Route path="/menu" element={<MenuUI />} />
+
         </Routes>
         <SFooter />
         {/* <main className="app_bro" style={{ marginTop: "-17px" }}>

@@ -9,6 +9,7 @@ import RegisterUI from "./Register";
 import AnnounceUI from "./Announce";
 import AttendenceUI from "./Attendence";
 import ReportUI from "./Report";
+import DisplayQuery from "./DisplayQuery";
 
 export default function HomeAdmin() {
   const m1 = useMediaQuery("(min-width:600px)");
@@ -18,6 +19,7 @@ export default function HomeAdmin() {
   const [announce, setAnnounce] = React.useState(false);
   const [attendence, setAttendence] = React.useState(false);
   const [report, setReport] = React.useState(false);
+  const [displayQuery, setDisplayQuery] = React.useState(false);
 
   async function fetchTheProfile() {
     const data = await supabase.auth.user();
@@ -82,7 +84,7 @@ export default function HomeAdmin() {
         <br />
         <ButtonUI text="Edit the Hostels Menu" />
         <br />
-        <ButtonUI text="Students Queries" />
+        <ButtonUI text="Students Queries" clicked={() => setDisplayQuery(!displayQuery)} />
         <br />
         <ButtonUI text="Students Details" />
         <br />
