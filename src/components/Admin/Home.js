@@ -60,7 +60,7 @@ export default function HomeAdmin() {
       {attendence ? (
         <AttendenceUI registerHandler={() => setAttendence(!attendence)} />
       ) : null}
-      {report ? <ReportUI registerHandler={() => setReport(!report)} /> : null}
+      {report ? (<ReportUI registerHandler={() => setReport(!report)} />) : null}
 
       {dquery ? (
         <DisplayQueryUI registerHandler={() => setDisplayQuery(!dquery)} />

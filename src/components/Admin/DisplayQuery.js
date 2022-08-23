@@ -22,6 +22,7 @@ const DisplayQuery = () => {
         queryFetch();
     },[]);
     return (
+        
         <center>
 
             <table id="customers">
