@@ -84,7 +84,7 @@ useEffect(() => {
             }}
           >
             {" "}
-            Details
+            Queries of Students
           </h1>
           <div style={{ marginTop: m1 ? "-15px" : "-10px" }}>
             <Divider />
