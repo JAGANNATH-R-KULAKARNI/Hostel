@@ -8,6 +8,7 @@ import { useLocation } from "react-router-dom";
 import RegisterUI from "./Register";
 import AnnounceUI from "./Announce";
 import AttendenceUI from "./Attendence";
+import ReportUI from "./Report";
 
 export default function HomeAdmin() {
   const m1 = useMediaQuery("(min-width:600px)");
@@ -16,6 +17,7 @@ export default function HomeAdmin() {
   const [register, setRegister] = React.useState(false);
   const [announce, setAnnounce] = React.useState(false);
   const [attendence, setAttendence] = React.useState(false);
+  const [report, setReport] = React.useState(false);
 
   async function fetchTheProfile() {
     const data = await supabase.auth.user();
@@ -55,6 +57,7 @@ export default function HomeAdmin() {
       {attendence ? (
         <AttendenceUI registerHandler={() => setAttendence(!attendence)} />
       ) : null}
+      {report ? <ReportUI registerHandler={() => setReport(!report)} /> : null}
 
       <div style={{ marginTop: m1 ? "-40px" : "-20px" }}>
         <Divider />
@@ -75,7 +78,7 @@ export default function HomeAdmin() {
           clicked={() => setAnnounce(!announce)}
         />
         <br />
-        <ButtonUI text="Download Attendence Info" />
+        <ButtonUI text="Attendence Report" clicked={() => setReport(!report)} />
         <br />
         <ButtonUI text="Edit the Hostels Menu" />
         <br />

@@ -1,0 +1,14 @@
+table,
+th,
+td,
+tr {
+  border: 1px solid white;
+  font-size: 10px;
+}
+
+th {
+  padding-left: 10px;
+  padding-right: 10px;
+  max-width: 25%;
+  min-width: 25%;
+}
