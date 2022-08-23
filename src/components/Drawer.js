@@ -74,7 +74,7 @@ export default function TemporaryDrawer(props) {
       </List>
       <Divider />
       <List>
-        {["Account", "Announcements"].map((text, index) => (
+        {["Account", "Announcements","Menu","Query"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               {/* <ListItemIcon>

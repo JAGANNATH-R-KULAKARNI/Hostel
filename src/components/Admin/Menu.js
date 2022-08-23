@@ -24,6 +24,7 @@ export default function FullScreenDialog(props) {
   const m1 = useMediaQuery("(min-width:600px)");
 
 
+
   const [name, setName] = React.useState("");
   const [usn, setUSN] = React.useState("");
   const [yoj, setYoj] = React.useState("");
@@ -37,6 +38,7 @@ export default function FullScreenDialog(props) {
   const [hf3, setHF3] = React.useState("");
   const [hf4, setHF4] = React.useState("");
   const [cd, setCD] = React.useState("");
+
 
 
   const handleClose = () => {
@@ -76,10 +78,7 @@ export default function FullScreenDialog(props) {
           <BodyUI />
 
 
-          <BodyUI />
-
-
-          <BodyUI />
+          
 
         </div>
       </Dialog>

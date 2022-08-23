@@ -7,15 +7,17 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import RegisterUI from "./Register";
 import AnnounceUI from "./Announce";
+import AttendenceUI from "./Attendence";
+import ReportUI from "./Report";
+import DisplayQueryUI  from "./DisplayQuery1";
+
 
 import DetailsUI from "./Details1";
 
 import MenuUI from "./Menu";
 
-import AttendenceUI from "./Attendence";
 
 
-import ReportUI from "./Report";
 
 
 export default function HomeAdmin() {
@@ -25,12 +27,18 @@ export default function HomeAdmin() {
   const [register, setRegister] = React.useState(false);
   const [announce, setAnnounce] = React.useState(false);
 
+
   const [menu, setMenu] = React.useState(false);
   const [attendence, setAttendence] = React.useState(false);
   const [details, setDetails] = React.useState(false);
 
 
   const [report, setReport] = React.useState(false);
+
+
+ // const [attendence, setAttendence] = React.useState(false);
+  //const [report, setReport] = React.useState(false);
+  const [dquery,setDisplayQuery] = React.useState(false);
 
 
   async function fetchTheProfile() {
@@ -69,6 +77,7 @@ export default function HomeAdmin() {
       ) : null}
 
 
+
       {menu ? (
         <MenuUI registerHandler={() => setMenu(!menu)} />
         ) : null}
@@ -83,11 +92,15 @@ export default function HomeAdmin() {
 
       ) : null}
 
+
       {attendence ? (
         <AttendenceUI registerHandler={() => setAttendence(!attendence)} />
       ) : null}
-      {report ? <ReportUI registerHandler={() => setReport(!report)} /> : null}
+      {report ? (<ReportUI registerHandler={() => setReport(!report)} />) : null}
 
+      {dquery ? (
+        <DisplayQueryUI registerHandler={() => setDisplayQuery(!dquery)} />
+      ) : null}
 
       <div style={{ marginTop: m1 ? "-40px" : "-20px" }}>
         <Divider />
@@ -117,10 +130,14 @@ export default function HomeAdmin() {
         <br />
         <ButtonUI text="Attendence Report" clicked={() => setReport(!report)} />
         <br />
+
         <ButtonUI text="Edit the Hotels Menu" 
              clicked={() => setMenu(!menu)}/>
+
+       
+
         <br />
-        <ButtonUI text="Students Queries" />
+        <ButtonUI text="Students Queries" clicked={() => setDisplayQuery(!dquery)}/>
         <br />
         <ButtonUI text="Students Details" 
             clicked={() => setDetails(!details)}/>
