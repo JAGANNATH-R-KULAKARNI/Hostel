@@ -14,7 +14,7 @@ import DisplayQueryUI  from "./DisplayQuery1";
 
 import DetailsUI from "./Details1";
 
-import MenuUI from "./Menu";
+import UpdateUI from "./Update";
 
 
 
@@ -28,7 +28,7 @@ export default function HomeAdmin() {
   const [announce, setAnnounce] = React.useState(false);
 
 
-  const [menu, setMenu] = React.useState(false);
+  const [update, setUpdate] = React.useState(false);
   const [attendence, setAttendence] = React.useState(false);
   const [details, setDetails] = React.useState(false);
 
@@ -78,8 +78,8 @@ export default function HomeAdmin() {
 
 
 
-      {menu ? (
-        <MenuUI registerHandler={() => setMenu(!menu)} />
+      {update ? (
+        <UpdateUI registerHandler={() => setUpdate(!update)} />
         ) : null}
 
       {attendence ? (
@@ -131,8 +131,8 @@ export default function HomeAdmin() {
         <ButtonUI text="Attendence Report" clicked={() => setReport(!report)} />
         <br />
 
-        <ButtonUI text="Edit the Hotels Menu" 
-             clicked={() => setMenu(!menu)}/>
+        <ButtonUI text="Update Details" 
+             clicked={() => setUpdate(!update)}/>
 
        
 

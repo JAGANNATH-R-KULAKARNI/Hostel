@@ -98,6 +98,8 @@ export default function CustomizedDialogs(props) {
               mail={props.email}
               usn={props.usn}
               phno={props.phno}
+              yoj={props.yoj}
+              room={props.room}
               hf1={props.hf1}
               hf2={props.hf2}
               hf3={props.hf3}
