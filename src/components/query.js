@@ -55,11 +55,12 @@ export default function MultipleSelect() {
     const [name, setName] = React.useState("");
     const [room, setRoom] = React.useState("");
     const [usn, setUsn] = React.useState("");
+    const [building, setBuilding] = React.useState("NIEMH");
 
 
     async function queryPush() {
 
-        if (usn.length == 0 || name.length == 0 || reason.length == 0 || brief.length == 0 || room.length == 0) {
+        if (usn.length == 0 || name.length == 0 || reason.length == 0 || brief.length == 0 || room.length == 0 || building.length == 0) {
             alert("Please fill all fields");
             return;
         }
@@ -70,7 +71,8 @@ export default function MultipleSelect() {
                 name: name,
                 reason: reason,
                 room: room,
-                brief: brief
+                brief: brief,
+                building: building
             },
         ]);
         if (data) {
@@ -80,6 +82,7 @@ export default function MultipleSelect() {
             setRoom("");
             setReason("");
             setBrief("");
+            setBuilding("");
         }
         if (error) {
             console.log(error);
@@ -132,6 +135,24 @@ export default function MultipleSelect() {
                                 }}
                                 sx={{ mb: 3, minWidth: "200px", width: "50%" }}
                             />
+                        </Grid>
+                        <Grid item xs={12} md={12} >
+                            {/* <InputLabel id="demo-simple-select-label">Reason</InputLabel> */}
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={building}
+                                onChange={(e) => {
+                                    setBuilding(e.target.value);
+                                }}
+                                sx={{ mb: 3, minWidth: "200px", width: "50%" }}
+                            >
+                                <MenuItem value={"NIEMH"}>NIEMH</MenuItem>
+                                <MenuItem value={"Yuvika"}>Yuvika</MenuItem>
+                                <MenuItem value={"Yeshvika"}>Yeshvika</MenuItem>
+
+
+                            </Select>
                         </Grid>
                         <Grid item xs={12} md={12} >
                             {/* <InputLabel id="demo-simple-select-label">Reason</InputLabel> */}
