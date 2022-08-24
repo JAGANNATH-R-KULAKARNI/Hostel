@@ -9,7 +9,15 @@ import RegisterUI from "./Register";
 import AnnounceUI from "./Announce";
 import AttendenceUI from "./Attendence";
 import ReportUI from "./Report";
-import DisplayQueryUI  from "./DisplayQuery";
+import DisplayQueryUI  from "./DisplayQuery1";
+
+
+import DetailsUI from "./Details1";
+
+import MenuUI from "./Menu";
+
+
+
 
 
 export default function HomeAdmin() {
@@ -18,9 +26,20 @@ export default function HomeAdmin() {
   const location = useLocation();
   const [register, setRegister] = React.useState(false);
   const [announce, setAnnounce] = React.useState(false);
+
+
+  const [menu, setMenu] = React.useState(false);
   const [attendence, setAttendence] = React.useState(false);
+  const [details, setDetails] = React.useState(false);
+
+
   const [report, setReport] = React.useState(false);
+
+
+ // const [attendence, setAttendence] = React.useState(false);
+  //const [report, setReport] = React.useState(false);
   const [dquery,setDisplayQuery] = React.useState(false);
+
 
   async function fetchTheProfile() {
     const data = await supabase.auth.user();
@@ -57,6 +76,23 @@ export default function HomeAdmin() {
         <AnnounceUI registerHandler={() => setAnnounce(!announce)} />
       ) : null}
 
+
+
+      {menu ? (
+        <MenuUI registerHandler={() => setMenu(!menu)} />
+        ) : null}
+
+      {attendence ? (
+        <AttendenceUI registerHandler={() => setAttendence(!attendence)} />
+
+      ) : null}
+
+       {details ? (
+        <DetailsUI registerHandler={() => setDetails(!details)} />
+
+      ) : null}
+
+
       {attendence ? (
         <AttendenceUI registerHandler={() => setAttendence(!attendence)} />
       ) : null}
@@ -75,10 +111,17 @@ export default function HomeAdmin() {
           clicked={() => setRegister(!register)}
         />
         <br />
+
+
+        
+
+
         <ButtonUI
           text="Take The Attendence"
           clicked={() => setAttendence(!attendence)}
         />
+
+
         <br />
         <ButtonUI
           text="Make An Announcement"
@@ -87,11 +130,17 @@ export default function HomeAdmin() {
         <br />
         <ButtonUI text="Attendence Report" clicked={() => setReport(!report)} />
         <br />
-        <ButtonUI text="Edit the Hostels Menu" />
+
+        <ButtonUI text="Edit the Hotels Menu" 
+             clicked={() => setMenu(!menu)}/>
+
+       
+
         <br />
         <ButtonUI text="Students Queries" clicked={() => setDisplayQuery(!dquery)}/>
         <br />
-        <ButtonUI text="Students Details" />
+        <ButtonUI text="Students Details" 
+            clicked={() => setDetails(!details)}/>
         <br />
         <br />
       </div>

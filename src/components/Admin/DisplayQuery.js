@@ -6,7 +6,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import ButtonUI from "../Button2";
-
+import NavBarUI from "../NavBar2";
 
 
 const DisplayQuery = () => {
@@ -57,7 +57,7 @@ const DisplayQuery = () => {
 
 
         </center >
-    )
+    );
 }
 
 export default DisplayQuery

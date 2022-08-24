@@ -41,67 +41,57 @@ export default function FullScreenDialog(props) {
   const [open, setOpen] = React.useState(true);
   const m1 = useMediaQuery("(min-width:600px)");
 
-  const [heading, setHeading] = React.useState("");
-  const [description, setDescription] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [id, setID] = React.useState("");
+  const [room, setRoom] = React.useState("");
 
-  const handleClose = () => {
-    setOpen(false);
-    props.registerHandler();
-  };
+  function handleClose() {
+        setOpen(false);
+        props.registerHandler();
+    }
 
   const handleSubmit = () => {
     alert("submitted");
   };
-  async function announcementPush() {
-    if (heading.length == 0 || description.length == 0) {
-      alert("Please fill all fields");
+
+  async function compare() {
+    if (id.length == 0 && room.length == 0 && email.length == 0)  {
+      alert("Please fill atleast one field");
       return;
     }
-    const { data, error } = await supabase.from("announcements").insert([
-      {
-        heading: heading,
-        description: description,
-      },
-    ]);
+    // const { data, error } = await supabase.from("announcements").insert([
+    //   {
+    //     heading: heading,
+    //     description: description,
+    //   },
+    // ]);
+    //const att1 = await supabase.from("rooms").select("*");
+    const att2 = await supabase.from("students").select("*");
+    console.log("ATTTTTT");
+    console.log(att2);
+     
+    var temp;
+    for (var i = 0; i < att2.data.length; i++) {
+        if (att2.data[i]["email"] == email) {
+            temp = att2.data[i]["name"];
+            alert(temp);
+            break;
+        }
+      }
+    
+    // if (data) {
+    //   alert("Successfully announced");
+    //   setHeading("");
+    //   setDescription("");
+    // }
 
-    if (data) {
-      alert("Successfully announced");
-      setHeading("");
-      setDescription("");
-    }
-
-    if (error) {
-      console.log(error);
-      alert("some error has occured");
-    }
+    // if (error) {
+    //   console.log(error);
+    //   alert("some error has occured");
+    // }
   }
 
 
-
-  async function announcementPush(){
-        if(heading.length==0 || description.length==0){
-         alert("Please fill all fields");
-        return;
-        }
-        const { data, error } = await supabase.from("announcements").insert([
-         { 
-                  heading:heading,
-                  description:description
-                }, 
-              ]); 
-           
-              if (data) { 
-                alert("Successfully announced"); 
-                
-                setHeading("");
-                setDescription("");
-              } 
-           
-              if (error) { 
-                console.log(error); 
-                alert("some error has occured"); 
-              } 
-        }
   
   
 
@@ -126,7 +116,7 @@ export default function FullScreenDialog(props) {
             }}
           >
             {" "}
-            Announcement
+            Student Details
           </h1>
           <div style={{ marginTop: m1 ? "-15px" : "-10px" }}>
             <Divider />
@@ -140,32 +130,64 @@ export default function FullScreenDialog(props) {
                 <Grid container spacing={3}>
                   <Grid item xs={12} sm={12}>
                     <TextField
-                      id="heading"
-                      name="heading"
-                      label="Heading"
+                      id="id"
+                      name="id"
+                      label="Search Id"
                       fullWidth
                       autoComplete="given-name"
-                      variant="standard"
-                      placeholder="Subject..."
-                      value={heading}
+                     
+                      placeholder="Enter ID "
+                      value={id}
                       onChange={(e) => {
-                        setHeading(e.target.value);
+                        setID(e.target.value);
+                      }}
+                    />
+                  </Grid>
+                 
+                   <div  style={{
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                }}>
+                      or
+                   </div>
+
+                   <Grid item xs={12} sm={12}>
+                    <TextField
+                      id="room_no"
+                      name="room_no"
+                      label="Search Room number"
+                      fullWidth
+                      autoComplete="given-name"
+                     
+                      placeholder="Enter Room number "
+                      value={room}
+                      onChange={(e) => {
+                        setRoom(e.target.value);
                       }}
                     />
                   </Grid>
 
+                  <div  style={{
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                }}>
+                      or
+                   </div>
+                
                   <Grid item xs={12} sm={12}>
                     <TextField
-                      id="description"
-                      name="description"
-                      label="Announcement"
+                      id="email"
+                      name="email"
+                      label="Search Email"
                       fullWidth
-                      multiline
-                      rows={8}
-                      placeholder="Announce"
-                      value={description}
+                      
+                      
+                      placeholder="Enter Email"
+                      value={email}
                       onChange={(e) => {
-                        setDescription(e.target.value);
+                        setEmail(e.target.value);
                       }}
                     />
                   </Grid>
@@ -189,9 +211,9 @@ export default function FullScreenDialog(props) {
                     borderRadius: "10px",
                     minWidth: "200px",
                   }}
-                  onClick={announcementPush}
+                  onClick={compare}
                 >
-                  Submit
+                  Search
                 </Button>
               </div>
             </Paper>
