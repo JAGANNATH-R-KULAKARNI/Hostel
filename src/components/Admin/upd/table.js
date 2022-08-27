@@ -70,13 +70,6 @@ export default function CustomizedTables(props) {
           </StyledTableRow >
     </TableBody>
     <TableBody>
-        <StyledTableRow >
-          <StyledTableCell>Year joined</StyledTableCell>
-          <StyledTableCell align="right">{props.yoj}</StyledTableCell>
-          </StyledTableRow >
-    </TableBody>
-    
-    <TableBody>
     <StyledTableRow >
           <StyledTableCell>Hostel fees 1st year</StyledTableCell>
           <StyledTableCell align="right">₹{props.hf1}</StyledTableCell>
@@ -102,7 +95,7 @@ export default function CustomizedTables(props) {
     </TableBody>
     <TableBody>
     <StyledTableRow >
-          <StyledTableCell>Caution Depsoit</StyledTableCell>
+          <StyledTableCell>Constant Depsoit</StyledTableCell>
           <StyledTableCell align="right">₹{props.cd}</StyledTableCell>
           </StyledTableRow >   
     </TableBody>

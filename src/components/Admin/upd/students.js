@@ -228,7 +228,6 @@ export default function Attendence(props) {
                     mail={item["metaData"]["email"]}
                     phno={item["metaData"]["phno"]}
                     yoj={item["metaData"]["year_joined"]}
-                    room={item["metaData"]["room_id"]}
                     hf1={item["metaData"]["hf1"]}
                     hf2={item["metaData"]["hf2"]}
                     hf3={item["metaData"]["hf3"]}
