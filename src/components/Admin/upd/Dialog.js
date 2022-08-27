@@ -230,12 +230,12 @@ export default function CustomizedDialogs(props) {
                     <TextField
                       id="description"
                       name="description"
-                      label="Hostel fees 3rd year"
+                      label="Hostel fees 4th year"
                       fullWidth
                       
                       value={value7}
                       onChange={handleChange7}
-                      placeholder="Hostel fees 3rd year"
+                      placeholder="Hostel fees 4th year"
                      
                     />
                   </Grid>
