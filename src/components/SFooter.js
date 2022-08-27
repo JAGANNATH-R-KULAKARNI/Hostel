@@ -16,11 +16,9 @@ export default function SFooter  ()  {
 
                         <a href="/Query">Queries</a>
 
-                        <a href="#">Attendance</a>
+                        <a href="/menu">Menu</a>
 
-                        <a href="#">Menu</a>
-
-                        <a href="#">Contact</a>
+                        <a href="tel:+919886681489">Contact</a>
                     </p>
 
                     <p class="footer-links">

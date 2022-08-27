@@ -264,7 +264,7 @@ const Menu = () => {
 
                             }}
                             // sx={{ mb: 3, minWidth: "200px", width: "50%" }}
-                            checked={updateIt}
+                            onClick={updateIt}
                         >
                             Update
                         </Button>
