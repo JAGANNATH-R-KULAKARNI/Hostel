@@ -15,13 +15,16 @@ import NavBarUI from "../NavBar2";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import BodyUI from "./Rep/main";
 
+
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
+
 export default function FullScreenDialog(props) {
   const [open, setOpen] = React.useState(true);
   const m1 = useMediaQuery("(min-width:600px)");
+
 
   const [name, setName] = React.useState("");
   const [usn, setUSN] = React.useState("");
