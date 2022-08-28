@@ -119,13 +119,28 @@ export default function Checkout() {
     ]);
 
     if (data) {
-      alert("Successfully Registered");
-      setActiveStep(activeStep + 1);
+      const updateRooms = await supabase
+        .from("rooms")
+        .update({ occupied: roomInfo[0] - roomInfo[1] + 1 })
+        .match({ id: roomId });
+
+      console.log("Here I am");
+      console.log(updateRooms);
+
+      if (updateRooms.data) {
+        console.log(updateRooms.data);
+        alert("Successfully Registered");
+        setActiveStep(activeStep + 1);
+      }
+
+      if (updateRooms.error) {
+        alert("Some Error Occured");
+      }
     }
 
     if (error) {
       console.log(error);
-      alert("Some Error occured");
+      alert(error.message);
     }
   }
 

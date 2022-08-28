@@ -121,9 +121,9 @@ export default function Attendence(props) {
     const bl = [];
 
     for (var i = 0; i < roomsData.length; i++) {
-      if (roomsData[i]["capacity"] - roomsData[i]["occupied"] <= 0) {
-        continue;
-      }
+      // if (roomsData[i]["capacity"] - roomsData[i]["occupied"] <= 0) {
+      //   continue;
+      // }
 
       if (
         block1 == roomsData[i]["block"] &&
