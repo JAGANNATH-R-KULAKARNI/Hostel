@@ -34,8 +34,9 @@ export default function AlertDialog(props) {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            "{props.email}" is not registered. Please visit the hostels'
-            administration office to register your email
+            Hello "{props.name}", your email "{props.email}" is not registered.
+            Please visit the hostels' administration office to register your
+            email
           </DialogContentText>
         </DialogContent>
         <DialogActions>
