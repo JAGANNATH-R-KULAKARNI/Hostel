@@ -4,10 +4,13 @@ import background from "./images/Boys_hostel.jpg";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { supabase } from "../Supabase";
+import AlertUI from "./Alert";
 
-export default function Home() {
+export default function Home(props) {
   const navigate = useNavigate();
   const location = useLocation();
+  const [alertModal, setAlertModal] = React.useState(false);
+  const [email, setEmail] = React.useState("");
 
   async function fetchTheProfile() {
     const data = await supabase.auth.user();
@@ -15,7 +18,18 @@ export default function Home() {
     if (data) {
       console.log(data);
       if (data.email == process.env.REACT_APP_ADMIN2) navigate("/admin");
-      else navigate("/");
+      // else navigate("/");
+      console.log(data["email"]);
+      const studentData = await supabase
+        .from("students")
+        .select("*")
+        .eq("email", data["email"]);
+      console.log(studentData);
+
+      if (studentData.data.length != 1) {
+        setEmail(data["email"]);
+        setAlertModal(true);
+      }
     } else {
       navigate("/signin");
     }
@@ -49,6 +63,13 @@ export default function Home() {
             <li className="ul_bro_four"></li>
           </ul>
         </div>
+        {alertModal ? (
+          <AlertUI
+            closeAlertModal={() => setAlertModal(!alertModal)}
+            email={email}
+            logOut={props.logOut}
+          />
+        ) : null}
       </main>
     </div>
   );
