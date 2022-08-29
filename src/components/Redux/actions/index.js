@@ -4,3 +4,10 @@ export const openAnnouncements = () => {
     payload: 1,
   };
 };
+
+export const noOfNotifications = () => {
+  return {
+    type: "NO_OF_NOTIFICATIONS",
+    payload: 1,
+  };
+};

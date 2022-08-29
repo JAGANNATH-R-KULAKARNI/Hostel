@@ -12,6 +12,7 @@ import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import { useSelector, useDispatch } from "react-redux";
 import { openAnnouncements } from "../Redux/actions/index";
 import NotificationsUI from "./Notifications";
+import { supabase } from "../../Supabase";
 
 const drawerBleeding = 56;
 
@@ -47,6 +48,26 @@ function SwipeableEdgeDrawer(props) {
     dispatch(openAnnouncements());
   };
 
+  const updateNoti = async () => {
+    console.log("broooooooooooooooooooo");
+    console.log(props.user);
+    console.log(props.announcements);
+    const notiUpdated = await supabase
+      .from("cache")
+      .update({ notification_status: props.announcements.length })
+      .match({ email: props.user["email"] });
+
+    if (notiUpdated.data) {
+      console.log("Successfully updated notifications");
+      toggleDrawer(false);
+    }
+
+    if (notiUpdated.error) {
+      console.log(notiUpdated.error.message);
+      toggleDrawer(false);
+    }
+  };
+
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
@@ -56,7 +77,7 @@ function SwipeableEdgeDrawer(props) {
       <Global
         styles={{
           ".MuiDrawer-root > .MuiPaper-root": {
-            height: `calc(80% - ${drawerBleeding}px)`,
+            height: `calc(75% - ${drawerBleeding}px)`,
             overflow: "visible",
           },
         }}
@@ -85,15 +106,46 @@ function SwipeableEdgeDrawer(props) {
             visibility: "visible",
             right: 0,
             left: 0,
+            borderTopLeftRadius: "20px",
+            borderTopRightRadius: "20px",
           }}
         >
           <Puller />
           <Typography
-            sx={{ p: 2, color: "text.secondary", textAlign: "center" }}
+            sx={{
+              p: 2,
+              color: "text.secondary",
+              textAlign: "center",
+              // backgroundColor: "#D5A418",
+              backgroundColor: "#20B2AA",
+              color: "white",
+              borderTopLeftRadius: "20px",
+              borderTopRightRadius: "20px",
+              fontWeight: 700,
+            }}
           >
-            Notifications
+            {open ? (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  marginTop: "10px",
+                }}
+              >
+                <Button
+                  variant="contained"
+                  style={{ backgroundColor: "black" }}
+                  onClick={updateNoti}
+                >
+                  Mark as Read
+                </Button>
+              </div>
+            ) : (
+              "Notifications"
+            )}
           </Typography>
         </StyledBox>
+        <br />
         <StyledBox
           sx={{
             px: 2,
@@ -102,7 +154,7 @@ function SwipeableEdgeDrawer(props) {
             overflow: "auto",
           }}
         >
-          <NotificationsUI />
+          <NotificationsUI data={props.announcements} user={props.user} />
         </StyledBox>
       </SwipeableDrawer>
     </Root>
