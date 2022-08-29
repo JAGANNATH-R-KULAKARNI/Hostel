@@ -137,7 +137,11 @@ export default function Home(props) {
       <div>{userDetails ? <QueriesUI user={userDetails} /> : null}</div>
       <br />
       {announcements && userDetails ? (
-        <AnnouncementsUI announcements={announcements} user={userDetails} />
+        <AnnouncementsUI
+          announcements={announcements}
+          user={userDetails}
+          notiState={notiState}
+        />
       ) : null}
     </div>
   );

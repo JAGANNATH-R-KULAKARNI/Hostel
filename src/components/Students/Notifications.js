@@ -21,6 +21,8 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import logo from "../images/Logo.png";
 import { supabase } from "../../Supabase";
 import Button from "@mui/material/Button";
+import Alert from "@mui/material/Alert";
+import Divider from "@mui/material/Divider";
 
 export default function NotificationsCompoenent(props) {
   const updateNoti = async () => {
@@ -49,8 +51,29 @@ export default function NotificationsCompoenent(props) {
         <Paper square sx={{ pb: "50px", marginTop: "-10px" }}>
           <List sx={{ mb: 2 }}>
             {props.data &&
-              props.data.map((item) => (
+              props.data.map((item, index) => (
                 <React.Fragment key={item["created_at"]}>
+                  {props.notiState > 0 && index == 0 ? (
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                      <Alert severity="info" style={{ width: "55%" }}>
+                        New Messages
+                      </Alert>
+                    </div>
+                  ) : null}
+                  {props.notiState == index ? (
+                    <div style={{ height: "30px" }}>
+                      <Divider />
+                    </div>
+                  ) : null}
+
+                  {props.notiState == index ? (
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                      <br />
+                      <Alert severity="warning" style={{ width: "55%" }}>
+                        Old Messages
+                      </Alert>
+                    </div>
+                  ) : null}
                   <ListSubheader sx={{ bgcolor: "background.paper" }}>
                     {item["created_at"].substr(0, 10)}
                   </ListSubheader>

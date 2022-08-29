@@ -154,7 +154,11 @@ function SwipeableEdgeDrawer(props) {
             overflow: "auto",
           }}
         >
-          <NotificationsUI data={props.announcements} user={props.user} />
+          <NotificationsUI
+            data={props.announcements}
+            user={props.user}
+            notiState={props.notiState}
+          />
         </StyledBox>
       </SwipeableDrawer>
     </Root>
