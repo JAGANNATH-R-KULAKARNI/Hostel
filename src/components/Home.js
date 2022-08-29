@@ -11,6 +11,7 @@ import RoomUI from "./Students/Room";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import HotelImagesUI from "./Students/HotelImages";
 import QueriesUI from "./Students/Queries";
+import AnnouncementsUI from "./Students/Drawer";
 
 export default function Home(props) {
   const navigate = useNavigate();
@@ -31,8 +32,9 @@ export default function Home(props) {
         .select("*,rooms(*)")
         .eq("email", data["email"]);
       console.log(data);
-      setGoogleData(data);
+
       if (data.email == process.env.REACT_APP_ADMIN2) navigate("/admin");
+      setGoogleData(data);
       // else navigate("/");
       console.log(data["email"]);
       const studentData = await supabase
@@ -101,6 +103,7 @@ export default function Home(props) {
       {m1 ? <br /> : null}
       <div>{userDetails ? <QueriesUI user={userDetails} /> : null}</div>
       <br />
+      <AnnouncementsUI />
     </div>
   );
 }
