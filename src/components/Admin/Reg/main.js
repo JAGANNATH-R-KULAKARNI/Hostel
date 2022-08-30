@@ -66,11 +66,15 @@ export default function Checkout() {
 
   const [control, setControl] = React.useState(false);
 
+  const [noti, setNoti] = React.useState(null);
+
   async function fetchRooms() {
     const { data, error } = await supabase.from("rooms").select("*");
+    const forNoti = await supabase.from("announcements").select("*");
 
     if (data) {
       setRoomsData(data);
+      if (forNoti.data) setNoti(forNoti.data);
       const temp = {};
       const temp1 = [];
       for (var i = 0; i < data.length; i++) {
@@ -91,6 +95,10 @@ export default function Checkout() {
   }
 
   async function RegisterStudent() {
+    if (!noti) {
+      return;
+    }
+
     if (
       hf1.length == 0 ||
       hf2.length == 0 ||
@@ -118,14 +126,40 @@ export default function Checkout() {
       },
     ]);
 
+    var forCache = null;
+
     if (data) {
-      alert("Successfully Registered");
-      setActiveStep(activeStep + 1);
+      forCache = await supabase.from("cache").insert([
+        {
+          email: email,
+          notification_status: noti.length,
+        },
+      ]);
+    }
+
+    if (forCache.data) {
+      const updateRooms = await supabase
+        .from("rooms")
+        .update({ occupied: roomInfo[0] - roomInfo[1] + 1 })
+        .match({ id: roomId });
+
+      console.log("Here I am");
+      console.log(updateRooms);
+
+      if (updateRooms.data) {
+        console.log(updateRooms.data);
+        alert("Successfully Registered");
+        setActiveStep(activeStep + 1);
+      }
+
+      if (updateRooms.error) {
+        alert("Some Error Occured");
+      }
     }
 
     if (error) {
       console.log(error);
-      alert("Some Error occured");
+      alert(error.message);
     }
   }
 

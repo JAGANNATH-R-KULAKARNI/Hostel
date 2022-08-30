@@ -87,7 +87,7 @@ function App() {
       <Router>
         <NavBarUI logOut={logOut} />
         <Routes>
-          <Route path="/" element={<HomeUI />} />
+          <Route path="/" element={<HomeUI logOut={logOut} />} />
           <Route path="/signin" element={<SignInUI />} />
           <Route path="/admin" element={<AdminUI />} />
           <Route path="/query" element={<QueryUI />} />
@@ -95,23 +95,6 @@ function App() {
 
         </Routes>
         <SFooter />
-        {/* <main className="app_bro" style={{ marginTop: "-17px" }}>
-          <div className="boxes">
-            <ul style={{ opacity: 0.2 }} className="ul_bro">
-              <li className="ul_bro_one"></li>
-              <li className="ul_bro_two"></li>
-              <li className="ul_bro_three"></li>
-              <li className="ul_bro_four"></li>
-            </ul>
-          </div>
-            <NavBarUI logOut={logOut} /> 
-          <Routes>
-            <Route path="/" element={<HomeUI />} />
-            <Route path="/signin" element={<SignInUI />} />
-            <Route path="/admin" element={<AdminUI />} />
-          </Routes>
-          <FooterUI />   */}
-        {/* </main> */}
       </Router>
     </div>
   );

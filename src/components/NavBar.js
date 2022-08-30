@@ -19,6 +19,10 @@ import "./NavBar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { supabase } from "../Supabase";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import Badge from "@mui/material/Badge";
+import { useSelector, useDispatch } from "react-redux";
+import { openAnnouncements } from "./Redux/actions/index";
 
 const pages = ["query", "menu", "Announcements", "Account"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -31,6 +35,15 @@ const ResponsiveAppBar = (props) => {
   const matches = useMediaQuery("(min-width:600px)");
   const [drawer, setDrawer] = React.useState(false);
   const [email, setEmail] = React.useState(null);
+  const m1 = useMediaQuery("(min-width:600px)");
+  const announState = useSelector((state) => state.toggleModalStatus);
+  const notiState = useSelector((state) => state.noOfNotificationsHandler);
+
+  const dispatch = useDispatch();
+
+  const checkIt = () => {
+    dispatch(openAnnouncements());
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -62,6 +75,8 @@ const ResponsiveAppBar = (props) => {
 
   React.useEffect(() => {
     setInterval(() => {
+      console.log("Location");
+      console.log(location);
       fetchTheProfile();
     }, 1000);
   }, []);
@@ -256,6 +271,20 @@ const ResponsiveAppBar = (props) => {
               ))}
             </Box>
           ) : null}
+          {location.pathname == "/" ? (
+            <IconButton
+              size="large"
+              aria-label="show 17 new notifications"
+              color="inherit"
+              style={{ marginLeft: !m1 ? "-40px" : "0px" }}
+              onClick={checkIt}
+            >
+              <Badge badgeContent={notiState ? notiState : 0} color="error">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
+          ) : null}
+
           {matches && location.pathname != "/signin" ? (
             <Button
               variant="outlined"
@@ -264,6 +293,7 @@ const ResponsiveAppBar = (props) => {
                 color: "black",
                 fontWeight: 900,
                 border: "3px solid white",
+                marginLeft: m1 ? "30px" : "0px",
               }}
               onMouseEnter={(e) => {
                 e.target.style.backgroundColor = "white";
