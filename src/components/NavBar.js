@@ -23,6 +23,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import Badge from "@mui/material/Badge";
 import { useSelector, useDispatch } from "react-redux";
 import { openAnnouncements } from "./Redux/actions/index";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 const pages = ["Account", "Announcements"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -159,10 +160,18 @@ const ResponsiveAppBar = (props) => {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={drawerHandler}
+                onClick={
+                  location.pathname == "/menu"
+                    ? () => navigate("/")
+                    : drawerHandler
+                }
                 color="inherit"
               >
-                <MenuIcon />
+                {location.pathname == "/menu" ? (
+                  <ArrowBackIosIcon />
+                ) : (
+                  <MenuIcon />
+                )}
               </IconButton>
             ) : null}
             <Menu

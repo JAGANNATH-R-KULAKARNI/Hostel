@@ -55,7 +55,10 @@ export default function Attendence(props) {
   }, []);
 
   async function fetchRooms() {
-    const { data, error } = await supabase.from("rooms").select("*");
+    const { data, error } = await supabase
+      .from("rooms")
+      .select("*")
+      .order("room", { ascending: true });
 
     if (data) {
       setRoomsData(data);

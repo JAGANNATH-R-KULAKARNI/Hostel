@@ -18,6 +18,7 @@ import RegisterUI from "./components/Admin/Register";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import "./App.css";
+import MenuUI from "./components/Menu";
 
 function App() {
   React.useEffect(() => {
@@ -88,6 +89,7 @@ function App() {
           <Route path="/" element={<HomeUI logOut={logOut} />} />
           <Route path="/signin" element={<SignInUI />} />
           <Route path="/admin" element={<AdminUI />} />
+          <Route path="/menu" element={<MenuUI />} />
         </Routes>
         <SFooter />
       </Router>
