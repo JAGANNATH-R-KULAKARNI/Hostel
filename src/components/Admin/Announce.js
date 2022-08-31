@@ -244,7 +244,7 @@ export default function FullScreenDialog(props) {
                     <h3 style={{ width: "100%", textAlign: "center" }}>
                       Broadcasting...
                     </h3>
-                    <h6
+                    {/* <h6
                       style={{
                         width: "100%",
                         textAlign: "center",
@@ -253,7 +253,7 @@ export default function FullScreenDialog(props) {
                     >
                       {" "}
                       Sending to ... {sendingTo}
-                    </h6>
+                    </h6> */}
 
                     <Box sx={{ width: "100%" }}>
                       <LinearProgressWithLabel value={progress} />
