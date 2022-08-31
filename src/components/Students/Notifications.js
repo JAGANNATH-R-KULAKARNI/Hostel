@@ -69,7 +69,10 @@ export default function NotificationsCompoenent(props) {
                   {props.notiState == index ? (
                     <div style={{ display: "flex", justifyContent: "center" }}>
                       <br />
-                      <Alert severity="warning" style={{ width: "55%" }}>
+                      <Alert
+                        severity="warning"
+                        style={{ width: "55%", textAlign: "center" }}
+                      >
                         Old Messages
                       </Alert>
                     </div>

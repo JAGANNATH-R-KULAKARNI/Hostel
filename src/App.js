@@ -85,6 +85,9 @@ function App() {
     <div>
       <Router>
         <NavBarUI logOut={logOut} />
+        <br />
+        <br />
+
         <Routes>
           <Route path="/" element={<HomeUI logOut={logOut} />} />
           <Route path="/signin" element={<SignInUI />} />

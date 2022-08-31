@@ -76,18 +76,14 @@ const ResponsiveAppBar = (props) => {
 
   React.useEffect(() => {
     setInterval(() => {
-      console.log("Location");
-      console.log(location);
+      // console.log("Location");
+      // console.log(location);
       fetchTheProfile();
     }, 1000);
   }, []);
 
   return (
-    <AppBar
-      position="static"
-      style={{ backgroundColor: "black" }}
-      elevation={0}
-    >
+    <AppBar position="fixed" style={{ backgroundColor: "black" }} elevation={0}>
       {!matches && drawer ? (
         <DrawerUI drawerHandler={drawerHandler} logOut={props.logOut} />
       ) : null}
