@@ -51,8 +51,8 @@ export default function CardForStudent(props) {
           </Avatar>
         }
        action={
-        <Button variant="contained" style={{backgroundColor:"#730000",color:"white",fontSize:"7px",marginTop:"10px"}} onClick={toggleModel}>
-        View More
+        <Button variant="contained" style={{backgroundColor:"#730000",color:"white",fontSize:"8px",marginTop:"10px"}} onClick={toggleModel}>
+        Update here
       </Button>
 
        }
