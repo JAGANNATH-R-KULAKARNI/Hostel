@@ -14,8 +14,8 @@ import MailIcon from "@mui/icons-material/Mail";
 export default function TemporaryDrawer(props) {
   const [state, setState] = React.useState({
     top: false,
-    left: true,
-    bottom: false,
+    left: false,
+    bottom: true,
     right: false,
   });
 
