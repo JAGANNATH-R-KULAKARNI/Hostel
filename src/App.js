@@ -20,7 +20,6 @@ import RegisterUI from "./components/Admin/Register";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import "./App.css";
-import MenuUI from "./components/Menu";
 
 function App() {
   React.useEffect(() => {

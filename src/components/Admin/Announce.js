@@ -171,7 +171,6 @@ export default function FullScreenDialog(props) {
     }, 2000);
   }
 
-<<<<<<< HEAD
 
 
   async function announcementPush(){
