@@ -71,7 +71,9 @@ export default function Home(props) {
       if (announcemnetsData.data) {
         console.log("Aoouncements");
         if (cacheBro.data) {
-          const lenbro = announcemnetsData.data.length - cacheBro.data[0]["notification_status"];
+          const lenbro = 
+          announcemnetsData.data.length - 
+          cacheBro.data[0]["notification_status"];
           dispatch({
             type: "NO_OF_NOTIFICATIONS",
             payload: lenbro,
