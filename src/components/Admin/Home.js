@@ -13,6 +13,9 @@ import Fab from "@mui/material/Fab";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import DialogMenuUI from "./Menu";
+import UpdateUI from "./Update";
+import DetailsUI from "./Details";
+
 
 export default function HomeAdmin() {
   const m1 = useMediaQuery("(min-width:600px)");
@@ -29,6 +32,7 @@ export default function HomeAdmin() {
 
   const [report, setReport] = React.useState(false);
   const [menu, setMenu] = React.useState(false);
+  const [dquery,setDisplayQuery] = React.useState([]);
 
   async function fetchTheProfile() {
     const data = await supabase.auth.user();
