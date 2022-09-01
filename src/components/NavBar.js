@@ -24,7 +24,7 @@ import Badge from "@mui/material/Badge";
 import { useSelector, useDispatch } from "react-redux";
 import { openAnnouncements } from "./Redux/actions/index";
 
-const pages = ["query", "menu", "Announcements", "Account"];
+const pages = ["query", "menu"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ResponsiveAppBar = (props) => {

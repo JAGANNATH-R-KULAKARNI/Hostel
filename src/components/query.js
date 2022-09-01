@@ -165,11 +165,16 @@ export default function MultipleSelect() {
                                 }}
                                 sx={{ mb: 3, minWidth: "200px", width: "50%" }}
                             >
-                                <MenuItem value={"Out of Station"}>Out of Station</MenuItem>
+                                <MenuItem value={"Going Home"}>Going Home</MenuItem>
+                                <MenuItem value={"Vacating Hostel"}>Vacating Hostel</MenuItem>
                                 <MenuItem value={"Electricty related Problem"}>Electricty related Problem</MenuItem>
                                 <MenuItem value={"Furniture Problem"}>Furniture Problem</MenuItem>
                                 <MenuItem value={"Wi-Fi Problem"}>Wi-Fi Problem</MenuItem>
                                 <MenuItem value={"Washing Machine Problem"}>Washing Machine Problem</MenuItem>
+                                <MenuItem value={"Food Problem"}>Food Problem</MenuItem>
+                                <MenuItem value={"Washroom Problem"}>Washroom Problem</MenuItem>
+                                <MenuItem value={"Other"}>Other</MenuItem>
+
 
                             </Select>
                         </Grid>
