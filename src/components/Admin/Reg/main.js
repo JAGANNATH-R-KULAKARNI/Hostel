@@ -69,7 +69,11 @@ export default function Checkout() {
   const [noti, setNoti] = React.useState(null);
 
   async function fetchRooms() {
-    const { data, error } = await supabase.from("rooms").select("*");
+    const { data, error } = await supabase
+      .from("rooms")
+      .select("*")
+      .order("room", { ascending: true });
+
     const forNoti = await supabase.from("announcements").select("*");
 
     if (data) {

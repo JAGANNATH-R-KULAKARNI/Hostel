@@ -23,6 +23,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import Badge from "@mui/material/Badge";
 import { useSelector, useDispatch } from "react-redux";
 import { openAnnouncements } from "./Redux/actions/index";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 const pages = ["query", "menu"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -75,18 +76,14 @@ const ResponsiveAppBar = (props) => {
 
   React.useEffect(() => {
     setInterval(() => {
-      console.log("Location");
-      console.log(location);
+      // console.log("Location");
+      // console.log(location);
       fetchTheProfile();
     }, 1000);
   }, []);
 
   return (
-    <AppBar
-      position="static"
-      style={{ backgroundColor: "black" }}
-      elevation={0}
-    >
+    <AppBar position="fixed" style={{ backgroundColor: "black" }} elevation={0}>
       {!matches && drawer ? (
         <DrawerUI drawerHandler={drawerHandler} logOut={props.logOut} />
       ) : null}
@@ -159,10 +156,18 @@ const ResponsiveAppBar = (props) => {
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={drawerHandler}
+                onClick={
+                  location.pathname == "/menu"
+                    ? () => navigate("/")
+                    : drawerHandler
+                }
                 color="inherit"
               >
-                <MenuIcon />
+                {location.pathname == "/menu" ? (
+                  <ArrowBackIosIcon />
+                ) : (
+                  <MenuIcon />
+                )}
               </IconButton>
             ) : null}
             <Menu

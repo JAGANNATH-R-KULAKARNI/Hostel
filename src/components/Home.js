@@ -14,6 +14,9 @@ import QueriesUI from "./Students/Queries";
 import AnnouncementsUI from "./Students/Drawer";
 import { useSelector, useDispatch } from "react-redux";
 import { noOfNotifications } from "./Redux/actions/index";
+import Fab from "@mui/material/Fab";
+import NavigationIcon from "@mui/icons-material/Navigation";
+import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 
 export default function Home(props) {
   const navigate = useNavigate();
@@ -107,6 +110,20 @@ export default function Home(props) {
           name={name}
         />
       ) : null}
+      <Fab
+        variant="extended"
+        style={{
+          position: "fixed",
+          right: 0,
+          bottom: "10%",
+          backgroundColor: "#D5A418",
+          color: "white",
+        }}
+        onClick={() => navigate("/menu")}
+      >
+        <RestaurantMenuIcon sx={{ mr: 1 }} />
+        Menu List
+      </Fab>
       <Home2UI />
       {userDetails ? (
         <div
