@@ -22,6 +22,7 @@ export default function SFooter  ()  {
                     </p>
 
                     <p class="footer-links">
+                        // eslint-disable-next-line jsx-a11y/anchor-is-valid
                         <a href="#" class="link-1">Copyright © NIE Hostel</a>
                         <a href="#">Terms and Condition</a>
                         <a href="#">Policies</a>
