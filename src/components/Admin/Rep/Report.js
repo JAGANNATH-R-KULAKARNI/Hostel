@@ -130,13 +130,20 @@ export default function Report(props) {
                                                   75 /
                                                   room["data"][0]["data"].length
                                                 }%`,
+                                                fontSize: "8px",
                                               }}
                                             >
-                                              {" "}
-                                              {student_idd["data"]["data"][
-                                                "students"
-                                              ]["name"].substr(0, 6)}
-                                              {"..."}
+                                              <p
+                                                style={{
+                                                  display: "block",
+                                                }}
+                                              >
+                                                {
+                                                  student_idd["data"]["data"][
+                                                    "students"
+                                                  ]["name"]
+                                                }
+                                              </p>
                                             </th>
                                           );
                                         }
