@@ -54,6 +54,7 @@ BootstrapDialogTitle.propTypes = {
 
 export default function CustomizedDialogs(props) {
   const [open, setOpen] = React.useState(true);
+  const [value,setValue] = React.useState(props.usn);
   const [value1, setValue1] = React.useState(props.email);
   const [value2, setValue2] = React.useState(props.phno);
   const [value3, setValue3] = React.useState(props.yoj);
@@ -62,6 +63,9 @@ export default function CustomizedDialogs(props) {
   const [value6, setValue6] = React.useState(props.hf3);
   const [value7, setValue7] = React.useState(props.hf4);
   const [value8, setValue8] = React.useState(props.cd);
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
   const handleChange1 = (event) => {
     setValue1(event.target.value);
   };
@@ -122,8 +126,27 @@ export default function CustomizedDialogs(props) {
                <br/> */}
                 {props.name}
                 <br/>
-                {props.usn}
                 </div>
+                
+                {/* {props.usn} */}
+                <Grid item xs={12} sm={12} 
+                style={{justifyContent: "center",}}>
+                <TextField
+                      id="description"
+                      name="description"
+                      label="USN"
+                      fullWidth
+                      
+                      value={value}
+                      onChange={handleChange}
+                      placeholder="USN"
+                      //value={description}
+                      // onChange={(e) => {
+                      //   setDescription(e.target.value);
+                      // }}
+                    />
+                    </Grid>
+                
                 </BootstrapDialogTitle>
         <DialogContent dividers>
            
@@ -230,12 +253,12 @@ export default function CustomizedDialogs(props) {
                     <TextField
                       id="description"
                       name="description"
-                      label="Hostel fees 3rd year"
+                      label="Hostel fees 4th year"
                       fullWidth
                       
                       value={value7}
                       onChange={handleChange7}
-                      placeholder="Hostel fees 3rd year"
+                      placeholder="Hostel fees 4th year"
                      
                     />
                   </Grid>
@@ -257,7 +280,7 @@ export default function CustomizedDialogs(props) {
         </DialogContent>
         <DialogActions>
           <Button style={{backgroundColor:"#730000",color:"white",fontSize:"14px"}} autoFocus onClick={handleClose}>
-            Close
+            Update
           </Button>
         </DialogActions>
       </BootstrapDialog>
