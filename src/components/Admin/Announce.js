@@ -180,7 +180,6 @@ export default function FullScreenDialog(props) {
     }
   };
 
-<<<<<<< HEAD
   async function announcementPush(){
         if(heading.length==0 || description.length==0){
          alert("Please fill all fields");
@@ -229,8 +228,6 @@ export default function FullScreenDialog(props) {
         description_maga: description,
       },
     };
-
-=======
   const sendEmail = async (e) => {
     e.preventDefault();
 
@@ -244,7 +241,20 @@ export default function FullScreenDialog(props) {
       },
     };
 
->>>>>>> 17ef523d80682607881ed98773aeab376d4d7c11
+
+  const sendEmail = async (e) => {
+    e.preventDefault();
+
+    var data_bro = {
+      service_id: "service_4asjame",
+      template_id: "template_lk48ssq",
+      user_id: "-tFiTlSDJ_f3r2e-G",
+      template_params: {
+        heading_maga: heading,
+        description_maga: description,
+      },
+    };
+
     await axios
       .post("https://api.emailjs.com/api/v1.0/email/send", {
         data: JSON.stringify(data_bro),
