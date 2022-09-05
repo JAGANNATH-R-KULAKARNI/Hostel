@@ -104,7 +104,7 @@ export default function Fees(props) {
         <Grid item xs={12} sm={12}>
           <TextField
             id="input-with-icon-textfield"
-            label="CD"
+            label="Caution Deposite"
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">₹</InputAdornment>
