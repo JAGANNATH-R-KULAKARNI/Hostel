@@ -11,7 +11,6 @@ import "./2.1.css";
 
 export default function CustomizedSelects(props) {
   const [h, setH] = React.useState("mh");
-  const [h, setH] = React.useState("mh");
   const [b, setB] = React.useState("A");
   const [f, setF] = React.useState(2);
   const [r, setR] = React.useState(401);
