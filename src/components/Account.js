@@ -42,10 +42,12 @@ export default function Account(props) {
             {" "}
             Account
           </h1>
-        
+        <div
+        style={{width:"100%",display:"flex",justifyContent:"center"}}>
         <Paper
               variant="outlined"
-              sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
+              style={{marginTop: m1 ? "00px" : "00px",}}
+              sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 },maxWidth:"100%" }}
             >
                     
            <h3
@@ -80,6 +82,7 @@ export default function Account(props) {
              
         />
         </Paper>
+        </div>
    </div>
     
 
