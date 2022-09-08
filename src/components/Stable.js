@@ -7,7 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
+import useMediaQuery from "@mui/material/useMediaQuery";
 const StyledTableCell = styled(TableCell,{
     shouldForwardProp: (props) => props !== 'theme',
 })(({ theme }) => ({
@@ -31,9 +31,10 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export default function CustomizedTables(props) {
+  const m1 = useMediaQuery("(min-width:600px)");
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ }} aria-label="customized table">
+      <Table sx={{minWidth: m1 ? "600px" : "200px", }} aria-label="customized table">
      
         <TableHead>
           <TableRow>
@@ -47,7 +48,7 @@ export default function CustomizedTables(props) {
       
         <TableBody>
         <StyledTableRow >
-              <StyledTableCell>EMAIL</StyledTableCell>
+              <StyledTableCell>Email</StyledTableCell>
               <StyledTableCell align="right">{props.mail}</StyledTableCell>
         </StyledTableRow> 
         </TableBody>
