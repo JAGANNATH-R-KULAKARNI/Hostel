@@ -116,7 +116,7 @@ export default function CustomizedTables(props) {
     </TableBody>
     <TableBody>
     <StyledTableRow >
-          <StyledTableCell>Constant Depsoit</StyledTableCell>
+          <StyledTableCell>Caution Depsoit</StyledTableCell>
           <StyledTableCell align="right">₹{props.cd}</StyledTableCell>
           </StyledTableRow >   
     </TableBody>
