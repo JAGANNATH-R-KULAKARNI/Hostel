@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import "./App.css";
 import MenuUI from "./components/Menu";
+import AccountUI from "./components/Account";
 
 function App() {
   React.useEffect(() => {
@@ -93,6 +94,7 @@ function App() {
           <Route path="/signin" element={<SignInUI />} />
           <Route path="/admin" element={<AdminUI />} />
           <Route path="/menu" element={<MenuUI />} />
+          <Route path="/account" element={<AccountUI />} />
         </Routes>
         <SFooter />
       </Router>

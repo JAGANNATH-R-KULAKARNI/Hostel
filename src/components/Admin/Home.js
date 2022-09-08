@@ -43,7 +43,7 @@ export default function HomeAdmin() {
     <div>
       <h1
         style={{
-          marginTop: "10px",
+          marginTop: m1 ? "30px" : "20px",
           width: "100%",
           textAlign: "center",
           fontSize: m1 ? "60px" : "40px",

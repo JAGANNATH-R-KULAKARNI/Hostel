@@ -74,17 +74,18 @@ export default function TemporaryDrawer(props) {
       </List>
       <Divider />
       <List>
-        {["Account", "Announcements"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              {/* <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon> */}
-
-              <ListItemText primary={text} style={{ textAlign: "center" }} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {[{ text: "Account", clicked: props.goToAccount }].map(
+          (text, index) => (
+            <ListItem key={text.text} disablePadding onClick={text.clicked}>
+              <ListItemButton>
+                <ListItemText
+                  primary={text.text}
+                  style={{ textAlign: "center" }}
+                />
+              </ListItemButton>
+            </ListItem>
+          )
+        )}
       </List>
     </Box>
   );

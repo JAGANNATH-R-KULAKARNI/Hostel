@@ -25,7 +25,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { openAnnouncements } from "./Redux/actions/index";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
-const pages = ["Account", "Announcements"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ResponsiveAppBar = (props) => {
@@ -41,6 +40,16 @@ const ResponsiveAppBar = (props) => {
   const notiState = useSelector((state) => state.noOfNotificationsHandler);
 
   const dispatch = useDispatch();
+  const goToAccount = () => {
+    navigate("/account");
+  };
+
+  const pages = [
+    {
+      text: "Account",
+      clicked_bro: goToAccount,
+    },
+  ];
 
   const checkIt = () => {
     dispatch(openAnnouncements());
@@ -85,7 +94,11 @@ const ResponsiveAppBar = (props) => {
   return (
     <AppBar position="fixed" style={{ backgroundColor: "black" }} elevation={0}>
       {!matches && drawer ? (
-        <DrawerUI drawerHandler={drawerHandler} logOut={props.logOut} />
+        <DrawerUI
+          drawerHandler={drawerHandler}
+          logOut={props.logOut}
+          goToAccount={goToAccount}
+        />
       ) : null}
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -189,9 +202,11 @@ const ResponsiveAppBar = (props) => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
+                <div key={page}>
+                  <MenuItem key={page} onClick={page.clicked_bro}>
+                    <Typography textAlign="center">{page.text}</Typography>
+                  </MenuItem>
+                </div>
               ))}
             </Menu>
           </Box>
@@ -263,13 +278,15 @@ const ResponsiveAppBar = (props) => {
               }}
             >
               {pages.map((page) => (
-                <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
-                >
-                  {page}
-                </Button>
+                <div key={page}>
+                  <Button
+                    key={page}
+                    onClick={page.clicked_bro}
+                    sx={{ my: 2, color: "white", display: "block" }}
+                  >
+                    {page.text}
+                  </Button>
+                </div>
               ))}
             </Box>
           ) : null}
