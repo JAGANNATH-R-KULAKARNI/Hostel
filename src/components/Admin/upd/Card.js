@@ -68,6 +68,7 @@ export default function CardForStudent(props) {
 
       {model ? (
         <DialogUI
+          s_id={props.s_id}
           name={props.name}
           email={props.mail}
           usn={props.usn}
@@ -78,6 +79,7 @@ export default function CardForStudent(props) {
           hf3={props.hf3}
           hf4={props.hf4}
           cd={props.cd}
+          roomId={props.roomId}
           toggleModel={toggleModel}
         />
       ) : null}

@@ -61,7 +61,10 @@ export default function Attendence() {
   const [control, setControl] = React.useState(false);
 
   async function fetchRooms() {
-    const { data, error } = await supabase.from("rooms").select("*");
+    const { data, error } = await supabase
+      .from("rooms")
+      .select("*")
+      .order("room", { ascending: true });
 
     if (data) {
       setRoomsData(data);
