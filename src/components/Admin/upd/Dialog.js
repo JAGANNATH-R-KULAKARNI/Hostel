@@ -266,12 +266,12 @@ export default function CustomizedDialogs(props) {
                     <TextField
                       id="description"
                       name="description"
-                      label="Constant deposit"
+                      label="Caution deposit"
                       fullWidth
                       
                       value={value8}
                       onChange={handleChange8}
-                      placeholder="Constant deposit"
+                      placeholder="Caution deposit"
                      
                     />
                   </Grid>

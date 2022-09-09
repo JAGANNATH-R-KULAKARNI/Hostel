@@ -3,6 +3,9 @@ import FooterUI from "./components/Footer";
 import HomeUI from "./components/Home";
 import QueryUI from "./components/Query";
 import MenuUI from "./components/Menu";
+import AccountUI from "./components/Account";
+
+import UpdateUI from "./components/Update";
 
 import {
   BrowserRouter as Router,
@@ -96,6 +99,7 @@ function App() {
           <Route path="/signin" element={<SignInUI />} />
           <Route path="/admin" element={<AdminUI />} />
           <Route path="/menu" element={<MenuUI />} />
+          <Route path="/account" element={<AccountUI />} />
         </Routes>
         <SFooter />
       </Router>
