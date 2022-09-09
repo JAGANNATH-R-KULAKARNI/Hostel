@@ -13,6 +13,7 @@ import Fab from "@mui/material/Fab";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import DialogMenuUI from "./Menu";
+import DetailsUI from "./Details";
 
 export default function HomeAdmin() {
   const m1 = useMediaQuery("(min-width:600px)");
@@ -23,6 +24,7 @@ export default function HomeAdmin() {
   const [attendence, setAttendence] = React.useState(false);
   const [report, setReport] = React.useState(false);
   const [menu, setMenu] = React.useState(false);
+  const [details, setDetails] = React.useState(false);
 
   async function fetchTheProfile() {
     const data = await supabase.auth.user();
@@ -64,6 +66,9 @@ export default function HomeAdmin() {
       ) : null}
       {report ? <ReportUI registerHandler={() => setReport(!report)} /> : null}
       {menu ? <DialogMenuUI registerHandler={() => setMenu(!menu)} /> : null}
+      {details ? (
+        <DetailsUI registerHandler={() => setDetails(!details)} />
+      ) : null}
       <div style={{ marginTop: m1 ? "-40px" : "-20px" }}>
         <Divider />
       </div>
@@ -88,26 +93,13 @@ export default function HomeAdmin() {
         <br />
         <ButtonUI text="Edit the Hotels Menu" clicked={() => setMenu(!menu)} />
         <br />
-        <ButtonUI text="Students Queries" />
-        <br />
-        <ButtonUI text="Students Details" />
-        <br />
+
+        <ButtonUI
+          text="Students Details"
+          clicked={() => setDetails(!details)}
+        />
         <br />
       </div>
-      {/* <Fab
-        variant="extended"
-        style={{
-          position: "fixed",
-          right: 0,
-          bottom: "71.5%",
-          backgroundColor: "#D5A418",
-          color: "white",
-        }}
-        onClick={() => navigate("/menu")}
-      >
-        <RestaurantMenuIcon sx={{ mr: 1 }} />
-        Menu List
-      </Fab> */}
     </div>
   );
 }
