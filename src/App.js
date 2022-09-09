@@ -7,6 +7,7 @@ import MenuUI from "./components/Menu";
 import AccountUI from "./components/Account";
 
 import UpdateUI from "./components/Update";
+import DeveloperUI from "./components/Developers";
 
 import {
   BrowserRouter as Router,
@@ -101,6 +102,7 @@ function App() {
           <Route path="/admin" element={<AdminUI />} />
           <Route path="/menu" element={<MenuUI />} />
           <Route path="/account" element={<AccountUI />} />
+          <Route path="/developers" element={<DeveloperUI />} />
         </Routes>
         <SFooter />
       </Router>

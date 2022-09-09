@@ -16,11 +16,11 @@ export default function SFooter  ()  {
 
                         <a href="/Query">Queries</a>
 
-                        <a href="#">Attendance</a>
-
                         <a href="#">Menu</a>
 
                         <a href="#">Contact</a>
+                        
+                        <a href = "/developers">Developers</a>
                     </p>
 
                     <p class="footer-links">
