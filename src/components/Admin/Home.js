@@ -15,6 +15,7 @@ import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import DialogMenuUI from "./Menu";
 import DetailsUI from "./Details";
 import UpdateUI from "./Update";
+import DisplayQueryUI from "./DisplayQuery";
 
 export default function HomeAdmin() {
   const m1 = useMediaQuery("(min-width:600px)");
@@ -27,6 +28,7 @@ export default function HomeAdmin() {
   const [menu, setMenu] = React.useState(false);
   const [details, setDetails] = React.useState(false);
   const [update, setUpdate] = React.useState(false);
+  const [dquery, setDisplayQuery] = React.useState(false);
 
   async function fetchTheProfile() {
     const data = await supabase.auth.user();
@@ -72,6 +74,9 @@ export default function HomeAdmin() {
         <DetailsUI registerHandler={() => setDetails(!details)} />
       ) : null}
       {update ? <UpdateUI registerHandler={() => setUpdate(!update)} /> : null}
+      {dquery ? (
+        <DisplayQueryUI registerHandler={() => setDisplayQuery(!dquery)} />
+      ) : null}
       <div style={{ marginTop: m1 ? "-40px" : "-20px" }}>
         <Divider />
       </div>
@@ -104,6 +109,11 @@ export default function HomeAdmin() {
         <br />
 
         <ButtonUI text="Update Details" clicked={() => setUpdate(!update)} />
+        <br />
+        <ButtonUI
+          text="Students Queries"
+          clicked={() => setDisplayQuery(!dquery)}
+        />
         <br />
       </div>
     </div>
