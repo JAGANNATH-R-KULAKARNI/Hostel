@@ -8,6 +8,7 @@ import SelectUI from "./studentssub";
 import { supabase } from "../../../Supabase";
 import CardUI from "./Card";
 import ButtonUI from "../../Button2";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 export default function Attendence(props) {
   const [control, setControl] = React.useState(true);
@@ -16,6 +17,7 @@ export default function Attendence(props) {
   const [report, setReport] = React.useState([]);
   const [attInfo, setAttInfo] = React.useState([]);
   const [to, setTo] = React.useState("");
+  const m1 = useMediaQuery("(min-width:600px)");
 
   React.useEffect(() => {
     if (control) {
@@ -218,32 +220,37 @@ export default function Attendence(props) {
           </h2>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <div>
-              {students.map((item, index) => {
-                return (
-                  <CardUI
-                    key={index}
-                    s_id={item["metaData"]["s_id"]}
-                    name={item["metaData"]["name"]}
-                    usn={item["metaData"]["usn"]}
-                    mail={item["metaData"]["email"]}
-                    phno={item["metaData"]["phno"]}
-                    yoj={item["metaData"]["year_joined"]}
-                    room={item["metaData"]["room_id"]}
-                    hf1={item["metaData"]["hf1"]}
-                    hf2={item["metaData"]["hf2"]}
-                    hf3={item["metaData"]["hf3"]}
-                    hf4={item["metaData"]["hf4"]}
-                    cd={item["metaData"]["cd"]}
-                    status={item["status"]}
-                  />
-                );
-              })}
+              {students &&
+                students.map((item, index) => {
+                  return (
+                    <CardUI
+                      key={index}
+                      s_id={item["metaData"]["s_id"]}
+                      name={item["metaData"]["name"]}
+                      usn={item["metaData"]["usn"]}
+                      mail={item["metaData"]["email"]}
+                      phno={item["metaData"]["phno"]}
+                      yoj={item["metaData"]["year_joined"]}
+                      room={item["metaData"]["room_id"]}
+                      hf1={item["metaData"]["hf1"]}
+                      hf2={item["metaData"]["hf2"]}
+                      hf3={item["metaData"]["hf3"]}
+                      hf4={item["metaData"]["hf4"]}
+                      cd={item["metaData"]["cd"]}
+                      status={item["status"]}
+                    />
+                  );
+                })}
+
+              {students && students.length == 0 ? (
+                <h1 style={{ fontSize: m1 ? "20px" : "15px" }}>
+                  *** No students in this room ***
+                </h1>
+              ) : null}
             </div>
           </div>
           <br />
-          {/* {students.length > 0 ? (
-            <ButtonUI text="Mark It" clicked={reportIt} />
-          ) : null} */}
+
           <div style={{ height: "10px" }}></div>
         </Grid>
       </Grid>
