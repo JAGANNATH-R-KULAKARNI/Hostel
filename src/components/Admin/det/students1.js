@@ -214,7 +214,7 @@ export default function Attendence(props) {
         </Grid>
         <Grid item xs={12} sm={12}>
           <h2 style={{ width: "100%", textAlign: "center", marginTop: "0px" }}>
-            Student Details {" "}
+            Students{" "}
           </h2>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <div>
@@ -225,6 +225,8 @@ export default function Attendence(props) {
                     s_id={item["metaData"]["s_id"]}
                     name={item["metaData"]["name"]}
                     usn={item["metaData"]["usn"]}
+                    status={item["status"]}
+                    attendenceHandler={attendenceHandler}
                     mail={item["metaData"]["email"]}
                     phno={item["metaData"]["phno"]}
                     yoj={item["metaData"]["year_joined"]}
@@ -233,10 +235,8 @@ export default function Attendence(props) {
                     hf2={item["metaData"]["hf2"]}
                     hf3={item["metaData"]["hf3"]}
                     hf4={item["metaData"]["hf4"]}
-                    attendenceHandler={attendenceHandler}
-                    cd={item["metaData"]["cd"]}
-                    status={item["status"]}
                     
+                    cd={item["metaData"]["cd"]}
                   />
                 );
               })}
