@@ -13,7 +13,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
 import NavBarUI from "../NavBar2";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import BodyUI from "./det/main";
+import BodyUI from "./det/main1";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
