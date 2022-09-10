@@ -233,7 +233,7 @@ export default function Attendence(props) {
                     hf2={item["metaData"]["hf2"]}
                     hf3={item["metaData"]["hf3"]}
                     hf4={item["metaData"]["hf4"]}
-                    attendenceHandler={attendenceHandler}
+                    
                     cd={item["metaData"]["cd"]}
                     status={item["status"]}
                     
