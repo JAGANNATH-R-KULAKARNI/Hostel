@@ -3,7 +3,6 @@ import FooterUI from "./components/Footer";
 import HomeUI from "./components/Home";
 import MenuUI from "./components/Menu";
 import AccountUI from "./components/Account";
-
 import DeveloperUI from "./components/Developers";
 
 import {
