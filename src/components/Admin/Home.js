@@ -77,7 +77,7 @@ export default function HomeAdmin() {
       {dquery ? (
         <DisplayQueryUI registerHandler={() => setDisplayQuery(!dquery)} />
       ) : null}
-      <div style={{ marginTop: m1 ? "-40px" : "-20px" }}>
+      <div style={{ marginTop: m1 ? "20px" : "10px" }}>
         <Divider />
       </div>
 
