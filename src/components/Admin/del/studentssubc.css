@@ -1,0 +1,38 @@
+.clear {
+  clear: both;
+}
+
+.select-wrapper {
+  position: relative;
+  width: auto;
+  color: black;
+  min-width: 200px;
+}
+.select-wrapper::after {
+  color: black;
+  /* content: "▾"; */
+  margin-right: 10px;
+  pointer-events: none;
+  position: absolute;
+  right: 10px;
+  top: 7px;
+  font-size: 20px;
+}
+
+.select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: white;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  padding: 12px;
+  width: 100%;
+  font-size: 18px;
+}
+.select:focus {
+  color: black;
+}
+.select::-ms-expand {
+  display: none;
+}

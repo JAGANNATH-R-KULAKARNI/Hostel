@@ -14,6 +14,7 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import DialogMenuUI from "./Menu";
 import DetailsUI from "./Details";
+import DeleteUI from "./Delete";
 import UpdateUI from "./Update";
 import DisplayQueryUI from "./DisplayQuery";
 
@@ -28,6 +29,7 @@ export default function HomeAdmin() {
   const [menu, setMenu] = React.useState(false);
   const [details, setDetails] = React.useState(false);
   const [update, setUpdate] = React.useState(false);
+  const [del, setDel] = React.useState(false);
   const [dquery, setDisplayQuery] = React.useState(false);
 
   async function fetchTheProfile() {
@@ -73,6 +75,9 @@ export default function HomeAdmin() {
       {details ? (
         <DetailsUI registerHandler={() => setDetails(!details)} />
       ) : null}
+      {del ? (
+        <DeleteUI registerHandler={() => setDel(!del)} />
+      ) : null}
       {update ? <UpdateUI registerHandler={() => setUpdate(!update)} /> : null}
       {dquery ? (
         <DisplayQueryUI registerHandler={() => setDisplayQuery(!dquery)} />
@@ -107,7 +112,11 @@ export default function HomeAdmin() {
           clicked={() => setDetails(!details)}
         />
         <br />
-
+        <ButtonUI
+          text="Delete students"
+          clicked={() => setDel(!del)}
+        />
+        <br />
         <ButtonUI text="Update Details" clicked={() => setUpdate(!update)} />
         <br />
         <ButtonUI

@@ -369,7 +369,7 @@ export default function CustomizedDialogs(props) {
                   type="text"
                 />
               </Grid>
-              {/* <Grid item xs={12} sm={12}>
+               <Grid item xs={12} sm={12}>
                 <TextField
                   id="email_1718"
                   name="description"
@@ -380,7 +380,7 @@ export default function CustomizedDialogs(props) {
                   placeholder="email"
                   type="email"
                 />
-              </Grid> */}
+              </Grid>  
               <Grid item xs={12} sm={12}>
                 <TextField
                   id="phnum_1718"
