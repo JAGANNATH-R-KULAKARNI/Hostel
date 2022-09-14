@@ -17,6 +17,7 @@ import { supabase } from "../../../Supabase";
 import Two from "./2";
 import AllInclusiveIcon from "@mui/icons-material/AllInclusive";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import DialogUI from "./Dialog2";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -89,6 +90,8 @@ export default function CustomizedDialogs(props) {
 
   const [initialize, setInitialize] = React.useState(false);
   const [control, setControl] = React.useState(false);
+
+  const [deleteModal, setDeleteModal] = React.useState(false);
 
   const m1 = useMediaQuery("(min-width:600px)");
 
@@ -195,6 +198,61 @@ export default function CustomizedDialogs(props) {
     } else {
       alert("Something went wrong");
       handleClose();
+    }
+  };
+
+  const deleteStudent = async () => {
+    const { data, error } = await supabase
+      .from("query")
+      .delete()
+      .match({ student_id: props.s_id });
+    var forCache = null;
+
+    if (data) {
+      forCache = await supabase
+        .from("cache")
+        .delete()
+        .match({ email: props.email });
+    }
+
+    var forAtt = null;
+    if (forCache.data) {
+      forAtt = await supabase
+        .from("attendence")
+        .delete()
+        .match({ student_id: props.s_id });
+    }
+    var forStu = null;
+    if (forAtt.data) {
+      forStu = await supabase
+        .from("students")
+        .delete()
+        .match({ s_id: props.s_id });
+    }
+
+    var updateRoomsMaga = null;
+
+    if (forStu.data) {
+      console.log("deleted");
+      updateRoomsMaga = await supabase
+        .from("rooms")
+        .update({ occupied: initialRoom[0]["occupied"] - 1 })
+        .match({ id: prevRoomId });
+
+      if (updateRoomsMaga.data) {
+        alert("Successfull Deleted");
+        handleClose();
+      }
+
+      if (updateRoomsMaga.error) {
+        alert("Something went wrong");
+        handleClose();
+      }
+    }
+
+    if (forStu.error) {
+      console.log(forStu.error.message);
+      alert("some error has occured");
     }
   };
 
@@ -370,6 +428,15 @@ export default function CustomizedDialogs(props) {
   return (
     <div>
       <BootstrapDialog aria-labelledby="customized-dialog-title" open={open}>
+        {deleteModal ? (
+          <DialogUI
+            deleteModalStatus={() => {
+              setDeleteModal(!deleteModal);
+            }}
+            deleteStudent={deleteStudent}
+            name={props.name}
+          />
+        ) : null}
         <BootstrapDialogTitle
           id="customized-dialog-title"
           onClose={handleClose}
@@ -560,9 +627,29 @@ export default function CustomizedDialogs(props) {
         <DialogActions>
           <Button
             style={{
+              // backgroundColor: "#730000",
+              color: "#730000",
+              fontSize: "14px",
+              border: "2px solid #730000",
+              fontWeight: 700,
+            }}
+            autoFocus
+            onClick={() => {
+              setDeleteModal(!deleteModal);
+            }}
+            variant="outlined"
+          >
+            Delete
+          </Button>
+          <div style={{ width: "10px" }}></div>
+          <Button
+            style={{
               backgroundColor: "#730000",
               color: "white",
               fontSize: "14px",
+              padding: "11px",
+              paddingLeft: "30px",
+              paddingRight: "30px",
             }}
             autoFocus
             onClick={updateDetails}
