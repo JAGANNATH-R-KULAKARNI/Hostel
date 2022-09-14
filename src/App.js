@@ -1,6 +1,10 @@
 import NavBarUI from "./components/NavBar";
 import FooterUI from "./components/Footer";
 import HomeUI from "./components/Home";
+import MenuUI from "./components/Menu";
+import AccountUI from "./components/Account";
+import DeveloperUI from "./components/Developers";
+
 import {
   BrowserRouter as Router,
   Navigate,
@@ -18,8 +22,7 @@ import RegisterUI from "./components/Admin/Register";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import "./App.css";
-import MenuUI from "./components/Menu";
-import AccountUI from "./components/Account";
+
 
 function App() {
   React.useEffect(() => {
@@ -95,6 +98,7 @@ function App() {
           <Route path="/admin" element={<AdminUI />} />
           <Route path="/menu" element={<MenuUI />} />
           <Route path="/account" element={<AccountUI />} />
+          <Route path="/developers" element={<DeveloperUI />} />
         </Routes>
         <SFooter />
       </Router>
