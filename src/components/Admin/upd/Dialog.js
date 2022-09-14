@@ -100,25 +100,27 @@ export default function CustomizedDialogs(props) {
   const updateDetails = async () => {
     var flag = 0;
 
-    const studentsUpdate = await supabase
-      .from("students")
-      .update({
-        usn: usn,
-        email: email,
-        phno: phnum,
-        year_joined: yoj,
-        hf1: hf1,
-        hf2: hf2,
-        hf3: hf3,
-        hf4: hf4,
-        cd: cd,
-        room_id: roomId,
-      })
-      .match({ s_id: studentId });
-
+    var studentsUpdate = null;
     var updateRooms1 = null;
     var updateRooms2 = null;
+
     if (prevRoomId != roomId && roomId != -1) {
+      studentsUpdate = await supabase
+        .from("students")
+        .update({
+          usn: usn,
+          email: email,
+          phno: phnum,
+          year_joined: yoj,
+          hf1: hf1,
+          hf2: hf2,
+          hf3: hf3,
+          hf4: hf4,
+          cd: cd,
+          room_id: roomId,
+        })
+        .match({ s_id: studentId });
+
       updateRooms1 = await supabase
         .from("rooms")
         .update({ occupied: initialRoom[0]["occupied"] - 1 })
@@ -128,6 +130,33 @@ export default function CustomizedDialogs(props) {
         .from("rooms")
         .update({ occupied: roomInfo[0] - roomInfo[1] + 1 })
         .match({ id: roomId });
+    } else {
+      if (prevRoomId == roomId) {
+        alert("Cannot change to same room");
+        return;
+      }
+
+      studentsUpdate = await supabase
+        .from("students")
+        .update({
+          usn: usn,
+          email: email,
+          phno: phnum,
+          year_joined: yoj,
+          hf1: hf1,
+          hf2: hf2,
+          hf3: hf3,
+          hf4: hf4,
+          cd: cd,
+        })
+        .match({ s_id: studentId });
+
+      if (studentsUpdate.data) {
+        console.log(studentsUpdate.data);
+        alert("Successfull updated");
+        handleClose();
+        return;
+      }
     }
 
     if (studentsUpdate.data) {
@@ -182,7 +211,7 @@ export default function CustomizedDialogs(props) {
       setHF3(props.hf3);
       setHF4(props.hf4);
       setCD(props.cd);
-      setRoomId(props.roomId);
+      // setRoomId(props.roomId);
       setPrevRoomId(props.roomId);
       setStudentId(props.s_id);
     }
