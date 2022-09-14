@@ -116,15 +116,19 @@ export default function CustomizedDialogs(props) {
       })
       .match({ s_id: studentId });
 
-    const updateRooms1 = await supabase
-      .from("rooms")
-      .update({ occupied: initialRoom[0]["occupied"] - 1 })
-      .match({ id: prevRoomId });
+    var updateRooms1 = null;
+    var updateRooms2 = null;
+    if (prevRoomId != roomId && roomId != -1) {
+      updateRooms1 = await supabase
+        .from("rooms")
+        .update({ occupied: initialRoom[0]["occupied"] - 1 })
+        .match({ id: prevRoomId });
 
-    const updateRooms2 = await supabase
-      .from("rooms")
-      .update({ occupied: roomInfo[0] - roomInfo[1] + 1 })
-      .match({ id: roomId });
+      updateRooms2 = await supabase
+        .from("rooms")
+        .update({ occupied: roomInfo[0] - roomInfo[1] + 1 })
+        .match({ id: roomId });
+    }
 
     if (studentsUpdate.data) {
       flag++;
