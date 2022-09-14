@@ -35,6 +35,7 @@ const ExpandMore = styled((props) => {
 export default function CardForStudent(props) {
   const [model, setModel] = React.useState(false);
   const [progress, setProgress] = React.useState(0);
+ 
   const toggleModel = () => {
     setModel(!model);
   };
@@ -53,42 +54,37 @@ export default function CardForStudent(props) {
 
     
     
-    const { data, error } = await supabase.from("students").delete().match({email: props.mail});
+    const { data, error } = await supabase.from("query").delete().match({q_id: props.s_id});
     var forCache = null;
 
     if (data) {
       forCache = await supabase.from("cache").delete().match({email:props.mail});
     } 
-    if(error){
-      alert("error");
-    }
-   
+    
+     var forAtt=null;
     if (forCache.data) {
-      // const updateRooms = await supabase
-      //   .from("rooms")
-      //   .update({ occupied: roomInfo[0] - roomInfo[1] + 1 })
-      //   .match({ id: roomId });
-
-      console.log("Here I am");
-      // console.log(updateRooms);
-
-     
-       // console.log(updateRooms.data);
-        alert("Successfully Deleted");
+         
+        forAtt = await supabase.from("attendence").delete().match({student_id:props.s_id});
         
     }
-
-      if (forCache.error) {
-        alert("Some Error Occured");
+      var forStu=null;
+      if (forAtt.data) {
+        
+        forStu = await supabase.from("students").delete().match({s_id:props.s_id});
       }
     
+   
+    if(forStu.data){
+      console.log("deleted");
+      alert("successfully deleted");
 
+    }
     
 
-    // if (error) {
-    //   console.log(error);
-    //   alert("some error has occured");
-    // }
+    if (forStu.error) {
+      console.log(error);
+      alert("some error has occured");
+    }
 
     setInterval(() => {
       setProgress(100);

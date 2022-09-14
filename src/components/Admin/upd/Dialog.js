@@ -100,31 +100,64 @@ export default function CustomizedDialogs(props) {
   const updateDetails = async () => {
     var flag = 0;
 
-    const studentsUpdate = await supabase
-      .from("students")
-      .update({
-        usn: usn,
-        email: email,
-        phno: phnum,
-        year_joined: yoj,
-        hf1: hf1,
-        hf2: hf2,
-        hf3: hf3,
-        hf4: hf4,
-        cd: cd,
-        room_id: roomId,
-      })
-      .match({ s_id: studentId });
+    var studentsUpdate = null;
+    var updateRooms1 = null;
+    var updateRooms2 = null;
 
-    const updateRooms1 = await supabase
-      .from("rooms")
-      .update({ occupied: initialRoom[0]["occupied"] - 1 })
-      .match({ id: prevRoomId });
+    if (prevRoomId != roomId && roomId != -1) {
+      studentsUpdate = await supabase
+        .from("students")
+        .update({
+          usn: usn,
+          email: email,
+          phno: phnum,
+          year_joined: yoj,
+          hf1: hf1,
+          hf2: hf2,
+          hf3: hf3,
+          hf4: hf4,
+          cd: cd,
+          room_id: roomId,
+        })
+        .match({ s_id: studentId });
 
-    const updateRooms2 = await supabase
-      .from("rooms")
-      .update({ occupied: roomInfo[0] - roomInfo[1] + 1 })
-      .match({ id: roomId });
+      updateRooms1 = await supabase
+        .from("rooms")
+        .update({ occupied: initialRoom[0]["occupied"] - 1 })
+        .match({ id: prevRoomId });
+
+      updateRooms2 = await supabase
+        .from("rooms")
+        .update({ occupied: roomInfo[0] - roomInfo[1] + 1 })
+        .match({ id: roomId });
+    } else {
+      if (prevRoomId == roomId) {
+        alert("Cannot change to same room");
+        return;
+      }
+
+      studentsUpdate = await supabase
+        .from("students")
+        .update({
+          usn: usn,
+          email: email,
+          phno: phnum,
+          year_joined: yoj,
+          hf1: hf1,
+          hf2: hf2,
+          hf3: hf3,
+          hf4: hf4,
+          cd: cd,
+        })
+        .match({ s_id: studentId });
+
+      if (studentsUpdate.data) {
+        console.log(studentsUpdate.data);
+        alert("Successfull updated");
+        handleClose();
+        return;
+      }
+    }
 
     if (studentsUpdate.data) {
       flag++;
@@ -178,7 +211,7 @@ export default function CustomizedDialogs(props) {
       setHF3(props.hf3);
       setHF4(props.hf4);
       setCD(props.cd);
-      setRoomId(props.roomId);
+      // setRoomId(props.roomId);
       setPrevRoomId(props.roomId);
       setStudentId(props.s_id);
     }
@@ -369,7 +402,7 @@ export default function CustomizedDialogs(props) {
                   type="text"
                 />
               </Grid>
-               <Grid item xs={12} sm={12}>
+              {/* <Grid item xs={12} sm={12}>
                 <TextField
                   id="email_1718"
                   name="description"
@@ -380,7 +413,7 @@ export default function CustomizedDialogs(props) {
                   placeholder="email"
                   type="email"
                 />
-              </Grid>  
+              </Grid> */}
               <Grid item xs={12} sm={12}>
                 <TextField
                   id="phnum_1718"

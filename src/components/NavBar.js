@@ -163,7 +163,7 @@ const ResponsiveAppBar = (props) => {
               maxWidth: "70px",
             }}
           >
-            {location.pathname != "/signin" ? (
+            {location.pathname != "/signin" && location.pathname != "/developers" ? (
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -268,7 +268,7 @@ const ResponsiveAppBar = (props) => {
               </span>
             </Typography>
           </div>
-          {location.pathname != "/signin" ? (
+          {location.pathname != "/signin" && location.pathname != "/developers" ? (
             <Box
               sx={{
                 flexGrow: 1,
@@ -304,7 +304,7 @@ const ResponsiveAppBar = (props) => {
             </IconButton>
           ) : null}
 
-          {matches && location.pathname != "/signin" ? (
+          {matches && location.pathname != "/signin" && location.pathname != "/developers" ? (
             <Button
               variant="outlined"
               style={{
